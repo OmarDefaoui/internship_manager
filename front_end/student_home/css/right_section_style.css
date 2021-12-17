@@ -60,9 +60,7 @@
     width: 22vw;
     padding: 16px 20px;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column;
 }
 
 #activity_container #activity_title {
