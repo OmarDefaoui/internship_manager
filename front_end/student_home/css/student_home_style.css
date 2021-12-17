@@ -1,0 +1,27 @@
+/* style applied for the whole page */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* style of the body */
+body {
+    background-color: white;
+}
+
+#content {
+    display: flex;
+}
+
+/*                   main content style                   */
+
+main {
+    width: 66vw;
+    height: calc(100vh - 8vw);
+    background-color: grey;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+/*                       cards                  */
+
