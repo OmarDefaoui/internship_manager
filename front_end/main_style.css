@@ -1,0 +1,8 @@
+/* style applied for the whole project */
+
+@import "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css";
+
+* {
+    padding: 0;
+    margin: 0;
+}
