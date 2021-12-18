@@ -1,0 +1,157 @@
+/* general form styling */
+
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+form fieldset {
+    background: white;
+    border: none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.form-card {
+    text-align: left;
+}
+
+form fieldset:not(:first-of-type) {
+    display: none;
+}
+
+/* form input and button styling */
+
+form input, form textarea {
+    padding: 8px 15px 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    background-color: #ECEFF1;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+form input:focus, form textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #673AB7;
+    outline-width: 0;
+}
+
+form .action-button {
+    width: 100px;
+    background: #673AB7;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 0px 10px 5px;
+    float: right;
+}
+
+form .action-button:hover, form .action-button:focus {
+    background-color: #311B92;
+}
+
+form .action-button-previous {
+    width: 100px;
+    background: #616161;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px 10px 0px;
+    float: right;
+}
+
+form .action-button-previous:hover, form .action-button-previous:focus {
+    background-color: #000000;
+}
+
+/*                          progress bar                     */
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey;
+}
+
+#progressbar .active {
+    color: #673AB7;
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 20%;
+    float: left;
+    position: relative;
+    font-weight: 400;
+}
+
+#progressbar #entreprise:before {
+    font-family: FontAwesome;
+    content: "\f13e";
+}
+
+#progressbar #encadrant:before {
+    font-family: FontAwesome;
+    content: "\f007";
+}
+
+#progressbar #sujet:before {
+    font-family: FontAwesome;
+    content: "\f030";
+}
+
+#progressbar #binome:before {
+    font-family: FontAwesome;
+    content: "\f00c";
+}
+
+#progressbar #deposer:before {
+    font-family: FontAwesome;
+    content: "\f00c";
+}
+
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px;
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1;
+}
+
+#progressbar li.active:before, #progressbar li.active:after {
+    background: #673AB7;
+}
