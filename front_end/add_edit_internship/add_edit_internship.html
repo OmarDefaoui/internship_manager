@@ -31,55 +31,91 @@
         <!-- content -->
         <fieldset>
             <div class="form-card">
-                <h3>Infos sur l'entreprise</h3>
-                <input type="text" name="name" placeholder="Nom de l'entreprise">
-                <input type="text" name="address" placeholder="Adresse de l'entreprise">
-                <input type="tel" name="phone" placeholder="Numero de telephone">
-                <input type="text" name="city" placeholder="Ville de l'entreprise">
+                <div class="header">
+                    <p>Step 1/5</p>
+                    <h3>Infos sur l'entreprise</h3>
+                    <hr>
+                </div>
+
+                <input class="text_input" type="text" name="name" placeholder="Nom de l'entreprise">
+                <input class="text_input" type="text" name="address" placeholder="Adresse de l'entreprise">
+                <input class="text_input" type="tel" name="phone" placeholder="Numero de telephone">
+                <input class="text_input" type="text" name="city" placeholder="Ville de l'entreprise">
             </div>
-            <input type="button" name="next" class="next action-button" value="Next" />
+            <input type="button" name="next" class="next action-button" value="Next Step" />
         </fieldset>
 
         <fieldset>
             <div class="form-card">
-                <h3>Infos sur l'encadrant dans l'entreprise</h3>
-                <input type="text" name="nom_encadrant" placeholder="Nom de l'encadrant">
-                <input type="text" name="prenom_encadrant" placeholder="Prenom de l'encadrant">
+                <div class="header">
+                    <p>Step 2/5</p>
+                    <h3>Infos sur l'encadrant dans l'entreprise</h3>
+                    <hr>
+                </div>
+
+                <input class="text_input" type="text" name="nom_encadrant" placeholder="Nom de l'encadrant">
+                <input class="text_input" type="text" name="prenom_encadrant" placeholder="Prenom de l'encadrant">
             </div>
-            <input type="button" name="next" class="next action-button" value="Next" />
+            <input type="button" name="next" class="next action-button" value="Next Step" />
             <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
         </fieldset>
 
         <fieldset>
             <div class="form-card">
-                <h3>Infos sur le sujet</h3>
-                <input type="text" name="intitule_sujet" placeholder="Intitule du sujet">
-                <input type="text" name="description_sujet" placeholder="Description du sujet">
-                <input type="number" name="duree" placeholder="Duree du stage">
-                <textarea name="techno_utilisees" cols="30" rows="3" placeholder="Technologies utilisees"></textarea>
+                <div class="header">
+                    <p>Step 3/5</p>
+                    <h3>Infos sur le sujet</h3>
+                    <hr>
+                </div>
+
+                <input class="text_input" type="text" name="intitule_sujet" placeholder="Intitule du sujet">
+                <input class="text_input" type="text" name="description_sujet" placeholder="Description du sujet">
+                <input class="text_input" type="number" name="duree" placeholder="Duree du stage">
+                <textarea class="text_input" name="techno_utilisees" cols="30" rows="1"
+                    placeholder="Technologies utilisees"></textarea>
             </div>
-            <input type="button" name="next" class="next action-button" value="Next" />
+            <input type="button" name="next" class="next action-button" value="Next Step" />
             <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
         </fieldset>
 
         <fieldset>
             <div class="form-card">
-                <h3>Infos sur le binome</h3>
-                <input type="text" name="nom_binome" placeholder="Nom du binome">
-                <input type="text" name="prenom_binome" placeholder="Prenom du binome">
+                <div class="header">
+                    <p>Step 4/5</p>
+                    <h3>Infos sur le binome</h3>
+                    <hr>
+                </div>
+
+                <input class="text_input" type="text" name="nom_binome" placeholder="Nom du binome">
+                <input class="text_input" type="text" name="prenom_binome" placeholder="Prenom du binome">
             </div>
-            <input type="button" name="next" class="next action-button" value="Next" />
+            <input type="button" name="next" class="next action-button" value="Next Step" />
             <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
         </fieldset>
 
         <fieldset>
             <div class="form-card">
-                <h3>Deposer</h3>
-                <input type="file" name="version_initial_rapport">
-                <input type="file" name="version_corrige_rapport">
-                <input type="file" name="presentation">
-                <input type="file" name="attestation_stage">
-                <input type="file" name="fiche d'evaluation">
+                <div class="header">
+                    <p>Step 5/5</p>
+                    <h3>Deposer</h3>
+                    <hr>
+                </div>
+
+                <div class="input_upload_container" data-text="Version initial du rapport">
+                    <input name="version_initial_rapport" type="file" class="input_upload">
+                </div>
+                <div class="input_upload_container" data-text="Vesrion corrige du rapport">
+                    <input name="version_corrige_rapport" type="file" class="input_upload">
+                </div>
+                <div class="input_upload_container" data-text="Presentation">
+                    <input name="presentation" type="file" class="input_upload">
+                </div>
+                <div class="input_upload_container" data-text="Attestation de stage">
+                    <input name="attestation_stage" type="file" class="input_upload">
+                </div>
+                <div class="input_upload_container" data-text="La fiche d'evaluation">
+                    <input name="fiche_evaluation" type="file" class="input_upload">
+                </div>
             </div>
             <input type="button" name="next" class="next action-button" value="Submit" />
             <!-- <input type="submit" name="submit" value="Enregistrer"> -->

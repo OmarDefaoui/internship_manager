@@ -58,6 +58,11 @@ $(document).ready(function () {
 
     $(".submit").click(function () {
         return false;
-    })
+    });
+
+    $("form").on("change", ".input_upload", function(){ 
+        $(this).parent(".input_upload_container").attr("data-text", 
+        $(this).val().replace(/.*(\/|\\)/, ''));
+    });
 
 });
