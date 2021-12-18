@@ -67,12 +67,8 @@ $(document).ready(function () {
     });
 
     $("form").on("change", ".input_upload", function(){ 
-        $(this).parent(".input_upload_container").css("background-color", "#ffffff");
-
         $(this).parent(".input_upload_container").attr("data-text", 
         $(this).val().replace(/.*(\/|\\)/, ''));
-
-        // $(this).parent(".input_upload_container:after").css({'color': 'red'});
     });
 
 });
