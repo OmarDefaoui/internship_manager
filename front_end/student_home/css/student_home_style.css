@@ -1,6 +1,6 @@
 /* style of the body */
 body {
-    background-color: white;
+    background-color: var(--color-white);
     overflow: hidden;
 }
 
@@ -11,9 +11,9 @@ body {
 /*                   main content style                   */
 
 main {
-    width: 66vw;
-    height: calc(100vh - 8vw);
-    background-color: grey;
+    width: var(--width-center-section);
+    height: calc(100vh - var(--height-top-nav));
+    background-color: var(--color-grey-light);
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     overflow-y: auto;
@@ -28,7 +28,7 @@ main {
     width: 27%;
     padding: 20px;
     border-radius: 25px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     margin: 2% 1% 0 1%;
     height: fit-content;
 }
@@ -153,18 +153,18 @@ main {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: grey;
+    background: var(--color-grey-medium);
     margin-top: 25px;
     border-radius: 4px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgb(104, 104, 104);
+    background: var(--color-grey-dark);
     border-radius: 4px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: rgb(87, 87, 87);
+    background: gray;
 }

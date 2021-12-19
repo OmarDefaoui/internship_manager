@@ -6,3 +6,23 @@
     padding: 0;
     margin: 0;
 }
+
+/*                 colors                    */
+
+:root {
+    --color-white: #ffffff;
+    --color-grey-light: #f6f6f6;
+    --color-grey-medium: #d8d8d8;
+    --color-grey-dark: #afafaf;
+    --color-black: #000000;
+    --color-purple: #565a97;
+}
+
+:root {
+    --height-top-nav: 6vw;
+    --width-left-section: 6vw;
+    --width-center-section: 72vw;
+    --width-right-section: 22vw;
+    --width-right-nav-top: 16vw;
+    --width-right-nav-bottom: 18vw;
+}

@@ -1,20 +1,24 @@
 /*                      top nav bar style                       */
+body {
+    background-color: var(--color-white);
+}
+
 nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 8vw;
-    background-color: pink;
+    height: var(--height-top-nav);
 }
+
+/*                left nav bar part              */
 
 #logo_container {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 8%;
-    background-color: red;
+    width: var(--width-left-section);
 }
 
 #logo_container #logo {
@@ -27,29 +31,32 @@ nav {
     height: 14px;
     border-radius: 50%;
     padding: 8px;
-}
-
-.rounded_icon_light {
-    background-color: white;
+    background-color: var(--color-white);
 }
 
 .rounded_icon_dark {
-    background-color: grey;
+    border: 2px solid var(--color-grey-light);
 }
 
+/*                center nav bar part              */
+
 #nav_center {
-    width: 66%;
-    background-color: yellow;
+    width: var(--width-center-section);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
+#nav_center h2 {
+    margin-left: 30px;
+    letter-spacing: 1.2px;
+}
+
 #search_bar {
     width: 300px;
     height: 40px;
-    background-color: grey;
+    background-color: var(--color-grey-light);
     display: flex;
     align-items: center;
     border-radius: 25px;
@@ -61,8 +68,9 @@ nav {
     border: none;
     outline: none;
     height: 40px;
-    background-color: grey;
+    background-color: var(--color-grey-light);
     margin-left: 25px;
+    font-size: 14px;
 }
 
 #search_bar img {
@@ -73,24 +81,26 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: purple;
+    background-color: var(--color-purple);
     height: 38px;
     border-radius: 25px;
-    padding: 1px 15px 1px 8px;
-    background-color: purple;
-    color: white;
+    padding: 1px 15px 1px 5px;
+    color: var(--color-white);
+    font-size: 12px;
+    font-weight: 600;
 }
 
 #add_button img {
     margin-right: 10px;
     width: 10px;
     height: 10px;
-    background-color: white;
+    background-color: var(--color-white);
 }
 
+/*                right nav bar part              */
+
 #nav_right {
-    width: 26%;
-    background-color: green;
+    width: var(--width-right-section);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -105,53 +115,55 @@ nav {
     margin-right: 30%;
 }
 
-/*               left nav bar style               */
+/*               the other left nav bar style inside main               */
 
 #left_side {
-    background-color: purple;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 8vw;
-    height: calc(100vh - 8vw);
+    width: var(--width-left-section);
+    height: calc(100vh - var(--width-left-section));
 }
 
 #left_side li {
     list-style-type: none;
-    width: 8vw;
+    width: var(--width-left-section);
     text-align: center;
     margin-top: 30px;
 }
 
-#left_side li a{
+#left_side li a {
     list-style-type: none;
-    width: 8vw;
+    width: var(--width-left-section);
     height: 30px;
-    
+
 }
 
 #left_side li a img {
     width: 30px;
     height: 30px;
-    border-left: 6px solid red;
-    border-right: 6px solid purple;
-    padding: 4px calc((8vw - 42px) / 2);
+    border-left: 6px solid var(--color-purple);
+    border-right: 6px solid var(--color-white);
+    padding: 4px calc((var(--width-left-section) - 42px) / 2);
 }
 
 /*               light / darl mode style             */
 
 #modes p {
-    margin-bottom: -8px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--color-grey-dark);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.6px;
 }
 
 #mode_toggle {
     margin: 0;
     padding: 0;
-    height: 8vw;
+    height: var(--width-left-section);
     width: 80px;
     transform: rotate(90deg);
     display: flex;
@@ -171,7 +183,7 @@ nav {
     position: relative;
     height: 30px;
     width: 60px;
-    border: 5px solid #e4e7ec;
+    border: 2px solid #e4e7ec;
     border-radius: 25px;
     background-color: white;
     box-shadow: 0px 0px 8px #e4e7ec;

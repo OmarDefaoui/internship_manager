@@ -1,9 +1,8 @@
 /*                   right section style                  */
 
 #right_side {
-    width: 26vw;
-    height: calc(100vh - 8vw);
-    background-color: coral;
+    width: var(--width-right-section);
+    height: calc(100vh - var(--height-top-nav));
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,20 +11,19 @@
 /*                     hello container */
 
 #hello_container {
-    width: 20vw;
+    width: var(--width-right-nav-top);
     border-radius: 25px;
     padding: 16px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: pink;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 2px var(--color-grey-medium);
 }
 
 /*                    overview_container                */
 
 #overview_container {
-    width: 22vw;
+    width: var(--width-right-nav-bottom);
     border-radius: 25px;
     padding: 16px 20px;
     display: flex;
@@ -36,12 +34,11 @@
 }
 
 #overview_container .overview {
-    background-color: yellow;
     padding: 10px;
     border-radius: 15px;
     margin-top: 16px;
     width: 40%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 2px var(--color-grey-medium);
 }
 
 #overview_container .overview .overview_name {
@@ -57,7 +54,7 @@
 /*                  activity_container                   */
 
 #activity_container {
-    width: 22vw;
+    width: var(--width-right-nav-bottom);
     padding: 16px 20px;
     display: flex;
     flex-direction: column;
@@ -69,7 +66,7 @@
 
 #activity_container #see_more {
     text-decoration: none;
-    color: gray;
+    color: var(--color-purple);
 }
 
 #activity_container #feeds_container .feed {
