@@ -42,13 +42,15 @@
 }
 
 #overview_container .overview .overview_name {
-    color: grey;
-    margin-bottom: 6px;
+    color: var(--color-grey-dark);
+    margin-bottom: 10px;
+    font-size: 0.8em;
+    font-weight: 600;
 }
 
 #overview_container .overview .overview_data {
     padding: 0px 8px;
-    border-left: 3px solid blue;
+    border-left: 3px solid var(--color-purple);
 }
 
 /*                  activity_container                   */

@@ -18,6 +18,15 @@
     --color-purple: #565a97;
 }
 
+.dark:root {
+    --color-white: #111827;
+    --color-grey-light: #1f2937;
+    --color-grey-medium: rgba(255,255,255,.8);
+    --color-grey-dark: rgba(195, 207, 244, 0.2);
+    --color-black: #ffffff;
+    --color-purple: #d5deff;
+}
+
 :root {
     --height-top-nav: 6vw;
     --width-left-section: 6vw;
