@@ -283,6 +283,10 @@ form .action-button-previous:hover, form .action-button-previous:focus {
     color: white;
 }
 
+form textarea {
+    resize: none;
+}
+
 /* form radio style */
 
 .type_stage_radio {
