@@ -66,11 +66,11 @@ $(document).ready(function () {
         return false;
     });
 
-    $("form").on("change", ".input_upload", function(){ 
-        $(this).parent(".input_upload_container").css("background-color", "#ffffff");
+    $("form").on("change", ".input_upload", function () {
+        $(this).parent(".input_upload_container").css("background-color", "var(--color-grey-medium)");
 
-        $(this).parent(".input_upload_container").attr("data-text", 
-        $(this).val().replace(/.*(\/|\\)/, ''));
+        $(this).parent(".input_upload_container").attr("data-text",
+            $(this).val().replace(/.*(\/|\\)/, ''));
 
         // $(this).parent(".input_upload_container:after").css({'color': 'red'});
     });

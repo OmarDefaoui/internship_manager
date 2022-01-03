@@ -7,6 +7,55 @@
     margin: 0;
 }
 
+/* style of the body */
+body {
+    background-color: var(--color-white);
+    overflow: hidden;
+}
+
+#content {
+    display: flex;
+}
+
+/*                   main content style                   */
+
+main {
+    width: var(--width-center-section);
+    height: calc(100vh - var(--height-top-nav));
+    background-color: var(--color-grey-light);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 1%;
+}
+
+/*                              scroll bar style                   */
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--color-grey-medium);
+    margin-top: 25px;
+    border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--color-grey-dark);
+    border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: gray;
+}
+
 /*                 colors                    */
 
 :root {
@@ -21,10 +70,10 @@
 .dark:root {
     --color-white: #111827;
     --color-grey-light: #1f2937;
-    --color-grey-medium: rgba(255,255,255,.8);
+    --color-grey-medium: rgba(255, 255, 255, .8);
     --color-grey-dark: rgba(195, 207, 244, 0.2);
     --color-black: #ffffff;
-    --color-purple: #d5deff;
+    --color-purple: #565a97;
 }
 
 :root {

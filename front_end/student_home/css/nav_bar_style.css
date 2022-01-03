@@ -90,6 +90,7 @@ nav {
     font-size: 12px;
     font-weight: 600;
     color: white;
+    cursor: pointer;
 }
 
 #add_button img {

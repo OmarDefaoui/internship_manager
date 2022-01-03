@@ -56,7 +56,7 @@ if (isset($_SESSION['id'])) {
                 <input type="text" name="search" placeholder="Rechercher">
                 <img src="../assets/images/search.png" alt="search" class="rounded_icon_light">
             </div>
-            <div id="add_button">
+            <div id="add_button" onClick="window.open('../add_edit_internship/add_edit_internship.php', '_self')">
                 <img src="../assets/images/add.png" alt="add" class="rounded_icon_dark">
                 <p>Ajouter un stage</p>
             </div>
@@ -125,23 +125,33 @@ if (isset($_SESSION['id'])) {
                 $fiche_evalution = $dataStages['fiche_evalution'];
                 $nom_encadrant = $dataStages['nom_encadrant'];
                 $prenom_encardrant = $dataStages['prenom_encardrant'];
-                $note = $dataStages['note'];
-                $est_validé = $dataStages['est_validé'];
                 $type = $dataStages['type'];
                 $id_enseignant = $dataStages['id_enseignant'];
                 $id_entreprise = $dataStages['id_entreprise'];
                 $id_etudiant = $dataStages['id_etudiant'];
-                $prenom_binome = $dataStage['prenom_binome'];
-                $nom_binome = $dataStage['nom_binome'];
-                $photo_binome = $dataStage['photo_binome'];
-                $photo_enseignant = '2.jpg';
-                $photo_binome = NULL; ?>
+                $prenom_binome = $dataStages['prenom_binome'];
+                $nom_binome = $dataStages['nom_binome'];
+                $photo_binome = $dataStages['photo_binome'];
 
-                <div class="card">
+                if (isset($id_enseignant)) {
+                    $requetteEnseignant = "SELECT * FROM enseignant WHERE id_enseignant = $id_enseignant";
+                    $resultatEnseignant = mysqli_query($link, $requetteEnseignant);
+                    $dataEnseignant = mysqli_fetch_assoc($resultatEnseignant);
+                    if ($dataEnseignant != False) {
+                        $nom_enseignant = $dataEnseignant['nom'];
+                        $photo_enseignant = $dataEnseignant['photo'];
+                    }
+                } else {
+                    $nom_enseignant = NULL;
+                    $photo_enseignant = NULL;
+                }
+            ?>
+
+                <div class="card" onClick="window.open('../add_edit_internship/add_edit_internship.php?id_stage=<?php echo $id_stage ?>', '_self')">
                     <div class="card_header">
                         <div>
                             <p class="card_title"><?php echo $intitule_sujet ?></p>
-                            <p class="card_subtitle"><?php echo $nom_encadrant == NULL ? "Pas encore encadré" : "Encadré par Pr. " . $nom_encadrant ?></p>
+                            <p class="card_subtitle"><?php echo $nom_enseignant == NULL ? "Pas encore encadré" : "Encadré par Pr. " . $nom_enseignant ?></p>
                         </div>
 
                         <!-- add button -->
