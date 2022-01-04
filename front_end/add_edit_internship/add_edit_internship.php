@@ -257,7 +257,7 @@ if (isset($_SESSION['id'])) {
                                         <p>Please let us know what type of business decribes you.</p>
                                     </div>
 
-                                    <input class="text_input" type="text" name="name" placeholder="Nom de l'entreprise" value="<?php echo $nom_entreprise ?>">
+                                    <input class="text_input" type="text" name="name" id="nom_entreprise" placeholder="Nom de l'entreprise" value="<?php echo $nom_entreprise ?>">
                                     <input class="text_input" type="text" name="address" placeholder="Adresse de l'entreprise" value="<?php echo $adresse_entreprise ?>">
                                     <input class="text_input" type="tel" name="phone" placeholder="Numero de telephone" value="<?php echo $tel_entreprise ?>">
                                     <input class="text_input" type="text" name="city" placeholder="Ville de l'entreprise" value="<?php echo $ville_entreprise ?>">
@@ -417,8 +417,21 @@ if (isset($_SESSION['id'])) {
         </aside>
     </div>
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <!-- For Entreprise nom auto complete -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#nom_entreprise").autocomplete({
+                source: "input_search.php"
+            });
+        });
+    </script>
+
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> -->
     <script src="add_edit_internship.js"></script>
+
 </body>
 
 </html>
