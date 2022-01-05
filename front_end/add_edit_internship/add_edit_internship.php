@@ -258,9 +258,10 @@ if (isset($_SESSION['id'])) {
                                     </div>
 
                                     <input class="text_input" type="text" name="name" id="nom_entreprise" placeholder="Nom de l'entreprise" value="<?php echo $nom_entreprise ?>">
-                                    <input class="text_input" type="text" name="address" placeholder="Adresse de l'entreprise" value="<?php echo $adresse_entreprise ?>">
-                                    <input class="text_input" type="tel" name="phone" placeholder="Numero de telephone" value="<?php echo $tel_entreprise ?>">
-                                    <input class="text_input" type="text" name="city" placeholder="Ville de l'entreprise" value="<?php echo $ville_entreprise ?>">
+                                    <input class="text_input" type="text" name="address" id="adresse_entreprise" placeholder="Adresse de l'entreprise" value="<?php echo $adresse_entreprise ?>">
+                                    <input class="text_input" type="tel" name="phone" id="tel_entreprise" placeholder="Numero de telephone" value="<?php echo $tel_entreprise ?>">
+                                    <input class="text_input" type="text" name="city" id="ville_entreprise" placeholder="Ville de l'entreprise" value="<?php echo $ville_entreprise ?>">
+                                    <input type="hidden" name="id_entreprise" id="id_entreprise">
                                 </div>
                                 <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>
@@ -421,13 +422,6 @@ if (isset($_SESSION['id'])) {
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script>
-        $(function() {
-            $("#nom_entreprise").autocomplete({
-                source: "input_search.php"
-            });
-        });
-    </script>
 
     <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> -->
     <script src="add_edit_internship.js"></script>

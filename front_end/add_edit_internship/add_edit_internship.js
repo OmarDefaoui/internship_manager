@@ -75,4 +75,19 @@ $(document).ready(function () {
         // $(this).parent(".input_upload_container:after").css({'color': 'red'});
     });
 
+    // for entreprise auto complete
+    $(function () {
+        $("#nom_entreprise").autocomplete({
+            source: "input_search.php",
+            select: function (event, ui) {
+                $('#nom_entreprise').val(ui.item.label);
+                $('#adresse_entreprise').val(ui.item.adresse);
+                $("#tel_entreprise").val(ui.item.ville);
+                $("#ville_entreprise").val(ui.item.tel);
+                $("#id_entreprise").val(ui.item.id_entreprise);
+                return false;
+            }
+        });
+    });
+
 });

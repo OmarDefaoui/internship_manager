@@ -25,6 +25,28 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
     $nom_binome = $_POST['nom_binome'];
     $photo_binome = $_POST['photo_binome'];
 
+    $id_entreprise = $_POST['id_entreprise'];
+    $nom_entreprise = $_POST['name'];
+    $adresse_entreprise = $_POST['address'];
+    $tel_entreprise = $_POST['phone'];
+    $ville_entreprise = $_POST['city'];
+
+    if ($id_entreprise == NULL && $nom_entreprise != NULL) {
+        // nouvelle entreprise
+        $requette = "INSERT INTO entreprise (nom,adresse,ville,tel) VALUES 
+            ('$nom_entreprise','$adresse_entreprise','$ville_entreprise','$tel_entreprise')";
+        $resultat = mysqli_query($link, $requette);
+
+        // $requette = "SELECT * FROM entreprise";
+        // $resultat = mysqli_query($link, $requette);
+        // while ($data = mysqli_fetch_assoc($resultat)) {
+        //     $id_entreprise = $data['id_entreprise'];
+        // }
+        // echo $id_entreprise . ' hhh ';
+    } else {
+        echo 'f non';
+    }
+
     if ($isNew) {
         // stocker comme nouveau stage
         $requetteStage = "INSERT INTO stage 
@@ -43,7 +65,8 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
             id_etudiant,
             prenom_binome,
             nom_binome,
-            photo_binome)
+            photo_binome,
+            id_entreprise)
         VALUES 
             ('$intitule_sujet',
             '$description_sujet',
@@ -60,8 +83,9 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
             '$id_etudiant',
             '$prenom_binome',
             '$nom_binome',
-            '$photo_binome')";
-        $resultatStage = mysqli_query($link, $requetteStage);
+            '$photo_binome',
+            '$id_entreprise')";
+        // $resultatStage = mysqli_query($link, $requetteStage);
 
         // $requetteEntreprise = "INSERT INTO entreprise 
         //     (nom_entreprise,
