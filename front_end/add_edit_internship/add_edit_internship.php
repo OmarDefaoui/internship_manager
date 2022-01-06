@@ -261,7 +261,6 @@ if (isset($_SESSION['id'])) {
                                     <input class="text_input" type="text" name="address" id="adresse_entreprise" placeholder="Adresse de l'entreprise" value="<?php echo $adresse_entreprise ?>">
                                     <input class="text_input" type="tel" name="phone" id="tel_entreprise" placeholder="Numero de telephone" value="<?php echo $tel_entreprise ?>">
                                     <input class="text_input" type="text" name="city" id="ville_entreprise" placeholder="Ville de l'entreprise" value="<?php echo $ville_entreprise ?>">
-                                    <input type="hidden" name="id_entreprise" id="id_entreprise">
                                 </div>
                                 <input type="button" name="next" class="next action-button" value="Next Step" />
                             </fieldset>

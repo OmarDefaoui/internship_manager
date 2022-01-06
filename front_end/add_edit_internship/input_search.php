@@ -13,7 +13,6 @@ if (isset($_GET['term'])) {
         $items[$i]['adresse'] = $an_item['adresse'];
         $items[$i]['ville'] = $an_item['ville'];
         $items[$i]['tel'] = $an_item['tel'];
-        $items[$i]['id_entreprise'] = $an_item['id_entreprise'];
         $i++;
     }
     echo json_encode($items);

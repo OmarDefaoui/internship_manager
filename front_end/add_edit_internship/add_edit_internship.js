@@ -82,9 +82,8 @@ $(document).ready(function () {
             select: function (event, ui) {
                 $('#nom_entreprise').val(ui.item.label);
                 $('#adresse_entreprise').val(ui.item.adresse);
-                $("#tel_entreprise").val(ui.item.ville);
-                $("#ville_entreprise").val(ui.item.tel);
-                $("#id_entreprise").val(ui.item.id_entreprise);
+                $("#tel_entreprise").val(ui.item.tel);
+                $("#ville_entreprise").val(ui.item.ville);
                 return false;
             }
         });

@@ -25,26 +25,38 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
     $nom_binome = $_POST['nom_binome'];
     $photo_binome = $_POST['photo_binome'];
 
-    $id_entreprise = $_POST['id_entreprise'];
+    $id_entreprise = NULL;
     $nom_entreprise = $_POST['name'];
     $adresse_entreprise = $_POST['address'];
     $tel_entreprise = $_POST['phone'];
     $ville_entreprise = $_POST['city'];
 
-    if ($id_entreprise == NULL && $nom_entreprise != NULL) {
-        // nouvelle entreprise
-        $requette = "INSERT INTO entreprise (nom,adresse,ville,tel) VALUES 
-            ('$nom_entreprise','$adresse_entreprise','$ville_entreprise','$tel_entreprise')";
+    // get entreprise id
+    if (
+        $nom_entreprise != NULL && $adresse_entreprise != NULL &&
+        $tel_entreprise != NULL && $ville_entreprise != NULL
+    ) {
+        $requette = "SELECT * FROM entreprise where nom='$nom_entreprise'
+            and adresse='$adresse_entreprise' and tel='$tel_entreprise' 
+            and ville='$ville_entreprise'";
         $resultat = mysqli_query($link, $requette);
+        $data = mysqli_fetch_assoc($resultat);
 
-        // $requette = "SELECT * FROM entreprise";
-        // $resultat = mysqli_query($link, $requette);
-        // while ($data = mysqli_fetch_assoc($resultat)) {
-        //     $id_entreprise = $data['id_entreprise'];
-        // }
-        // echo $id_entreprise . ' hhh ';
-    } else {
-        echo 'f non';
+        if ($data != False) {
+            // use data from auto complete
+            $id_entreprise = $data['id_entreprise'];
+        } else {
+            // insert new entreprise
+            $requette = "INSERT INTO entreprise (nom,adresse,ville,tel) VALUES 
+            ('$nom_entreprise','$adresse_entreprise','$ville_entreprise','$tel_entreprise')";
+            $resultat = mysqli_query($link, $requette);
+
+            $requette = "SELECT * FROM entreprise where nom='$nom_entreprise'
+                and adresse='$adresse_entreprise' and tel='$tel_entreprise' 
+                and ville='$ville_entreprise'";
+            $resultat = mysqli_query($link, $requette);
+            $id_entreprise = mysqli_fetch_assoc($resultat)['id_entreprise'];
+        }
     }
 
     if ($isNew) {
@@ -85,19 +97,7 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
             '$nom_binome',
             '$photo_binome',
             '$id_entreprise')";
-        // $resultatStage = mysqli_query($link, $requetteStage);
-
-        // $requetteEntreprise = "INSERT INTO entreprise 
-        //     (nom_entreprise,
-        //     adresse_entreprise,
-        //     ville_entreprise,
-        //     tel_entreprise)
-        // VALUES
-        //     ('$nom_entreprise',
-        //     '$adresse_entreprise',
-        //     '$ville_entreprise',
-        //     '$tel_entreprise')";
-        // $resultatEntreprise = mysqli_query($link, $requetteEntreprise);
+        $resultatStage = mysqli_query($link, $requetteStage);
     } else {
         $requetteStage = "UPDATE stage SET  
             intitule_sujet = '$intitule_sujet',
@@ -115,19 +115,11 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
             id_etudiant = '$id_etudiant',
             prenom_binome = '$prenom_binome',
             nom_binome = '$nom_binome',
-            photo_binome = '$photo_binome'
+            photo_binome = '$photo_binome',
+            id_entreprise = '$id_entreprise'
         WHERE 
             id_stage = '$id_stage'";
         $resultatStage = mysqli_query($link, $requetteStage);
-
-        // $requetteEntreprise = "UPDATE entreprise SET 
-        //     nom_entreprise = '$nom_entreprise',
-        //     adresse_entreprise = '$adresse_entreprise',
-        //     ville_entreprise = '$ville_entreprise',
-        //     tel_entreprise = '$tel_entreprise'
-        // WHERE
-        //     id_entreprise = '$id_entreprise'";
-        // $resultatEntreprise = mysqli_query($link, $requetteEntreprise);
     }
 
     echo 'success';
