@@ -13,23 +13,62 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
     $description_sujet = $_POST['description_sujet'];
     $duree = $_POST['duree'];
     $technologies = $_POST['techno_utilisees'];
-    $premiere_version = $_POST['version_initial_rapport'];
-    $version_corrige = $_POST['version_corrige_rapport'];
-    $presentation = $_POST['presentation'];
-    $attestation_stage = $_POST['attestation_stage'];
-    $fiche_evalution = $_POST['fiche_evaluation'];
     $nom_encadrant = $_POST['nom_encadrant'];
     $prenom_encardrant = $_POST['prenom_encadrant'];
     $type = $_POST['type_stage'];
     $prenom_binome = $_POST['prenom_binome'];
     $nom_binome = $_POST['nom_binome'];
-    $photo_binome = $_POST['photo_binome'];
 
     $id_entreprise = NULL;
     $nom_entreprise = $_POST['name'];
     $adresse_entreprise = $_POST['address'];
     $tel_entreprise = $_POST['phone'];
     $ville_entreprise = $_POST['city'];
+
+    // upload files
+    $photo_binome = my_upload_file(
+        'photo_binome',
+        'binomes',
+        array('png', 'jpeg', 'jpg'),
+        $id_etudiant,
+        'inconnu.jpg'
+    );
+    $premiere_version = my_upload_file(
+        'version_initial_rapport',
+        'versions_initials',
+        array('pdf'),
+        $id_etudiant,
+        ''
+    );
+    $version_corrige = my_upload_file(
+        'version_corrige_rapport',
+        'versions_corriges',
+        array('pdf'),
+        $id_etudiant,
+        ''
+    );
+    $presentation = my_upload_file(
+        'presentation',
+        'presentations',
+        array('pdf', 'pptx'),
+        $id_etudiant,
+        ''
+    );
+    $attestation_stage = my_upload_file(
+        'attestation_stage',
+        'attestations_stages',
+        array('pdf'),
+        $id_etudiant,
+        ''
+    );
+    $fiche_evalution = my_upload_file(
+        'fiche_evaluation',
+        'fiches_evaluations',
+        array('pdf'),
+        $id_etudiant,
+        ''
+    );
+
 
     // get entreprise id
     if (
@@ -59,6 +98,7 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
         }
     }
 
+    // save data to db
     if ($isNew) {
         // stocker comme nouveau stage
         $requetteStage = "INSERT INTO stage 
@@ -125,4 +165,34 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
     echo 'success';
 } else {
     header("location:login.php");
+}
+
+// upload file
+function my_upload_file($var_name, $folder_name, $extensions_autorisees, $file_name, $default_file_name)
+{
+    if (isset($_FILES["$var_name"]) && $_FILES["$var_name"]['error'] == 0) {
+        $dossier = "../../back_end/assets/$folder_name/";
+        $temp_name = $_FILES["$var_name"]['tmp_name'];
+        if (!is_uploaded_file($temp_name)) {
+            exit("le fichier est introuvable");
+        }
+        if ($_FILES["$var_name"]['size'] >= 10000000) {
+            exit("Erreur, le fichier est volumineux");
+        }
+        $infosfichier = pathinfo($_FILES["$var_name"]['name']);
+        $extension_upload = $infosfichier['extension'];
+
+        $extension_upload = strtolower($extension_upload);
+        if (!in_array($extension_upload, $extensions_autorisees)) {
+            exit("Erreur, Extension du fichier non autorisée");
+        }
+        $nom_fichier = $file_name . "." . $extension_upload;
+        if (!move_uploaded_file($temp_name, $dossier . $nom_fichier)) {
+            exit("Probleme dans le telechargement du fichier, Ressayez");
+        }
+        $result_file_name = $nom_fichier;
+    } else {
+        $result_file_name = $default_file_name;
+    }
+    return $result_file_name;
 }

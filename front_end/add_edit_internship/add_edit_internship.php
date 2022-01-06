@@ -35,7 +35,7 @@ if (isset($_SESSION['id'])) {
         $version_corrige = $dataStage['version_corrige'];
         $presentation = $dataStage['presentation'];
         $attestation_stage = $dataStage['attestation_stage'];
-        $fiche_evalution = "dsdklsd sdsds.pdf";
+        $fiche_evalution = $dataStage['fiche_evalution'];
         $nom_encadrant = $dataStage['nom_encadrant'];
         $prenom_encardrant = $dataStage['prenom_encardrant'];
         $note = $dataStage['note'];
@@ -185,7 +185,7 @@ if (isset($_SESSION['id'])) {
 
         <!-- main content -->
         <main>
-            <form class="popup" action="save_data.php" method="post">
+            <form class="popup" action="save_data.php" method="post" enctype="multipart/form-data">
                 <!-- header of the page -->
                 <div class="header">
                     <h1>Example with Steps UI</h1>
