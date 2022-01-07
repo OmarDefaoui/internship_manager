@@ -112,7 +112,10 @@ if (isset($_SESSION['id'])) {
         <!-- main content -->
         <main>
             <?php
+            $stagesCount = 0;
             while ($dataStages = mysqli_fetch_assoc($resultatStages)) {
+                $stagesCount++;
+
                 $id_stage = $dataStages['id_stage'];
                 $intitule_sujet = $dataStages['intitule_sujet'];
                 $description_sujet = $dataStages['description_sujet'];
@@ -189,7 +192,9 @@ if (isset($_SESSION['id'])) {
                     </div>
                 </div>
 
-            <?php }
+            <?php
+            }
+            $_SESSION['stagesCount'] = $stagesCount;
             ?>
         </main>
 
@@ -200,45 +205,57 @@ if (isset($_SESSION['id'])) {
                 <img src="../assets/images/user_icon.png" alt="user_icon">
             </div>
 
+            <?php $stagesCount = $_SESSION['stagesCount'] ?>
             <div id="overview_container">
                 <div class="overview">
-                    <p class="overview_name">Projets :</p>
-                    <b class="overview_data">167</b>
+                    <p class="overview_name">Stages :</p>
+                    <b class="overview_data"><?php echo $stagesCount ?></b>
                 </div>
 
                 <div class="overview">
-                    <p class="overview_name">Completed :</p>
-                    <b class="overview_data">136</b>
+                    <p class="overview_name">Terminés :</p>
+                    <b class="overview_data"><?php echo $stagesCount ?></b>
                 </div>
 
                 <div class="overview">
-                    <p class="overview_name">In Progress :</p>
-                    <b class="overview_data">19</b>
+                    <p class="overview_name">En cours :</p>
+                    <b class="overview_data"><?php echo $stagesCount ?></b>
                 </div>
 
                 <div class="overview">
-                    <p class="overview_name">Overdue</p>
-                    <b class="overview_data">12</b>
+                    <p class="overview_name">Notés</p>
+                    <b class="overview_data"><?php echo $stagesCount ?></b>
                 </div>
             </div>
 
             <div id="activity_container">
-                <p id="activity_title">Activity <b>Feed</b></p>
+                <p id="activity_title">Flux <b>d'activité</b></p>
                 <div id="feeds_container">
-                    <div class="feed">
-                        <img src="../assets/images/face1.png" alt="user_icon">
-                        <div class="text_container">
-                            <p class="content"><b>Mr. Hassan</b> a accepter de vous guider lors de votre stage</p>
-                            <p class="time">3 mins ago</p>
+                    <?php
+                    $requetteNotif = "SELECT * FROM notification WHERE id_target='$id_etudiant'";
+                    $resultatNotif = mysqli_query($link, $requetteNotif);
+                    while ($dataNotif = mysqli_fetch_assoc($resultatNotif)) {
+                        $contentNotif = $dataNotif['content'];
+                        $iconNotif = $dataNotif['icon'];
+
+                        // calculate difference between 2 dates
+                        $diff = abs(strtotime(date("Y-m-d")) - strtotime($dataNotif['date']));
+                        $years = floor($diff / (365 * 60 * 60 * 24));
+                        $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+                        $days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+                        $dateNotif = $years != 0 ? ($years . ' années') : ($months != 0 ? ($months . ' mois') : ($days . ' jours'));
+                    ?>
+
+                        <div class="feed">
+                            <img src="../../back_end/assets/images/<?php echo $iconNotif ?>" alt="user_icon">
+                            <div class="text_container">
+                                <p class="content"><?php echo $contentNotif ?></p>
+                                <p class="time"><?php echo $dateNotif ?></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="feed">
-                        <img src="../assets/images/face2.png" alt="user_icon">
-                        <div class="text_container">
-                            <p class="content"><b>Mr. Hassan</b> a accepter de vous guider lors de votre stage</p>
-                            <p class="time">6 mins ago</p>
-                        </div>
-                    </div>
+
+                    <?php }
+                    ?>
                 </div>
                 <a href="#" id="see_more">See more</a>
             </div>
