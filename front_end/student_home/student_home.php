@@ -113,9 +113,10 @@ if (isset($_SESSION['id'])) {
         <main>
             <?php
             $stagesCount = 0;
-            while ($dataStages = mysqli_fetch_assoc($resultatStages)) {
-                $stagesCount++;
+            $stagesValideCount = 0;
+            $stagesNotesCount = 0;
 
+            while ($dataStages = mysqli_fetch_assoc($resultatStages)) {
                 $id_stage = $dataStages['id_stage'];
                 $intitule_sujet = $dataStages['intitule_sujet'];
                 $description_sujet = $dataStages['description_sujet'];
@@ -128,6 +129,8 @@ if (isset($_SESSION['id'])) {
                 $fiche_evalution = $dataStages['fiche_evalution'];
                 $nom_encadrant = $dataStages['nom_encadrant'];
                 $prenom_encardrant = $dataStages['prenom_encardrant'];
+                $note_stage = $dataStages['note'];
+                $est_valide = $dataStages['est_valide'];
                 $type = $dataStages['type'];
                 $id_enseignant = $dataStages['id_enseignant'];
                 $id_entreprise = $dataStages['id_entreprise'];
@@ -148,6 +151,18 @@ if (isset($_SESSION['id'])) {
                     $nom_enseignant = NULL;
                     $photo_enseignant = NULL;
                 }
+
+                // calculate progress stats
+                $stagesCount++;
+                $stagesNotesCount += $note_stage != NULL ? 1 : 0;
+                $stagesValideCount += $est_valide != NULL ? 1 : 0;
+                $progressValue = ($id_entreprise != NULL ? 10 : 0) + ($intitule_sujet != NULL ? 5 : 0) +
+                    ($premiere_version != NULL ? 10 : 0) + ($version_corrige != NULL ? 10 : 0) +
+                    ($presentation != NULL ? 10 : 0) + ($attestation_stage != NULL ? 5 : 0) +
+                    ($fiche_evalution != NULL ? 5 : 0) + ($nom_encadrant != NULL ? 10 : 0) +
+                    ($note_stage != NULL ? 10 : 0) + ($est_valide != NULL ? 10 : 0) +
+                    ($id_enseignant != NULL ? 10 : 0) +
+                    (($duree != NULL && $technologies != NULL) ? 5 : 0);
             ?>
 
                 <div class="card" onClick="window.open('../add_edit_internship/add_edit_internship.php?id_stage=<?php echo $id_stage ?>', '_self')">
@@ -158,9 +173,13 @@ if (isset($_SESSION['id'])) {
                         </div>
 
                         <!-- add button -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
-                            <path d="M12 5v14M5 12h14" />
-                        </svg>
+                        <?php if ($note_stage == NULL) { ?>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                <path d="M12 5v14M5 12h14" />
+                            </svg>
+                        <?php } else { ?>
+                            <p class="internship_note" style="color: #ff942e; background-color: #ff932e1e;"><?php echo $note_stage ?> / 20</p>
+                        <?php } ?>
                     </div>
 
                     <div class="card_main">
@@ -170,17 +189,17 @@ if (isset($_SESSION['id'])) {
                         <div class="progress_container">
                             <p class="progress_header">Progress</p>
                             <div class="progress_bar">
-                                <span class="progress_indicator" style="width: 60%; background-color: #ff942e"></span>
+                                <span class="progress_indicator" style="width: <?php echo $progressValue ?>%; background-color: #ff942e"></span>
                             </div>
-                            <p class="progress_percentage">60%</p>
+                            <p class="progress_percentage"><?php echo $progressValue ?>%</p>
                         </div>
                     </div>
 
                     <div class="card_footer">
                         <div class="participants">
                             <img src="<?php echo '../../back_end/assets/images/' . ($photo == NULL ? 'inconnu.jpg' : $photo) ?>" alt="participant">
-                            <?php if ($photo_binome != NULL) ?><img src="<?php echo '../../back_end/assets/images/' . ($photo_binome == NULL ? 'inconnu.jpg' : $photo_binome) ?>" alt="participant">
-                            <?php if ($id_enseignant != NULL) { ?><img src="<?php echo '../../back_end/assets/images/' . ($photo_enseignant == NULL ? 'inconnu.jpg' : $photo_enseignant) ?>" alt="participant"><?php } ?>
+                            <?php if ($photo_binome != NULL) { ?><img src="<?php echo '../../back_end/assets/images/' . ($photo_binome == NULL ? 'inconnu.jpg' : $photo_binome) ?>" alt="participant"><?php } ?>
+                            <?php if ($photo_enseignant != NULL) { ?><img src="<?php echo '../../back_end/assets/images/' . ($photo_enseignant == NULL ? 'inconnu.jpg' : $photo_enseignant) ?>" alt="participant"><?php } ?>
                             <button class="add_participant" style="color: #ff942e; background-color: #ff932e1e;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
                                     <path d="M12 5v14M5 12h14" />
@@ -205,7 +224,11 @@ if (isset($_SESSION['id'])) {
                 <img src="../assets/images/user_icon.png" alt="user_icon">
             </div>
 
-            <?php $stagesCount = $_SESSION['stagesCount'] ?>
+            <?php
+            $_SESSION['stagesCount'] = $stagesCount;
+            $_SESSION['stagesValideCount'] = $stagesValideCount;
+            $_SESSION['stagesNotesCount'] = $stagesNotesCount;
+            ?>
             <div id="overview_container">
                 <div class="overview">
                     <p class="overview_name">Stages :</p>
@@ -213,18 +236,18 @@ if (isset($_SESSION['id'])) {
                 </div>
 
                 <div class="overview">
-                    <p class="overview_name">Terminés :</p>
-                    <b class="overview_data"><?php echo $stagesCount ?></b>
-                </div>
-
-                <div class="overview">
                     <p class="overview_name">En cours :</p>
-                    <b class="overview_data"><?php echo $stagesCount ?></b>
+                    <b class="overview_data"><?php echo $stagesCount - $stagesNotesCount ?></b>
                 </div>
 
                 <div class="overview">
-                    <p class="overview_name">Notés</p>
-                    <b class="overview_data"><?php echo $stagesCount ?></b>
+                    <p class="overview_name">Validés :</p>
+                    <b class="overview_data"><?php echo $stagesValideCount ?></b>
+                </div>
+
+                <div class="overview">
+                    <p class="overview_name">Notés :</p>
+                    <b class="overview_data"><?php echo $stagesNotesCount ?></b>
                 </div>
             </div>
 

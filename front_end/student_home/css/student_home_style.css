@@ -32,6 +32,15 @@
     margin-bottom: 12px;
 }
 
+.card .card_header .internship_note {
+    font-size: 0.8em;
+    border-radius: 25px;
+    padding: 4px 10px;
+    font-weight: 700;
+    width: fit-content;
+    height: fit-content;
+}
+
 .card .card_header svg {
     color: gray;
     border-radius: 50%;

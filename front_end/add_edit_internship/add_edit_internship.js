@@ -2,11 +2,71 @@ $(document).ready(function () {
 
     var current_fs, next_fs, previous_fs; //fieldsets
     var opacity;
+    var page = 1;
 
     $(".next").click(function () {
 
         current_fs = $(this).parent();
         next_fs = $(this).parent().next();
+
+        // validate entry
+        switch (page) {
+            // entreprise infos
+            case 1:
+                if ($("input[name=name]").val() == '' &&
+                    $("input[name=address]").val() == '' &&
+                    $("input[name=phone]").val() == '' &&
+                    $("input[name=city]").val() == '') {
+                    break;
+                } else if ($("input[name=name]").val() == '' ||
+                    $("input[name=address]").val() == '' ||
+                    $("input[name=phone]").val() == '' ||
+                    $("input[name=city]").val() == '') {
+                    alert("Veuillez soit entrer toutes les informations sur l'entreprise, \nsoit veuillez laissez ses champs vide jusqu'à que vous aurez toutes les information sur l'entreprise")
+                    return;
+                }
+                break;
+            // encadrant infos
+            case 2:
+                if ($("input[name=nom_encadrant]").val() == '' &&
+                    $("input[name=prenom_encadrant]").val() == '') {
+                    break;
+                } else if ($("input[name=nom_encadrant]").val() == '' ||
+                    $("input[name=prenom_encadrant]").val() == '') {
+                    alert("Veuillez soit entrer le nom et le prenom, \nsoit veuillez laissez ses champs vide jusqu'à que vous aurez toutes les information sur votre encadrant")
+                    return;
+                }
+                break;
+            // sujet infos    
+            case 3:
+                if ($("input[name=intitule_sujet]").val() == '' &&
+                    $("input[name=description_sujet]").val() == '' &&
+                    $("input[name=duree]").val() == '' &&
+                    $("textarea[name=techno_utilisees]").val() == '') {
+                    alert("L'intitulé et la description du sujet sont obligatoire");
+                    return;
+                } else if (($("input[name=intitule_sujet]").val() == '' ||
+                    $("input[name=description_sujet]").val() == '') &&
+                    ($("input[name=duree]").val() != '' ||
+                        $("textarea[name=techno_utilisees]").val() != '')) {
+                    alert("Veuillez soit entrer l'intitulé et la description, \nsoit veuillez laissez les champs de cette page vide jusqu'à que vous aurez toutes les information sur votre sujet")
+                    return;
+                }
+                break;
+            // binome infos    
+            case 4:
+                if ($("input[name=nom_binome]").val() == '' &&
+                    $("input[name=prenom_binome]").val() == '') {
+                    break;
+                } else if ($("input[name=nom_binome]").val() == '' ||
+                    $("input[name=prenom_binome]").val() == '') {
+                    alert("Veuillez soit entrer le nom et le prenom, \nsoit veuillez laissez ses champs vide jusqu'à que vous aurez toutes les information sur votre binome")
+                    return;
+                }
+                break;
+            default:
+                break;
+        }
 
         //Add Class Active
         $(".form-text-wrapper").eq($("fieldset").index(next_fs)).addClass("active-text-wrapper");
@@ -30,6 +90,8 @@ $(document).ready(function () {
             },
             duration: 500
         });
+
+        page++;
     });
 
     $(".previous").click(function () {
@@ -60,6 +122,8 @@ $(document).ready(function () {
             },
             duration: 500
         });
+
+        page--;
     });
 
     $(".submit").click(function () {
@@ -73,6 +137,11 @@ $(document).ready(function () {
             $(this).val().replace(/.*(\/|\\)/, ''));
 
         // $(this).parent(".input_upload_container:after").css({'color': 'red'});
+    });
+
+    // disable submitting form with enter button
+    $('.popup').bind('keypress', function (e) {
+        if (e.keyCode == 13) { e.preventDefault(); }
     });
 
     // for entreprise auto complete

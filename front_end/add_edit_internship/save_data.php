@@ -100,6 +100,8 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
 
     // save data to db
     if ($isNew) {
+        $creationDate = date("Y-m-d");
+
         // stocker comme nouveau stage
         $requetteStage = "INSERT INTO stage 
             (intitule_sujet,
@@ -118,7 +120,8 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
             prenom_binome,
             nom_binome,
             photo_binome,
-            id_entreprise)
+            id_entreprise,
+            creation_date)
         VALUES 
             ('$intitule_sujet',
             '$description_sujet',
@@ -136,7 +139,8 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
             '$prenom_binome',
             '$nom_binome',
             '$photo_binome',
-            '$id_entreprise')";
+            '$id_entreprise',
+            '$creationDate')";
         $resultatStage = mysqli_query($link, $requetteStage);
     } else {
         $requetteStage = "UPDATE stage SET  
