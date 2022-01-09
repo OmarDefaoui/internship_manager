@@ -20,6 +20,13 @@
     box-shadow: 0 0 2px var(--color-grey-medium);
 }
 
+#hello_container img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    box-shadow: 0 0 1px var(--color-black);
+}
+
 /*                    overview_container                */
 
 #overview_container {

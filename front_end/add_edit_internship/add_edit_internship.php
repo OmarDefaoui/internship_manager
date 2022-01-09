@@ -368,7 +368,7 @@ if (isset($_SESSION['id'])) {
         <aside id="right_side">
             <div id="hello_container">
                 <p>Bienvenue,<br><b><?php echo $prenom . ' ' . $nom ?></b></p>
-                <img src="../assets/images/user_icon.png" alt="user_icon">
+                <img src="../../back_end/assets/images/<?php echo $photo ?>" alt="user_icon">
             </div>
 
             <?php
@@ -402,7 +402,7 @@ if (isset($_SESSION['id'])) {
                 <p id="activity_title">Flux <b>d'activité</b></p>
                 <div id="feeds_container">
                     <?php
-                    $requetteNotif = "SELECT * FROM notification WHERE id_target='$id_etudiant'";
+                    $requetteNotif = "SELECT * FROM notification WHERE id_target='$id_etudiant' LIMIT 2";
                     $resultatNotif = mysqli_query($link, $requetteNotif);
                     while ($dataNotif = mysqli_fetch_assoc($resultatNotif)) {
                         $contentNotif = $dataNotif['content'];

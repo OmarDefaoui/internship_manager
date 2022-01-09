@@ -1,3 +1,14 @@
+#stages_container{
+    width: var(--width-center-section);
+    height: calc(100vh - var(--height-top-nav));
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+}
+
 /*                       cards                  */
 
 .card {
