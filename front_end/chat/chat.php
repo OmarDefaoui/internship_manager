@@ -17,81 +17,23 @@ if (isset($_SESSION['id'])) {
   $code = $dataEtudiant['code'];
   $photo = $dataEtudiant['photo'];
 
-  if (isset($_GET['id_stage'])) {
-    $isNew = False;
-    $id_stage = $_GET['id_stage'];
+  // store chats and conversatons in arrays
+  $requette = "SELECT * FROM conversation WHERE conversation_etudiant_id = $id_etudiant";
+  $resultat = mysqli_query($link, $requette);
+  $conversations = array();
+  $chats = array();
+  while ($data = mysqli_fetch_assoc($resultat)) {
+    $conversations[] = $data;
+    $conversation_id = $data['conversation_id'];
 
-    // trouver les information sur le stage voulu
-    $requetteStage = "SELECT * FROM stage WHERE id_stage = $id_stage";
-    $resultatStage = mysqli_query($link, $requetteStage);
-    $dataStage = mysqli_fetch_assoc($resultatStage);
-
-    $id_stage = $dataStage['id_stage'];
-    $intitule_sujet = $dataStage['intitule_sujet'];
-    $description_sujet = $dataStage['description_sujet'];
-    $duree = $dataStage['duree'];
-    $technologies = $dataStage['technologies'];
-    $premiere_version = $dataStage['premiere_version'];
-    $version_corrige = $dataStage['version_corrige'];
-    $presentation = $dataStage['presentation'];
-    $attestation_stage = $dataStage['attestation_stage'];
-    $fiche_evalution = $dataStage['fiche_evalution'];
-    $nom_encadrant = $dataStage['nom_encadrant'];
-    $prenom_encardrant = $dataStage['prenom_encardrant'];
-    $note = $dataStage['note'];
-    $est_validé = $dataStage['est_valide'];
-    $type = $dataStage['type'];
-    $id_enseignant = $dataStage['id_enseignant'];
-    $id_entreprise = $dataStage['id_entreprise'];
-    $id_etudiant = $dataStage['id_etudiant'];
-    $prenom_binome = $dataStage['prenom_binome'];
-    $nom_binome = $dataStage['nom_binome'];
-    $photo_binome = $dataStage['photo_binome'];
-
-    if (isset($id_entreprise)) {
-      $requetteEntreprise = "SELECT * FROM entreprise WHERE id_entreprise = $id_entreprise";
-      $resultatEntreprise = mysqli_query($link, $requetteEntreprise);
-      $dataEntreprise = mysqli_fetch_assoc($resultatEntreprise);
-      if ($dataEntreprise != False) {
-        $nom_entreprise = $dataEntreprise['nom'];
-        $adresse_entreprise = $dataEntreprise['adresse'];
-        $ville_entreprise = $dataEntreprise['ville'];
-        $tel_entreprise = $dataEntreprise['tel'];
-      }
-    } else {
-      $nom_entreprise = NULL;
-      $adresse_entreprise = NULL;
-      $ville_entreprise = NULL;
-      $tel_entreprise = NULL;
+    // get chats for each conversation
+    $requetteChat = "SELECT * FROM message WHERE message_conversation_id = $conversation_id";
+    $resultatChat = mysqli_query($link, $requetteChat);
+    $chat = array();
+    while ($dataChat = mysqli_fetch_assoc($resultatChat)) {
+      $chat[] = $dataChat;
     }
-  } else {
-    $isNew = True;
-
-    $id_stage = NULL;
-    $intitule_sujet = NULL;
-    $description_sujet = NULL;
-    $duree = NULL;
-    $technologies = NULL;
-    $premiere_version = NULL;
-    $version_corrige = NULL;
-    $presentation = NULL;
-    $attestation_stage = NULL;
-    $fiche_evalution = NULL;
-    $nom_encadrant = NULL;
-    $prenom_encardrant = NULL;
-    $note = NULL;
-    $est_validé = NULL;
-    $type = NULL;
-    $id_enseignant = NULL;
-    $id_entreprise = NULL;
-    $prenom_binome = NULL;
-    $nom_binome = NULL;
-    $photo_binome = NULL;
-
-    $nom_entreprise = NULL;
-    $adresse_entreprise = NULL;
-    $ville_entreprise = NULL;
-    $tel_entreprise = NULL;
+    $chats[] = $chat;
   }
 } else {
   header("location:login.php");
@@ -193,45 +135,22 @@ if (isset($_SESSION['id'])) {
             </div>
           </div>
 
-          <div class="discussion message-active">
-            <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
+          <?php
+          for ($i = 0; $i < count($conversations); $i++) {
+            $conversation_message = $conversations[$i]['conversation_message'];
+          ?>
+            <div class="discussion<?php if ($i == 0) echo ' message-active' ?>">
+              <div class="photo" style="background-image: url(http://e0.365dm.com/16/08/16-9/20/theirry-henry-sky-sports-pundit_3766131.jpg?20161212144602);">
+              </div>
+              <div class="desc-contact">
+                <p class="name">Dave Corlew</p>
+                <p class="message"><?php echo $conversation_message ?></p>
+              </div>
+              <div class="timer">3 min</div>
             </div>
-            <div class="desc-contact">
-              <p class="name">Megan Leib</p>
-              <p class="message">9 pm at the bar if possible 😳</p>
-            </div>
-            <div class="timer">12 sec</div>
-          </div>
-
-          <div class="discussion">
-            <div class="photo" style="background-image: url(http://e0.365dm.com/16/08/16-9/20/theirry-henry-sky-sports-pundit_3766131.jpg?20161212144602);">
-            </div>
-            <div class="desc-contact">
-              <p class="name">Dave Corlew</p>
-              <p class="message">Let's meet for a coffee or something today ?</p>
-            </div>
-            <div class="timer">3 min</div>
-          </div>
-
-          <div class="discussion">
-            <div class="photo" style="background-image: url(http://e0.365dm.com/16/08/16-9/20/theirry-henry-sky-sports-pundit_3766131.jpg?20161212144602);">
-            </div>
-            <div class="desc-contact">
-              <p class="name">Dave Corlew</p>
-              <p class="message">Let's meet for a coffee or something today ?</p>
-            </div>
-            <div class="timer">3 min</div>
-          </div>
-
-          <div class="discussion">
-            <div class="photo" style="background-image: url(http://e0.365dm.com/16/08/16-9/20/theirry-henry-sky-sports-pundit_3766131.jpg?20161212144602);">
-            </div>
-            <div class="desc-contact">
-              <p class="name">Dave Corlew</p>
-              <p class="message">Let's meet for a coffee or something today ?</p>
-            </div>
-            <div class="timer">3 min</div>
-          </div>
+          <?php
+          }
+          ?>
         </section>
 
         <section class="chat">
@@ -241,6 +160,34 @@ if (isset($_SESSION['id'])) {
           </div>
 
           <div class="messages-chat">
+
+            <?php
+            $length = count($chats[0]);
+            for ($i = 0; $i < $length; $i++) {
+              $message_content = $chats[0][$i]['message_content'];
+              $message_etudiant_id = $chats[0][$i]['message_etudiant_id'];
+
+              $isWithImage = $i == 0 ? True : ($message_etudiant_id != $chats[0][$i - 1]['message_etudiant_id']);
+              $isReponse = $message_etudiant_id == $id_etudiant;
+              $isLast = $i == $length - 1 ? True : ($message_etudiant_id != $chats[0][$i + 1]['message_etudiant_id']);
+            ?>
+
+              <div class="message<?php if (!$isWithImage) echo ' text-only' ?>">
+                <?php if ($isWithImage && !$isReponse) { ?>
+                  <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
+                    <div class="online"></div>
+                  </div>
+                <?php } ?>
+                <div class="<?php if ($isReponse) echo 'response' ?>">
+                  <p class="text"><?php echo $message_content ?></p>
+                </div>
+              </div>
+              <?php if ($isLast) { ?>
+                <p class="<?php if ($isReponse) echo 'response-time ' ?>time"> 14h58</p>
+              <?php } ?>
+
+            <?php } ?>
+
             <div class="message">
               <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
                 <div class="online"></div>
@@ -249,7 +196,9 @@ if (isset($_SESSION['id'])) {
             </div>
 
             <div class="message text-only">
-              <p class="text"> What are you doing tonight ? Want to go take a drink ?</p>
+              <div>
+                <p class="text"> What are you doing tonight ? Want to go take a drink ?</p>
+              </div>
             </div>
 
             <p class="time"> 14h58</p>

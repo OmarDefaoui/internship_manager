@@ -59,6 +59,7 @@ main {
 
 .chat_container .discussions .message-active {
     background-color: var(--color-white);
+    border-left: solid 1px var(--color-grey-light);
 }
 
 .chat_container .discussions .discussion .photo {
