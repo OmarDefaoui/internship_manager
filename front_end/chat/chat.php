@@ -165,11 +165,12 @@ if (isset($_SESSION['id'])) {
             $length = count($chats[0]);
             for ($i = 0; $i < $length; $i++) {
               $message_content = $chats[0][$i]['message_content'];
-              $message_etudiant_id = $chats[0][$i]['message_etudiant_id'];
+              $message_etudiant_id = $conversations[0]['conversation_etudiant_id'];
+              $message_sender = $chats[0][$i]['message_sender'];
 
-              $isWithImage = $i == 0 ? True : ($message_etudiant_id != $chats[0][$i - 1]['message_etudiant_id']);
-              $isReponse = $message_etudiant_id == $id_etudiant;
-              $isLast = $i == $length - 1 ? True : ($message_etudiant_id != $chats[0][$i + 1]['message_etudiant_id']);
+              $isWithImage = $i == 0 ? True : ($message_sender != $chats[0][$i - 1]['message_sender']);
+              $isReponse = $message_sender == 1; // 0 for teacher, 1 for student
+              $isLast = $i == $length - 1 ? True : ($message_sender != $chats[0][$i + 1]['message_sender']);
             ?>
 
               <div class="message<?php if (!$isWithImage) echo ' text-only' ?>">
@@ -187,85 +188,12 @@ if (isset($_SESSION['id'])) {
               <?php } ?>
 
             <?php } ?>
-
-            <div class="message">
-              <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-                <div class="online"></div>
-              </div>
-              <p class="text"> Hi, how are you ? </p>
-            </div>
-
-            <div class="message text-only">
-              <div>
-                <p class="text"> What are you doing tonight ? Want to go take a drink ?</p>
-              </div>
-            </div>
-
-            <p class="time"> 14h58</p>
-
-            <div class="message text-only">
-              <div class="response">
-                <p class="text"> Hey Megan ! It's been a while 😃</p>
-              </div>
-            </div>
-
-            <div class="message text-only">
-              <div class="response">
-                <p class="text"> When can we meet ?</p>
-              </div>
-            </div>
-
-            <p class="response-time time"> 15h04</p>
-
-            <div class="message">
-              <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-                <div class="online"></div>
-              </div>
-              <p class="text"> 9 pm at the bar if possible 😳</p>
-            </div>
-
-            <p class="time"> 15h09</p>
-
-            <div class="message">
-              <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-                <div class="online"></div>
-              </div>
-              <p class="text"> Hi, how are you ? </p>
-            </div>
-
-            <div class="message text-only">
-              <p class="text"> What are you doing tonight ? Want to go take a drink ?</p>
-            </div>
-
-            <p class="time"> 14h58</p>
-
-            <div class="message text-only">
-              <div class="response">
-                <p class="text"> Hey Megan ! It's been a while 😃</p>
-              </div>
-            </div>
-
-            <div class="message text-only">
-              <div class="response">
-                <p class="text"> When can we meet ?</p>
-              </div>
-            </div>
-
-            <p class="response-time time"> 15h04</p>
-
-            <div class="message">
-              <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-                <div class="online"></div>
-              </div>
-              <p class="text"> 9 pm at the bar if possible 😳</p>
-            </div>
-
-            <p class="time"> 15h09</p>
           </div>
 
           <div class="footer-chat">
-            <form action="#" method="post">
-              <input type="text" id="write_message" placeholder="Type your message here" required="required">
+            <form action="send_msg.php" method="post">
+              <input type="hidden" name="conversation_id" value="<?php echo $conversations[0]['conversation_id'] ?>">
+              <input type="text" name="message" id="write_message" placeholder="Type your message here" required="required">
               <input type="submit" name="send_message" id="send_message" value="Send">
             </form>
           </div>
