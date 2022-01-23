@@ -166,7 +166,7 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
         $resultatStage = mysqli_query($link, $requetteStage);
     }
 
-    echo 'success';
+    header('location: ../student/student.php');
 } else {
     header("location:login.php");
 }
