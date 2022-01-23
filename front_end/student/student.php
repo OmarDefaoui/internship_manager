@@ -35,10 +35,10 @@ if (isset($_SESSION['id'])) {
     <title>Internship Manager</title>
 
     <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
-    <script src="student_home.js"></script>
+    <script src="student.js"></script>
 
     <link rel="stylesheet" href="../main_style.css">
-    <link rel="stylesheet" href="css/student_home_style.css">
+    <link rel="stylesheet" href="css/student_style.css">
     <link rel="stylesheet" href="css/nav_bar_style.css">
     <link rel="stylesheet" href="css/right_section_style.css">
 </head>

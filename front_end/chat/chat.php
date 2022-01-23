@@ -55,12 +55,12 @@ if (isset($_SESSION['id'])) {
   <title>Internship Manager</title>
 
   <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
-  <script src="../student_home/student_home.js"></script>
+  <script src="../student/student.js"></script>
 
   <link rel="stylesheet" href="../main_style.css">
   <link rel="stylesheet" href="css/chat.css">
-  <link rel="stylesheet" href="../student_home/css/nav_bar_style.css">
-  <link rel="stylesheet" href="../student_home/css/right_section_style.css">
+  <link rel="stylesheet" href="../student/css/nav_bar_style.css">
+  <link rel="stylesheet" href="../student/css/right_section_style.css">
 </head>
 
 <body>

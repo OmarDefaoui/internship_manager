@@ -108,12 +108,12 @@ if (isset($_SESSION['id'])) {
     <title>Add Edit Internship</title>
 
     <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
-    <script src="../student_home/student_home.js"></script>
+    <script src="../student/student.js"></script>
 
     <link rel="stylesheet" href="../main_style.css">
     <link rel="stylesheet" href="css/add_edit_internship_style.css">
-    <link rel="stylesheet" href="../student_home/css/nav_bar_style.css">
-    <link rel="stylesheet" href="../student_home/css/right_section_style.css">
+    <link rel="stylesheet" href="../student/css/nav_bar_style.css">
+    <link rel="stylesheet" href="../student/css/right_section_style.css">
 </head>
 
 <body>
@@ -187,8 +187,8 @@ if (isset($_SESSION['id'])) {
             <form class="popup" action="save_data.php" method="post" enctype="multipart/form-data">
                 <!-- header of the page -->
                 <div class="header">
-                    <h1>Example with Steps UI</h1>
-                    <p class="explication">Follow the simple 5 steps to complete your mapping.</p>
+                    <h1>Ajouter / Modifier un stage</h1>
+                    <p class="explication">Suivez ces 5 étapes pour compléter votre stage.</p>
                 </div>
 
                 <div class="container">
@@ -199,7 +199,7 @@ if (isset($_SESSION['id'])) {
                                 <div class="counter-top">
                                     <div class="form-text-wrapper active-text-wrapper">
                                         <div class="display-small">Entreprise</div>
-                                        <p class="paragraph-form">Browse and upload</p>
+                                        <p class="paragraph-form">Informations</p>
                                     </div>
                                     <div class="form-circle circle-active"><img class="form-circle-active-img" src="../assets/images/entreprise.svg" loading="lazy" width="24" alt=""></div>
                                     <div class="check-symbol form-active"></div>
@@ -208,7 +208,7 @@ if (isset($_SESSION['id'])) {
                                 <div class="counter-centre">
                                     <div class="form-text-wrapper">
                                         <div class="display-small">Encadrant</div>
-                                        <p class="paragraph-form">Browse and upload</p>
+                                        <p class="paragraph-form">Informations</p>
                                     </div>
                                     <div class="form-circle"><img src="../assets/images/encadrant.svg" loading="lazy" width="24" alt=""></div>
                                     <div class="check-symbol"></div>
@@ -217,7 +217,7 @@ if (isset($_SESSION['id'])) {
                                 <div class="counter-centre">
                                     <div class="form-text-wrapper">
                                         <div class="display-small">Sujet</div>
-                                        <p class="paragraph-form">Browse and upload</p>
+                                        <p class="paragraph-form">Informations</p>
                                     </div>
                                     <div class="form-circle"><img src="../assets/images/sujet.svg" loading="lazy" width="24" alt=""></div>
                                     <div class="check-symbol"></div>
@@ -225,8 +225,8 @@ if (isset($_SESSION['id'])) {
 
                                 <div class="counter-centre">
                                     <div class="form-text-wrapper">
-                                        <div class="display-small">Binome</div>
-                                        <p class="paragraph-form">Browse and upload</p>
+                                        <div class="display-small">Binôme</div>
+                                        <p class="paragraph-form">Informations</p>
                                     </div>
                                     <div class="form-circle"><img src="../assets/images/binome.svg" loading="lazy" width="24" alt=""></div>
                                     <div class="check-symbol"></div>
@@ -236,8 +236,8 @@ if (isset($_SESSION['id'])) {
 
                                 <div class="counter-bottom">
                                     <div class="form-text-wrapper">
-                                        <div class="display-small">Deposer</div>
-                                        <p class="paragraph-form">Browse and upload</p>
+                                        <div class="display-small">Déposer</div>
+                                        <p class="paragraph-form">Fichiers</p>
                                     </div>
                                     <div class="form-circle"><img src="../assets/images/deposer.svg" loading="lazy" width="24" alt=""></div>
                                     <div class="check-symbol"></div>
@@ -251,32 +251,32 @@ if (isset($_SESSION['id'])) {
                             <fieldset>
                                 <div class="form-card">
                                     <div class="header">
-                                        <p>Step 1/5</p>
+                                        <p>Etape 1/5</p>
                                         <h2>Infos sur l'entreprise</h2>
-                                        <p>Please let us know what type of business decribes you.</p>
+                                        <p>Veuillez entrer les informations nécessaires pour compléter cette étape.</p>
                                     </div>
 
                                     <input class="text_input" type="text" name="name" id="nom_entreprise" placeholder="Nom de l'entreprise" value="<?php echo $nom_entreprise ?>">
                                     <input class="text_input" type="text" name="address" id="adresse_entreprise" placeholder="Adresse de l'entreprise" value="<?php echo $adresse_entreprise ?>">
-                                    <input class="text_input" type="tel" name="phone" id="tel_entreprise" placeholder="Numero de telephone" value="<?php echo $tel_entreprise ?>">
                                     <input class="text_input" type="text" name="city" id="ville_entreprise" placeholder="Ville de l'entreprise" value="<?php echo $ville_entreprise ?>">
+                                    <input class="text_input" type="tel" name="phone" id="tel_entreprise" placeholder="Numero de telephone" value="<?php echo $tel_entreprise ?>">
                                 </div>
-                                <input type="button" name="next" class="next action-button" value="Next Step" />
+                                <input type="button" name="next" class="next action-button" value="Suivant" />
                             </fieldset>
 
                             <fieldset>
                                 <div class="form-card">
                                     <div class="header">
-                                        <p>Step 2/5</p>
-                                        <h2>Infos sur l'encadrant dans l'entreprise</h2>
-                                        <p>Please let us know what type of business decribes you.</p>
+                                        <p>Etape 2/5</p>
+                                        <h2>Infos sur l'encadrant de l'entreprise</h2>
+                                        <p>Veuillez entrer les informations nécessaires pour compléter cette étape.</p>
                                     </div>
 
                                     <input class="text_input" type="text" name="nom_encadrant" placeholder="Nom de l'encadrant" value="<?php echo $nom_encadrant ?>">
                                     <input class="text_input" type="text" name="prenom_encadrant" placeholder="Prenom de l'encadrant" value="<?php echo $prenom_encardrant ?>">
                                 </div>
-                                <input type="button" name="next" class="next action-button" value="Next Step" />
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                <input type="button" name="next" class="next action-button" value="Suivant" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="Précédant" />
                             </fieldset>
 
                             <fieldset>
@@ -284,7 +284,7 @@ if (isset($_SESSION['id'])) {
                                     <div class="header">
                                         <p>Step 3/5</p>
                                         <h2>Infos sur le sujet</h2>
-                                        <p>Please let us know what type of business decribes you.</p>
+                                        <p>Veuillez entrer les informations nécessaires pour compléter cette étape.</p>
                                     </div>
 
                                     <input class="text_input" type="text" name="intitule_sujet" placeholder="Intitule du sujet" value="<?php echo $intitule_sujet ?>">
@@ -305,8 +305,8 @@ if (isset($_SESSION['id'])) {
                                         </label>
                                     </div>
                                 </div>
-                                <input type="button" name="next" class="next action-button" value="Next Step" />
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                <input type="button" name="next" class="next action-button" value="Suivant" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="Précédant" />
                             </fieldset>
 
                             <fieldset>
@@ -314,7 +314,7 @@ if (isset($_SESSION['id'])) {
                                     <div class="header">
                                         <p>Step 4/5</p>
                                         <h2>Infos sur le binome</h2>
-                                        <p>Please let us know what type of business decribes you.</p>
+                                        <p>Veuillez entrer les informations nécessaires pour compléter cette étape.</p>
                                     </div>
 
                                     <input class="text_input" type="text" name="nom_binome" placeholder="Nom du binome" value="<?php echo $nom_binome ?>">
@@ -323,8 +323,8 @@ if (isset($_SESSION['id'])) {
                                         <input name="photo_binome" type="file" class="input_upload">
                                     </div>
                                 </div>
-                                <input type="button" name="next" class="next action-button" value="Next Step" />
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                <input type="button" name="next" class="next action-button" value="Suivant" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="Précédant" />
                             </fieldset>
 
                             <fieldset>
@@ -332,7 +332,7 @@ if (isset($_SESSION['id'])) {
                                     <div class="header">
                                         <p>Step 5/5</p>
                                         <h2>Deposer</h2>
-                                        <p>Please let us know what type of business decribes you.</p>
+                                        <p>Veuillez entrer les informations nécessaires pour compléter cette étape.</p>
                                     </div>
 
                                     <div class="input_upload_container" data-text="<?php echo ($premiere_version != NULL ? $premiere_version : "Version initial du rapport"); ?>">
@@ -356,7 +356,7 @@ if (isset($_SESSION['id'])) {
                                 <input type="hidden" name="id_stage" value="<?php echo ($id_stage != NULL ? $id_stage : 0) ?>">
 
                                 <input type="submit" name="enregistrer" class="next action-button" value="Enregistrer">
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="Précédant" />
                             </fieldset>
                         </div>
                     </div>
