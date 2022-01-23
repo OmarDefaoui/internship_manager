@@ -290,7 +290,7 @@ if (isset($_SESSION['id'])) {
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> -->
-    <script src="add_edit_internship.js"></script>
+    <script src="internship.js"></script>
 
 </body>
 

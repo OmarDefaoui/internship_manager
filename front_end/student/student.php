@@ -56,7 +56,7 @@ if (isset($_SESSION['id'])) {
                 <input type="text" name="search" placeholder="Rechercher">
                 <img src="../assets/images/search.png" alt="search" class="rounded_icon_light">
             </div>
-            <div id="add_button" onClick="window.open('../add_edit_internship/add_edit_internship.php', '_self')">
+            <div id="add_button" onClick="window.open('../internship/internship.php', '_self')">
                 <img src="../assets/images/add.png" alt="add" class="rounded_icon_dark">
                 <p>Ajouter un stage</p>
             </div>
@@ -166,7 +166,7 @@ if (isset($_SESSION['id'])) {
                         (($duree != NULL && $technologies != NULL) ? 5 : 0);
                 ?>
 
-                    <div class="card" onClick="window.open('../add_edit_internship/add_edit_internship.php?id_stage=<?php echo $id_stage ?>', '_self')">
+                    <div class="card" onClick="window.open('../internship/internship.php?id_stage=<?php echo $id_stage ?>', '_self')">
                         <div class="card_header">
                             <div>
                                 <p class="card_title"><?php echo $intitule_sujet ?></p>
