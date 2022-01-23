@@ -3,7 +3,7 @@ session_start();
 // temp
 $_SESSION['id'] = 1;
 if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
-    include('../../back_end/connexion.php');
+    include('../../connexion.php');
     $id_etudiant = $_SESSION['id'];
 
     $isNew = $_POST['isNew'];

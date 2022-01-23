@@ -1,6 +1,6 @@
 <?php
 if (isset($_GET['term'])) {
-    include('../../back_end/connexion.php');
+    include('../../connexion.php');
     $search_for = $_GET['term'];
 
     $requette = "SELECT * FROM entreprise WHERE nom LIKE '%$search_for%'";
