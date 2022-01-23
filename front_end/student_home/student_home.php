@@ -216,6 +216,13 @@ if (isset($_SESSION['id'])) {
                 }
                 ?>
             </div>
+
+            <?php
+            if ($stagesCount == 0) { ?>
+                <div class="empty_container">
+                    <img src="../assets/svg/no_stage.svg" alt="empty" height="70%">
+                </div>
+            <?php } ?>
         </main>
 
         <!-- right side -->
