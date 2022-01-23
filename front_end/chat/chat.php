@@ -17,8 +17,13 @@ if (isset($_SESSION['id'])) {
   $code = $dataEtudiant['code'];
   $photo = $dataEtudiant['photo'];
 
+  // save chat message in db if is message sended
+  // and get active conversation index
+  include('send_msg.php');
+
   // store chats and conversatons in arrays
-  $requette = "SELECT * FROM conversation WHERE conversation_etudiant_id = $id_etudiant";
+  $requette = "SELECT * FROM conversation c,enseignant e WHERE 
+    c.conversation_etudiant_id=$id_etudiant AND c.conversation_enseignant_id=e.id_enseignant";
   $resultat = mysqli_query($link, $requette);
   $conversations = array();
   $chats = array();
@@ -137,17 +142,29 @@ if (isset($_SESSION['id'])) {
 
           <?php
           for ($i = 0; $i < count($conversations); $i++) {
-            $conversation_message = $conversations[$i]['conversation_message'];
+            $convSenderId = $conversations[$i]['conversation_enseignant_id'];
+            $lastMessage = $chats[$i][count($chats[$i]) - 1];
+            $convLastMessage = $lastMessage['message_content'];
+
+            // get sender icon and photo
+            $senderName = 'Pr. ' . $conversations[$i]['nom'];
+            $senderIcon = $conversations[$i]['photo'];
+
+            // calculate difference between 2 dates
+            $convDate = getDiffDate($lastMessage['message_date']);
           ?>
-            <div class="discussion<?php if ($i == 0) echo ' message-active' ?>">
-              <div class="photo" style="background-image: url(http://e0.365dm.com/16/08/16-9/20/theirry-henry-sky-sports-pundit_3766131.jpg?20161212144602);">
+            <form action="#" method="post">
+              <div type="submit" class="discussion<?php if ($i == $convIndex) echo ' message-active' ?>" onClick="document.forms[<?php echo $i ?>].submit();">
+                <div class="photo" style="background-image: url('../../back_end/assets/images/<?php echo $senderIcon ?>');">
+                </div>
+                <div class="desc-contact">
+                  <p class="name"><?php echo $senderName ?></p>
+                  <p class="message"><?php echo $convLastMessage ?></p>
+                </div>
+                <div class="timer"><?php echo $convDate ?></div>
+                <input type="hidden" name="conv_index" value="<?php echo $i ?>">
               </div>
-              <div class="desc-contact">
-                <p class="name">Dave Corlew</p>
-                <p class="message"><?php echo $conversation_message ?></p>
-              </div>
-              <div class="timer">3 min</div>
-            </div>
+            </form>
           <?php
           }
           ?>
@@ -155,22 +172,23 @@ if (isset($_SESSION['id'])) {
 
         <section class="chat">
           <div class="header-chat">
-            <img src="../../back_end/assets/images/5.png" alt="image">
-            <p class="name">Megan Leib</p>
+            <div class="photo" style="background-image: url('../../back_end/assets/images/<?php echo $conversations[$convIndex]['photo'] ?>');"></div>
+            <p class="name"><?php echo 'Pr. ' . $conversations[$convIndex]['nom'] ?></p>
           </div>
 
           <div class="messages-chat">
 
             <?php
-            $length = count($chats[0]);
+            $length = count($chats[$convIndex]);
             for ($i = 0; $i < $length; $i++) {
-              $message_content = $chats[0][$i]['message_content'];
-              $message_etudiant_id = $conversations[0]['conversation_etudiant_id'];
-              $message_sender = $chats[0][$i]['message_sender'];
+              $message_content = $chats[$convIndex][$i]['message_content'];
+              $message_etudiant_id = $conversations[$convIndex]['conversation_etudiant_id'];
+              $message_sender = $chats[$convIndex][$i]['message_sender'];
+              $message_date = $chats[$convIndex][$i]['message_date'];
 
-              $isWithImage = $i == 0 ? True : ($message_sender != $chats[0][$i - 1]['message_sender']);
+              $isWithImage = $i == 0 ? True : ($message_sender != $chats[$convIndex][$i - 1]['message_sender']);
               $isReponse = $message_sender == 1; // 0 for teacher, 1 for student
-              $isLast = $i == $length - 1 ? True : ($message_sender != $chats[0][$i + 1]['message_sender']);
+              $isLast = $i == $length - 1 ? True : ($message_sender != $chats[$convIndex][$i + 1]['message_sender']);
             ?>
 
               <div class="message<?php if (!$isWithImage) echo ' text-only' ?>">
@@ -184,16 +202,17 @@ if (isset($_SESSION['id'])) {
                 </div>
               </div>
               <?php if ($isLast) { ?>
-                <p class="<?php if ($isReponse) echo 'response-time ' ?>time"> 14h58</p>
+                <p class="<?php if ($isReponse) echo 'response-time ' ?>time"><?php echo getDiffDate($message_date) ?></p>
               <?php } ?>
 
             <?php } ?>
           </div>
 
           <div class="footer-chat">
-            <form action="send_msg.php" method="post">
-              <input type="hidden" name="conversation_id" value="<?php echo $conversations[0]['conversation_id'] ?>">
-              <input type="text" name="message" id="write_message" placeholder="Type your message here" required="required">
+            <form action="#" method="post">
+              <input type="hidden" name="conversation_id" value="<?php echo $conversations[$convIndex]['conversation_id'] ?>">
+              <input type="text" name="message" id="write_message" placeholder="Type your message here" required="required" autofocus>
+              <input type="hidden" name="conv_index" value="<?php echo $convIndex ?>">
               <input type="submit" name="send_message" id="send_message" value="Send">
             </form>
           </div>
@@ -277,6 +296,50 @@ if (isset($_SESSION['id'])) {
   <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> -->
   <script src="add_edit_internship.js"></script>
 
+  <!-- to scroll to bottom when open page to see the last message -->
+  <script>
+    $('.messages-chat').animate({
+      scrollTop: document.body.scrollHeight
+    }, 0);
+  </script>
+
 </body>
 
 </html>
+
+<?php
+function getActiveConvIndex()
+{
+  if (isset($_POST['conv_index'])) {
+    return $_POST['conv_index'];
+  } else
+    return 0;
+}
+
+function getDiffDate($lastDate)
+{
+  // calculate difference between 2 dates
+  $diff = abs(strtotime(date("Y-m-d h:m:s")) - strtotime($lastDate));
+  $years = floor($diff / (365 * 60 * 60 * 24));
+  $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+  $days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+  $hours   = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24) / (60 * 60));
+  $minuts  = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60) / 60);
+  $seconds = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60 - $minuts * 60));
+  if ($years != 0)
+    $result = $years . ' années';
+  elseif ($months != 0)
+    $result = $months . ' mois';
+  elseif ($days != 0)
+    $result = $days . ' jours';
+  elseif ($hours != 0)
+    $result = $hours . ' heures';
+  elseif ($minuts != 0)
+    $result = $minuts . ' minutes';
+  elseif ($seconds != 0)
+    $result = $seconds . ' secondes';
+  else
+    $result = 'A l\'instant';
+  return $result;
+}
+?>
