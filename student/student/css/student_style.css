@@ -1,4 +1,4 @@
-#stages_container{
+#stages_container {
     width: var(--width-center-section);
     height: calc(100vh - var(--height-top-nav));
     border-top-left-radius: 25px;
@@ -63,6 +63,8 @@
 
 .card .card_main .short_descirption {
     font-size: 0.9em;
+    word-wrap: break-word;
+    white-space: pre-wrap;
 }
 
 .card .card_main .progress_container {
