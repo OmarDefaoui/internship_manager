@@ -157,7 +157,7 @@ if (isset($_SESSION['id'])) {
               $convLastMessage = $lastMessage['message_content'];
 
               // get sender icon and photo
-              $senderName = 'Pr. ' . $conversations[$i]['nom'];
+              $senderName = 'Pr. ' . $conversations[$i]['nom_enseignant'];
               $senderIcon = $conversations[$i]['photo'];
 
               // calculate difference between 2 dates

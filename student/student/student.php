@@ -145,7 +145,7 @@ if (isset($_SESSION['id'])) {
                         $resultatEnseignant = mysqli_query($link, $requetteEnseignant);
                         $dataEnseignant = mysqli_fetch_assoc($resultatEnseignant);
                         if ($dataEnseignant != False) {
-                            $nom_enseignant = $dataEnseignant['nom'];
+                            $nom_enseignant = $dataEnseignant['nom_enseignant'];
                             $photo_enseignant = $dataEnseignant['photo'];
                         }
                     } else {

@@ -53,7 +53,7 @@ if (isset($_SESSION['id'])) {
             $resultatEntreprise = mysqli_query($link, $requetteEntreprise);
             $dataEntreprise = mysqli_fetch_assoc($resultatEntreprise);
             if ($dataEntreprise != False) {
-                $nom_entreprise = $dataEntreprise['nom'];
+                $nom_entreprise = $dataEntreprise['nom_entreprise'];
                 $adresse_entreprise = $dataEntreprise['adresse'];
                 $ville_entreprise = $dataEntreprise['ville'];
                 $tel_entreprise = $dataEntreprise['tel'];

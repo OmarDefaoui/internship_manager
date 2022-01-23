@@ -75,7 +75,7 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
         $nom_entreprise != NULL && $adresse_entreprise != NULL &&
         $tel_entreprise != NULL && $ville_entreprise != NULL
     ) {
-        $requette = "SELECT * FROM entreprise where nom='$nom_entreprise'
+        $requette = "SELECT * FROM entreprise where nom_entreprise='$nom_entreprise'
             and adresse='$adresse_entreprise' and tel='$tel_entreprise' 
             and ville='$ville_entreprise'";
         $resultat = mysqli_query($link, $requette);
@@ -86,11 +86,11 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
             $id_entreprise = $data['id_entreprise'];
         } else {
             // insert new entreprise
-            $requette = "INSERT INTO entreprise (nom,adresse,ville,tel) VALUES 
+            $requette = "INSERT INTO entreprise (nom_entreprise,adresse,ville,tel) VALUES 
             ('$nom_entreprise','$adresse_entreprise','$ville_entreprise','$tel_entreprise')";
             $resultat = mysqli_query($link, $requette);
 
-            $requette = "SELECT * FROM entreprise where nom='$nom_entreprise'
+            $requette = "SELECT * FROM entreprise where nom_entreprise='$nom_entreprise'
                 and adresse='$adresse_entreprise' and tel='$tel_entreprise' 
                 and ville='$ville_entreprise'";
             $resultat = mysqli_query($link, $requette);
