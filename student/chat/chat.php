@@ -165,7 +165,7 @@ if (isset($_SESSION['id'])) {
             ?>
               <form action="#" method="post">
                 <div type="submit" class="discussion<?php if ($i == $convIndex) echo ' message-active' ?>" onClick="document.forms[<?php echo $i ?>].submit();">
-                  <div class="photo" style="background-image: url('../../back_end/assets/images/<?php echo $senderIcon ?>');">
+                  <div class="photo" style="background-image: url('../../assets/assets/images/<?php echo $senderIcon ?>');">
                   </div>
                   <div class="desc-contact">
                     <p class="name"><?php echo $senderName ?></p>
@@ -182,7 +182,7 @@ if (isset($_SESSION['id'])) {
 
           <section class="chat">
             <div class="header-chat">
-              <div class="photo" style="background-image: url('../../back_end/assets/images/<?php echo $conversations[$convIndex]['photo'] ?>');"></div>
+              <div class="photo" style="background-image: url('../../assets/assets/images/<?php echo $conversations[$convIndex]['photo'] ?>');"></div>
               <p class="name"><?php echo 'Pr. ' . $conversations[$convIndex]['nom'] ?></p>
             </div>
 
@@ -235,7 +235,7 @@ if (isset($_SESSION['id'])) {
     <aside id="right_side">
       <div id="hello_container">
         <p>Bienvenue,<br><b><?php echo $prenom . ' ' . $nom ?></b></p>
-        <img src="../../back_end/assets/images/<?php echo $photo ?>" alt="user_icon">
+        <img src="../../assets/assets/images/<?php echo $photo ?>" alt="user_icon">
       </div>
 
       <?php
@@ -284,7 +284,7 @@ if (isset($_SESSION['id'])) {
           ?>
 
             <div class="feed">
-              <img src="../../back_end/assets/images/<?php echo $iconNotif ?>" alt="user_icon">
+              <img src="../../assets/assets/images/<?php echo $iconNotif ?>" alt="user_icon">
               <div class="text_container">
                 <p class="content"><?php echo $contentNotif ?></p>
                 <p class="time"><?php echo $dateNotif ?></p>

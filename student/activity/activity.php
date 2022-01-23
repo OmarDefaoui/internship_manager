@@ -203,7 +203,7 @@ if (isset($_SESSION['id'])) {
                     ?>
 
                         <div class="feed">
-                            <img src="../../back_end/assets/images/<?php echo $iconNotif ?>" alt="user_icon">
+                            <img src="../../assets/assets/images/<?php echo $iconNotif ?>" alt="user_icon">
                             <div class="text_container">
                                 <p class="content"><?php echo $contentNotif ?></p>
                                 <p class="time"><?php echo $dateNotif ?></p>
@@ -220,7 +220,7 @@ if (isset($_SESSION['id'])) {
         <aside id="right_side">
             <div id="hello_container">
                 <p>Bienvenue,<br><b><?php echo $prenom . ' ' . $nom ?></b></p>
-                <img src="../../back_end/assets/images/<?php echo $photo ?>" alt="user_icon">
+                <img src="../../assets/assets/images/<?php echo $photo ?>" alt="user_icon">
             </div>
 
             <?php
@@ -269,7 +269,7 @@ if (isset($_SESSION['id'])) {
                     ?>
 
                         <div class="feed">
-                            <img src="../../back_end/assets/images/<?php echo $iconNotif ?>" alt="user_icon">
+                            <img src="../../assets/assets/images/<?php echo $iconNotif ?>" alt="user_icon">
                             <div class="text_container">
                                 <p class="content"><?php echo $contentNotif ?></p>
                                 <p class="time"><?php echo $dateNotif ?></p>

@@ -198,9 +198,9 @@ if (isset($_SESSION['id'])) {
 
                         <div class="card_footer">
                             <div class="participants">
-                                <img src="<?php echo '../../back_end/assets/images/' . ($photo == NULL ? 'inconnu.jpg' : $photo) ?>" alt="participant">
-                                <?php if ($photo_binome != NULL) { ?><img src="<?php echo '../../back_end/assets/images/' . ($photo_binome == NULL ? 'inconnu.jpg' : $photo_binome) ?>" alt="participant"><?php } ?>
-                                <?php if ($photo_enseignant != NULL) { ?><img src="<?php echo '../../back_end/assets/images/' . ($photo_enseignant == NULL ? 'inconnu.jpg' : $photo_enseignant) ?>" alt="participant"><?php } ?>
+                                <img src="<?php echo '../../assets/assets/images/' . ($photo == NULL ? 'inconnu.jpg' : $photo) ?>" alt="participant">
+                                <?php if ($photo_binome != NULL) { ?><img src="<?php echo '../../assets/assets/images/' . ($photo_binome == NULL ? 'inconnu.jpg' : $photo_binome) ?>" alt="participant"><?php } ?>
+                                <?php if ($photo_enseignant != NULL) { ?><img src="<?php echo '../../assets/assets/images/' . ($photo_enseignant == NULL ? 'inconnu.jpg' : $photo_enseignant) ?>" alt="participant"><?php } ?>
                                 <button class="add_participant" style="color: #ff942e; background-color: #ff932e1e;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
                                         <path d="M12 5v14M5 12h14" />
@@ -229,7 +229,7 @@ if (isset($_SESSION['id'])) {
         <aside id="right_side">
             <div id="hello_container">
                 <p>Bienvenue,<br><b><?php echo $prenom . ' ' . $nom ?></b></p>
-                <img src="../../back_end/assets/images/<?php echo $photo ?>" alt="user_icon">
+                <img src="../../assets/assets/images/<?php echo $photo ?>" alt="user_icon">
             </div>
 
             <?php
@@ -278,7 +278,7 @@ if (isset($_SESSION['id'])) {
                     ?>
 
                         <div class="feed">
-                            <img src="../../back_end/assets/images/<?php echo $iconNotif ?>" alt="user_icon">
+                            <img src="../../assets/assets/images/<?php echo $iconNotif ?>" alt="user_icon">
                             <div class="text_container">
                                 <p class="content"><?php echo $contentNotif ?></p>
                                 <p class="time"><?php echo $dateNotif ?></p>

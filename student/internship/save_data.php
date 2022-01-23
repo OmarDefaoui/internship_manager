@@ -175,7 +175,7 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
 function my_upload_file($var_name, $folder_name, $extensions_autorisees, $file_name, $default_file_name)
 {
     if (isset($_FILES["$var_name"]) && $_FILES["$var_name"]['error'] == 0) {
-        $dossier = "../../back_end/assets/$folder_name/";
+        $dossier = "../../assets/assets/$folder_name/";
         $temp_name = $_FILES["$var_name"]['tmp_name'];
         if (!is_uploaded_file($temp_name)) {
             exit("le fichier est introuvable");
