@@ -183,7 +183,7 @@ if (isset($_SESSION['id'])) {
           <section class="chat">
             <div class="header-chat">
               <div class="photo" style="background-image: url('../../assets/assets/images/<?php echo $conversations[$convIndex]['photo'] ?>');"></div>
-              <p class="name"><?php echo 'Pr. ' . $conversations[$convIndex]['nom'] ?></p>
+              <p class="name"><?php echo 'Pr. ' . $conversations[$convIndex]['nom_enseignant'] ?></p>
             </div>
 
             <div class="messages-chat">
