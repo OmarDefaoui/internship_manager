@@ -131,93 +131,104 @@ if (isset($_SESSION['id'])) {
 
     <!-- main content -->
     <main>
-      <div class="chat_container">
-        <section class="discussions">
-          <div class="discussion search">
-            <div class="searchbar">
-              <i class="fa fa-search" aria-hidden="true"></i>
-              <input type="text" placeholder="Search..."></input>
-            </div>
-          </div>
-
-          <?php
-          for ($i = 0; $i < count($conversations); $i++) {
-            $convSenderId = $conversations[$i]['conversation_enseignant_id'];
-            $lastMessage = $chats[$i][count($chats[$i]) - 1];
-            $convLastMessage = $lastMessage['message_content'];
-
-            // get sender icon and photo
-            $senderName = 'Pr. ' . $conversations[$i]['nom'];
-            $senderIcon = $conversations[$i]['photo'];
-
-            // calculate difference between 2 dates
-            $convDate = getDiffDate($lastMessage['message_date']);
-          ?>
-            <form action="#" method="post">
-              <div type="submit" class="discussion<?php if ($i == $convIndex) echo ' message-active' ?>" onClick="document.forms[<?php echo $i ?>].submit();">
-                <div class="photo" style="background-image: url('../../back_end/assets/images/<?php echo $senderIcon ?>');">
-                </div>
-                <div class="desc-contact">
-                  <p class="name"><?php echo $senderName ?></p>
-                  <p class="message"><?php echo $convLastMessage ?></p>
-                </div>
-                <div class="timer"><?php echo $convDate ?></div>
-                <input type="hidden" name="conv_index" value="<?php echo $i ?>">
+      <?php
+      if (count($conversations) == 0) {
+        // no conversations, so show empty icon
+      ?>
+        <div class="empty_container">
+          <img src="../assets/svg/no_chat.svg" alt="empty" height="70%">
+        </div>
+      <?php
+      } else {
+      ?>
+        <div class="chat_container">
+          <section class="discussions">
+            <div class="discussion search">
+              <div class="searchbar">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input type="text" placeholder="Search..."></input>
               </div>
-            </form>
-          <?php
-          }
-          ?>
-        </section>
-
-        <section class="chat">
-          <div class="header-chat">
-            <div class="photo" style="background-image: url('../../back_end/assets/images/<?php echo $conversations[$convIndex]['photo'] ?>');"></div>
-            <p class="name"><?php echo 'Pr. ' . $conversations[$convIndex]['nom'] ?></p>
-          </div>
-
-          <div class="messages-chat">
+            </div>
 
             <?php
-            $length = count($chats[$convIndex]);
-            for ($i = 0; $i < $length; $i++) {
-              $message_content = $chats[$convIndex][$i]['message_content'];
-              $message_etudiant_id = $conversations[$convIndex]['conversation_etudiant_id'];
-              $message_sender = $chats[$convIndex][$i]['message_sender'];
-              $message_date = $chats[$convIndex][$i]['message_date'];
+            for ($i = 0; $i < count($conversations); $i++) {
+              $convSenderId = $conversations[$i]['conversation_enseignant_id'];
+              $lastMessage = $chats[$i][count($chats[$i]) - 1];
+              $convLastMessage = $lastMessage['message_content'];
 
-              $isWithImage = $i == 0 ? True : ($message_sender != $chats[$convIndex][$i - 1]['message_sender']);
-              $isReponse = $message_sender == 1; // 0 for teacher, 1 for student
-              $isLast = $i == $length - 1 ? True : ($message_sender != $chats[$convIndex][$i + 1]['message_sender']);
+              // get sender icon and photo
+              $senderName = 'Pr. ' . $conversations[$i]['nom'];
+              $senderIcon = $conversations[$i]['photo'];
+
+              // calculate difference between 2 dates
+              $convDate = getDiffDate($lastMessage['message_date']);
             ?>
-
-              <div class="message<?php if (!$isWithImage) echo ' text-only' ?>">
-                <?php if ($isWithImage && !$isReponse) { ?>
-                  <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-                    <div class="online"></div>
+              <form action="#" method="post">
+                <div type="submit" class="discussion<?php if ($i == $convIndex) echo ' message-active' ?>" onClick="document.forms[<?php echo $i ?>].submit();">
+                  <div class="photo" style="background-image: url('../../back_end/assets/images/<?php echo $senderIcon ?>');">
                   </div>
-                <?php } ?>
-                <div class="<?php if ($isReponse) echo 'response' ?>">
-                  <p class="text"><?php echo $message_content ?></p>
+                  <div class="desc-contact">
+                    <p class="name"><?php echo $senderName ?></p>
+                    <p class="message"><?php echo $convLastMessage ?></p>
+                  </div>
+                  <div class="timer"><?php echo $convDate ?></div>
+                  <input type="hidden" name="conv_index" value="<?php echo $i ?>">
                 </div>
-              </div>
-              <?php if ($isLast) { ?>
-                <p class="<?php if ($isReponse) echo 'response-time ' ?>time"><?php echo getDiffDate($message_date) ?></p>
+              </form>
+            <?php
+            }
+            ?>
+          </section>
+
+          <section class="chat">
+            <div class="header-chat">
+              <div class="photo" style="background-image: url('../../back_end/assets/images/<?php echo $conversations[$convIndex]['photo'] ?>');"></div>
+              <p class="name"><?php echo 'Pr. ' . $conversations[$convIndex]['nom'] ?></p>
+            </div>
+
+            <div class="messages-chat">
+
+              <?php
+              $length = count($chats[$convIndex]);
+              for ($i = 0; $i < $length; $i++) {
+                $message_content = $chats[$convIndex][$i]['message_content'];
+                $message_etudiant_id = $conversations[$convIndex]['conversation_etudiant_id'];
+                $message_sender = $chats[$convIndex][$i]['message_sender'];
+                $message_date = $chats[$convIndex][$i]['message_date'];
+
+                $isWithImage = $i == 0 ? True : ($message_sender != $chats[$convIndex][$i - 1]['message_sender']);
+                $isReponse = $message_sender == 1; // 0 for teacher, 1 for student
+                $isLast = $i == $length - 1 ? True : ($message_sender != $chats[$convIndex][$i + 1]['message_sender']);
+              ?>
+
+                <div class="message<?php if (!$isWithImage) echo ' text-only' ?>">
+                  <?php if ($isWithImage && !$isReponse) { ?>
+                    <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
+                      <div class="online"></div>
+                    </div>
+                  <?php } ?>
+                  <div class="<?php if ($isReponse) echo 'response' ?>">
+                    <p class="text"><?php echo $message_content ?></p>
+                  </div>
+                </div>
+                <?php if ($isLast) { ?>
+                  <p class="<?php if ($isReponse) echo 'response-time ' ?>time"><?php echo getDiffDate($message_date) ?></p>
+                <?php } ?>
+
               <?php } ?>
+            </div>
 
-            <?php } ?>
-          </div>
-
-          <div class="footer-chat">
-            <form action="#" method="post">
-              <input type="hidden" name="conversation_id" value="<?php echo $conversations[$convIndex]['conversation_id'] ?>">
-              <input type="text" name="message" id="write_message" placeholder="Type your message here" required="required" autofocus>
-              <input type="hidden" name="conv_index" value="<?php echo $convIndex ?>">
-              <input type="submit" name="send_message" id="send_message" value="Send">
-            </form>
-          </div>
-        </section>
-      </div>
+            <div class="footer-chat">
+              <form action="#" method="post">
+                <input type="hidden" name="conversation_id" value="<?php echo $conversations[$convIndex]['conversation_id'] ?>">
+                <input type="text" name="message" id="write_message" placeholder="Type your message here" required="required" autofocus>
+                <input type="hidden" name="conv_index" value="<?php echo $convIndex ?>">
+                <input type="submit" name="send_message" id="send_message" value="Send">
+              </form>
+            </div>
+          </section>
+        </div>
+      <?php } ?>
     </main>
 
     <!-- right side -->
@@ -298,8 +309,9 @@ if (isset($_SESSION['id'])) {
 
   <!-- to scroll to bottom when open page to see the last message -->
   <script>
-    $('.messages-chat').animate({
-      scrollTop: document.body.scrollHeight
+    var scroll = $('.messages-chat');
+    scroll.animate({
+      scrollTop: scroll.prop("scrollHeight")
     }, 0);
   </script>
 

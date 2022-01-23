@@ -149,7 +149,7 @@ main {
 /* main chat body */
 
 .chat_container .chat .messages-chat {
-    padding: 25px 35px;
+    padding: 25px 10px 25px 35px;
     flex: 1;
     overflow-y: auto;
 }
@@ -175,7 +175,10 @@ main {
     background-color: var(--color-grey-medium);
     margin: 0 20px;
     padding: 15px;
-    border-radius: 12px;
+    border-radius: 25px;
+    max-width: 30vw;
+    word-wrap: break-word;
+    white-space:pre-wrap;
 }
 
 .chat_container .text-only {
