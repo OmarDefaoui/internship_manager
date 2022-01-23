@@ -120,24 +120,24 @@ if (isset($_SESSION['id'])) {
     <!-- top nav bar -->
     <nav>
         <div id="logo_container">
-            <img src="../assets/images/logo.png" alt="Logo" id="logo">
+            <img src="../../assets/local_assets/images/logo.png" alt="Logo" id="logo">
         </div>
 
         <div id="nav_center">
             <h2>Stages</h2>
             <div id="search_bar">
                 <input type="text" name="search" placeholder="Rechercher">
-                <img src="../assets/images/search.png" alt="search" class="rounded_icon_light">
+                <img src="../../assets/local_assets/images/search.png" alt="search" class="rounded_icon_light">
             </div>
             <div id="add_button">
-                <img src="../assets/images/add.png" alt="add" class="rounded_icon_dark">
+                <img src="../../assets/local_assets/images/add.png" alt="add" class="rounded_icon_dark">
                 <p>Ajouter un stage</p>
             </div>
         </div>
 
         <div id="nav_right">
-            <img src="../assets/images/chat.png" alt="chat" class="rounded_icon_dark">
-            <img src="../assets/images/notification.png" alt="notifications" class="rounded_icon_dark">
+            <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark">
+            <img src="../../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark">
         </div>
     </nav>
 
@@ -146,19 +146,19 @@ if (isset($_SESSION['id'])) {
         <aside id="left_side">
             <div id="left_navition">
                 <li><a href="#" class="nav_active">
-                        <div></div><img src="../assets/svg/home.svg" alt="">
+                        <div></div><img src="../../assets/local_assets/svg/home.svg" alt="">
                     </a></li>
                 <li><a href="#">
-                        <div></div><img src="../assets/svg/more.svg" alt="">
+                        <div></div><img src="../../assets/local_assets/svg/more.svg" alt="">
                     </a></li>
                 <li><a href="#">
-                        <div></div><img src="../assets/svg/share.svg" alt="">
+                        <div></div><img src="../../assets/local_assets/svg/share.svg" alt="">
                     </a></li>
                 <li><a href="#">
-                        <div></div><img src="../assets/svg/about.svg" alt="">
+                        <div></div><img src="../../assets/local_assets/svg/about.svg" alt="">
                     </a></li>
                 <li><a href="#">
-                        <div></div><img src="../assets/svg/settings.svg" alt="">
+                        <div></div><img src="../../assets/local_assets/svg/settings.svg" alt="">
                     </a></li>
             </div>
             <div id="modes">
@@ -201,7 +201,7 @@ if (isset($_SESSION['id'])) {
                                         <div class="display-small">Entreprise</div>
                                         <p class="paragraph-form">Informations</p>
                                     </div>
-                                    <div class="form-circle circle-active"><img class="form-circle-active-img" src="../assets/images/entreprise.svg" loading="lazy" width="24" alt=""></div>
+                                    <div class="form-circle circle-active"><img class="form-circle-active-img" src="../../assets/local_assets/images/entreprise.svg" loading="lazy" width="24" alt=""></div>
                                     <div class="check-symbol form-active"></div>
                                 </div>
 
@@ -210,7 +210,7 @@ if (isset($_SESSION['id'])) {
                                         <div class="display-small">Encadrant</div>
                                         <p class="paragraph-form">Informations</p>
                                     </div>
-                                    <div class="form-circle"><img src="../assets/images/encadrant.svg" loading="lazy" width="24" alt=""></div>
+                                    <div class="form-circle"><img src="../../assets/local_assets/images/encadrant.svg" loading="lazy" width="24" alt=""></div>
                                     <div class="check-symbol"></div>
                                 </div>
 
@@ -219,7 +219,7 @@ if (isset($_SESSION['id'])) {
                                         <div class="display-small">Sujet</div>
                                         <p class="paragraph-form">Informations</p>
                                     </div>
-                                    <div class="form-circle"><img src="../assets/images/sujet.svg" loading="lazy" width="24" alt=""></div>
+                                    <div class="form-circle"><img src="../../assets/local_assets/images/sujet.svg" loading="lazy" width="24" alt=""></div>
                                     <div class="check-symbol"></div>
                                 </div>
 
@@ -228,7 +228,7 @@ if (isset($_SESSION['id'])) {
                                         <div class="display-small">Binôme</div>
                                         <p class="paragraph-form">Informations</p>
                                     </div>
-                                    <div class="form-circle"><img src="../assets/images/binome.svg" loading="lazy" width="24" alt=""></div>
+                                    <div class="form-circle"><img src="../../assets/local_assets/images/binome.svg" loading="lazy" width="24" alt=""></div>
                                     <div class="check-symbol"></div>
                                 </div>
 
@@ -239,7 +239,7 @@ if (isset($_SESSION['id'])) {
                                         <div class="display-small">Déposer</div>
                                         <p class="paragraph-form">Fichiers</p>
                                     </div>
-                                    <div class="form-circle"><img src="../assets/images/deposer.svg" loading="lazy" width="24" alt=""></div>
+                                    <div class="form-circle"><img src="../../assets/local_assets/images/deposer.svg" loading="lazy" width="24" alt=""></div>
                                     <div class="check-symbol"></div>
                                 </div>
                             </div>
