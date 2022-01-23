@@ -111,7 +111,7 @@ if (isset($_SESSION['id'])) {
     <script src="../student/student.js"></script>
 
     <link rel="stylesheet" href="../main_style.css">
-    <link rel="stylesheet" href="css/activity_feed.css">
+    <link rel="stylesheet" href="css/activity.css">
     <link rel="stylesheet" href="../student/css/nav_bar_style.css">
     <link rel="stylesheet" href="../student/css/right_section_style.css">
 </head>
