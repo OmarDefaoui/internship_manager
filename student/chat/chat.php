@@ -152,9 +152,16 @@ if (isset($_SESSION['id'])) {
 
             <?php
             for ($i = 0; $i < count($conversations); $i++) {
+              // no messages in the conversation
+              if (count($chats[$i]) == 0) {
+                $lastMessage = array('message_date' => date("Y-m-d h:m:s"));
+                $convLastMessage = '';
+              } else {
+                $lastMessage = $chats[$i][count($chats[$i]) - 1];
+                $convLastMessage = $lastMessage['message_content'];
+              }
+
               $convSenderId = $conversations[$i]['conversation_enseignant_id'];
-              $lastMessage = $chats[$i][count($chats[$i]) - 1];
-              $convLastMessage = $lastMessage['message_content'];
 
               // get sender icon and photo
               $senderName = 'Pr. ' . $conversations[$i]['nom_enseignant'];
