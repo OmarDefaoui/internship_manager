@@ -1,19 +1,19 @@
 <?php
 session_start();
 // temp
-$_SESSION['id'] = 1;
-$id_enseignant = 1;
+
+
 if (isset($_SESSION['id'])) {
   include('../../connexion.php');
-  $id_etudiant = $_SESSION['id'];
+  $id_enseignant = $_SESSION['id'];
 
   // temp [to be passed in session]
-  $requetteEtudiant = "SELECT * FROM etudiant WHERE id_etudiant = $id_etudiant";
+  $requetteEtudiant = "SELECT * FROM enseignant WHERE id_enseignant = $id_enseignant";
   $resultatEtudiant = mysqli_query($link, $requetteEtudiant);
   $dataEtudiant = mysqli_fetch_assoc($resultatEtudiant);
-  $id_etudiant = $dataEtudiant['id_etudiant'];
-  $prenom = $dataEtudiant['prenom'];
-  $nom = $dataEtudiant['nom'];
+  $id_enseignant = $dataEtudiant['id_enseignant'];
+  $prenom = $dataEtudiant['prenom_enseignant'];
+  $nom = $dataEtudiant['nom_enseignant'];
   $email = $dataEtudiant['email'];
   $code = $dataEtudiant['code'];
   $photo = $dataEtudiant['photo'];
@@ -60,34 +60,32 @@ if (isset($_SESSION['id'])) {
 
   <link rel="stylesheet" href="../../main_style.css">
   <link rel="stylesheet" href="../../student/chat/css/chat.css">
-  <link rel="stylesheet" href="../../student/student/css/nav_bar_style.css">
-  <link rel="stylesheet" href="../../student/student/css/right_section_style.css">
+  <link rel="stylesheet" href="../style_accueil_nav.css ">
+  <link rel="stylesheet" href="../right_section_style.css">
 </head>
 
 <body>
   <!-- top nav bar -->
   <nav>
-    <div id="logo_container">
-      <img src="../../assets/local_assets/images/logo.png" alt="Logo" id="logo" onClick="window.open('../student/student.php', '_self')">
-    </div>
+        <div id="logo_container">
+            <img src="../../assets/local_assets/images/logo.png" alt="Logo" id="logo">
+        </div>
 
-    <div id="nav_center">
-      <h2>Stages</h2>
-      <div id="search_bar">
-        <input type="text" name="search" placeholder="Rechercher">
-        <img src="../../assets/local_assets/images/search.png" alt="search" class="rounded_icon_light">
-      </div>
-      <div id="add_button" onClick="window.open('../internship/internship.php', '_self')">
-        <img src="../../assets/local_assets/images/add.png" alt="add" class="rounded_icon_dark">
-        <p>Ajouter un stage</p>
-      </div>
-    </div>
-
-    <div id="nav_right">
-      <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark" onClick="window.open('../chat/chat.php', '_self')">
-      <img src="../../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark" onClick="window.open('../activity/activity.php', '_self')">
-    </div>
-  </nav>
+        <div id="nav_center">
+            <h2>Stages</h2>
+            <div id="search_bar">
+            <form action="" method="POST" id="test">
+                <input type="text" name="search1" placeholder="Rechercher" id="inputes">
+                <button type="submit" name="sent" id="test1"><img src="../../assets/local_assets/images/search.png" alt="search" class="rounded_icon_light"></button>
+            </form>
+            </div>
+        </div>
+            
+            <div id="nav_right">
+                <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark">
+                <img src="../../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark">
+            </div>
+    </nav>
 
   <div id="content">
     <!-- left nav bar -->
@@ -234,7 +232,7 @@ if (isset($_SESSION['id'])) {
     <!-- right side -->
     <aside id="right_side">
       <div id="hello_container" onClick="window.open('../../profile/profile.php', '_self')">
-        <p>Bienvenue,<br><b><?php echo $prenom . ' ' . $nom ?></b></p>
+        <p>Bienvenue,Pr<br><b><?php echo  $nom ?></b></p>
         <img src="../../assets/assets/images/<?php echo $photo ?>" alt="user_icon">
       </div>
 
@@ -267,33 +265,19 @@ if (isset($_SESSION['id'])) {
 
       <div id="activity_container">
         <p id="activity_title">Flux <b>d'activité</b></p>
-        <div id="feeds_container">
-          <?php
-          $requetteNotif = "SELECT * FROM notification n,enseignant e WHERE id_etudiant='$id_etudiant'
-          AND sender=0 AND n.id_enseignant=e.id_enseignant LIMIT 2";
-          $resultatNotif = mysqli_query($link, $requetteNotif);
-          while ($dataNotif = mysqli_fetch_assoc($resultatNotif)) {
-            $contentNotif = $dataNotif['content'];
-            $iconNotif = $dataNotif['photo'];
-
-            // calculate difference between 2 dates
-            $diff = abs(strtotime(date("Y-m-d")) - strtotime($dataNotif['date']));
-            $years = floor($diff / (365 * 60 * 60 * 24));
-            $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
-            $days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
-            $dateNotif = $years != 0 ? ($years . ' années') : ($months != 0 ? ($months . ' mois') : ($days . ' jours'));
-          ?>
-
-            <div class="feed">
-              <img src="../../assets/assets/images/<?php echo $iconNotif ?>" alt="user_icon">
-              <div class="text_container">
-                <p class="content"><?php echo $contentNotif ?></p>
-                <p class="time"><?php echo $dateNotif ?></p>
-              </div>
-            </div>
-
-          <?php }
-          ?>
+        <div class="feed">
+                        <img src="../../assets/local_assets/images/face1.png" alt="user_icon">
+                        <div class="text_container">
+                            <p class="content"><b>Omar defaoui</b> a deposer la version corrigé du rapport</p>
+                            <p class="time"> 4 jours </p>
+                        </div>
+                    </div>
+                    <div class="feed">
+                        <img src="../../assets/local_assets/images/face2.png" alt="user_icon">
+                        <div class="text_container">
+                            <p class="content"><b>Hassan ayoub benasser </b> a Déposer la présentation</p>
+                            <p class="time">16 jours</p>
+                        </div>
         </div>
         <a href="../activity/activity.php" id="see_more">See more</a>
       </div>

@@ -1,0 +1,37 @@
+/* style applied for the whole project */
+
+@import "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css";
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/*                 colors                    */
+
+:root {
+    --color-white: #ffffff;
+    --color-grey-light: #f6f6f6;
+    --color-grey-medium: #d8d8d8;
+    --color-grey-dark: #afafaf;
+    --color-black: #000000;
+    --color-purple: #565a97;
+}
+
+.dark:root {
+    --color-white: #111827;
+    --color-grey-light: #1f2937;
+    --color-grey-medium: rgba(255,255,255,.8);
+    --color-grey-dark: rgba(195, 207, 244, 0.2);
+    --color-black: #ffffff;
+    --color-purple: #d5deff;
+}
+
+:root {
+    --height-top-nav: 6vw;
+    --width-left-section: 6vw;
+    --width-center-section: 72vw;
+    --width-right-section: 22vw;
+    --width-right-nav-top: 16vw;
+    --width-right-nav-bottom: 18vw;
+}

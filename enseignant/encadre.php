@@ -21,11 +21,11 @@ if(isset($_SESSION["id"])){
      if(isset($_POST['search']) && !empty($_POST['filtre'])){
         $stage_requette = "SELECT *FROM `stage`,etudiant,entreprise WHERE etudiant.id_etudiant=stage.id_etudiant and stage.id_entreprise=entreprise.id_entreprise and id_enseignant is not null  "; 
         if(in_array("G.info",$_POST['filtre']) && !in_array("G.indus",$_POST['filtre'])){
-            $stage_requette .="AND Filière='Informatique'";
+            $stage_requette .="AND filiere='Informatique'";
         }
     
         if(in_array("G.indus",$_POST['filtre']) && !in_array("G.info",$_POST['filtre'])){
-            $stage_requette .="AND Filière='Industrielle'";
+            $stage_requette .="AND filiere='Industrielle'";
         }
         if(in_array("PFA",$_POST['filtre'])){
             $stage_requette .="AND type='PFA'";
@@ -51,7 +51,7 @@ if(isset($_SESSION["id"])){
         or nom like '%$search%'
         or prenom like '%$search%'
         or nom_entreprise like '%$search%'
-        or Filière like '%$search%'
+        or filiere like '%$search%'
         or technologies like '%$search%'
         or nom_encadrant like '%$search%'
         or prenom_encardrant like '%$search%'
@@ -147,7 +147,7 @@ switch($page){
     <link rel="stylesheet" href="style_accueil_nav.css">
     <link rel="stylesheet" href="style_accueil_centre.css">
     <link rel="stylesheet" href="right_section.css">
-    <link rel="stylesheet" href="../main_style.css">
+    <link rel="stylesheet" href="../main_style1.css">
 
     <title>Accueil</title>
 </head>
@@ -306,7 +306,7 @@ switch($page){
             $nom_encadrant = $dataStages['nom_encadrant'];
             $prenom_encardrant = $dataStages['prenom_encardrant'];
             $type = $dataStages['type'];
-            $filiere =$dataStages['Filière'];
+            $filiere =$dataStages['filiere'];
             $id_enseignant1 = $dataStages['id_enseignant'];
             $id_entreprise = $dataStages['id_entreprise'];
             $id_etudiant = $dataStages['id_etudiant'];
@@ -387,7 +387,7 @@ switch($page){
                     <strong> Prénom     :</strong>  <?php echo $prenom_etudiant ?> <br>
                     <strong> Nom        :</strong>   <?php echo $nom_etudiant ?> <br>
                     <strong> Entreprise :</strong>  <?php echo $nom_entreprise ?> <br>
-                    <strong> Filière : </strong> <?php echo $filiere?>
+                    <strong> filiere : </strong> <?php echo $filiere?>
                 </p>
                 <div class="progress_container">
                                 <p class="progress_header">Progress</p>
