@@ -9,9 +9,12 @@ $name = $_SESSION['nom'];
 $prenom = $_SESSION['prenom'];
 $photo = $_SESSION['photo'];
 $email = $_SESSION['email'];
+$code = $_SESSION['code'];
 
 if (isset($_POST['modifier'])) {
-  $code = $_POST['code'];
+  if($_POST['code']!=NULL){
+  $code = $_POST['code'];}
+  
 
   // upload de la photo
   if (isset($_FILES['fichier']) && $_FILES['fichier']['error'] == 0) {
@@ -57,15 +60,21 @@ if (isset($_POST['modifier'])) {
   if ($etudiant != false) {
     $requette9 = "UPDATE etudiant SET code='$code',photo='$photo1'where email='$email' ";
     $resultat8 = mysqli_query($link, $requette9);
-    header('location: ../student/student/student.php');
+    echo "<script type='text/javascript'>
+  window.top.location = '../student/student/student.php';
+</script>";
   } else if ($enseignant != false) {
     $requette10 = "UPDATE enseignant SET code='$code',photo='$photo1'where email='$email' ";
     $resultat10 = mysqli_query($link, $requette10);
-    header('location: ../enseignant/accueil_enseignant.php');
+    echo "<script type='text/javascript'>
+    window.top.location = '../enseignant/accueil_enseignant.php';
+  </script>";
   } else if ($admin != false) {
     $requette11 = "UPDATE administrateur SET code='$code',photo='$photo1'where email='$email' ";
     $resultat11 = mysqli_query($link, $requette11);
-    header('location: ../admin/accueil_admin.php');
+    echo "<script type='text/javascript'>
+    window.top.location = '../admin/accueil_admin.php/student.php';
+  </script>";
   }
 }
 ?>

@@ -412,6 +412,12 @@ switch($page){
 
 
         <?php }?>
+        <?php
+            if ($n1 == 0) { ?>
+                <div class="empty_container">
+                    <img src="../assets/local_assets/svg/no_stage.svg" alt="empty" height="70%" style="margin-left: 30%;">
+                </div>
+            <?php } ?>
        </main>
        
        <aside id="right_side">
