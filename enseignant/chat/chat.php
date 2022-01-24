@@ -2,8 +2,9 @@
 session_start();
 // temp
 $_SESSION['id'] = 1;
+$id_enseignant = 1;
 if (isset($_SESSION['id'])) {
-  include('../connexion.php');
+  include('../../connexion.php');
   $id_etudiant = $_SESSION['id'];
 
   // temp [to be passed in session]
@@ -22,8 +23,8 @@ if (isset($_SESSION['id'])) {
   include('send_msg.php');
 
   // store chats and conversatons in arrays
-  $requette = "SELECT * FROM conversation c,enseignant e WHERE 
-    c.conversation_etudiant_id=$id_etudiant AND c.conversation_enseignant_id=e.id_enseignant";
+  $requette = "SELECT * FROM conversation c,etudiant e WHERE 
+    c.conversation_enseignant_id=$id_enseignant AND c.conversation_etudiant_id=e.id_etudiant";
   $resultat = mysqli_query($link, $requette);
   $conversations = array();
   $chats = array();
@@ -55,19 +56,19 @@ if (isset($_SESSION['id'])) {
   <title>Internship Manager</title>
 
   <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
-  <script src="../student/student.js"></script>
+  <script src="../../student/student/student.js"></script>
 
-  <link rel="stylesheet" href="css/main_style.css">
-  <link rel="stylesheet" href="css/chat.css">
-  <link rel="stylesheet" href="../nav_bar_style.css">
-  <link rel="stylesheet" href="../right_section_style.css">
+  <link rel="stylesheet" href="../../main_style.css">
+  <link rel="stylesheet" href="../../student/chat/css/chat.css">
+  <link rel="stylesheet" href="../../student/student/css/nav_bar_style.css">
+  <link rel="stylesheet" href="../../student/student/css/right_section_style.css">
 </head>
 
 <body>
   <!-- top nav bar -->
   <nav>
     <div id="logo_container">
-      <img src="../../assets/local_assets/images/logo.png" alt="Logo" id="logo">
+      <img src="../../assets/local_assets/images/logo.png" alt="Logo" id="logo" onClick="window.open('../student/student.php', '_self')">
     </div>
 
     <div id="nav_center">
@@ -76,15 +77,15 @@ if (isset($_SESSION['id'])) {
         <input type="text" name="search" placeholder="Rechercher">
         <img src="../../assets/local_assets/images/search.png" alt="search" class="rounded_icon_light">
       </div>
-      <div id="add_button">
+      <div id="add_button" onClick="window.open('../internship/internship.php', '_self')">
         <img src="../../assets/local_assets/images/add.png" alt="add" class="rounded_icon_dark">
         <p>Ajouter un stage</p>
       </div>
     </div>
 
     <div id="nav_right">
-      <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark">
-      <img src="../../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark">
+      <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark" onClick="window.open('../chat/chat.php', '_self')">
+      <img src="../../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark" onClick="window.open('../activity/activity.php', '_self')">
     </div>
   </nav>
 
@@ -101,10 +102,10 @@ if (isset($_SESSION['id'])) {
         <li><a href="#">
             <div></div><img src="../../assets/local_assets/svg/share.svg" alt="">
           </a></li>
-        <li><a href="#">
+        <li><a href="../../index.html">
             <div></div><img src="../../assets/local_assets/svg/about.svg" alt="">
           </a></li>
-        <li><a href="#">
+        <li><a href="../../profile/profile.php">
             <div></div><img src="../../assets/local_assets/svg/settings.svg" alt="">
           </a></li>
       </div>
@@ -152,12 +153,12 @@ if (isset($_SESSION['id'])) {
 
             <?php
             for ($i = 0; $i < count($conversations); $i++) {
-              $convSenderId = $conversations[$i]['conversation_enseignant_id'];
+              $convSenderId = $conversations[$i]['conversation_etudiant_id'];
               $lastMessage = $chats[$i][count($chats[$i]) - 1];
               $convLastMessage = $lastMessage['message_content'];
 
               // get sender icon and photo
-              $senderName = 'Pr. ' . $conversations[$i]['nom_enseignant'];
+              $senderName = $conversations[$i]['nom'] . ' ' . $conversations[$i]['prenom'];
               $senderIcon = $conversations[$i]['photo'];
 
               // calculate difference between 2 dates
@@ -183,7 +184,7 @@ if (isset($_SESSION['id'])) {
           <section class="chat">
             <div class="header-chat">
               <div class="photo" style="background-image: url('../../assets/assets/images/<?php echo $conversations[$convIndex]['photo'] ?>');"></div>
-              <p class="name"><?php echo 'Pr. ' . $conversations[$convIndex]['nom_enseignant'] ?></p>
+              <p class="name"><?php echo $conversations[$convIndex]['nom'] . ' ' . $conversations[$convIndex]['prenom'] ?></p>
             </div>
 
             <div class="messages-chat">
@@ -192,18 +193,17 @@ if (isset($_SESSION['id'])) {
               $length = count($chats[$convIndex]);
               for ($i = 0; $i < $length; $i++) {
                 $message_content = $chats[$convIndex][$i]['message_content'];
-                $message_etudiant_id = $conversations[$convIndex]['conversation_etudiant_id'];
                 $message_sender = $chats[$convIndex][$i]['message_sender'];
                 $message_date = $chats[$convIndex][$i]['message_date'];
 
                 $isWithImage = $i == 0 ? True : ($message_sender != $chats[$convIndex][$i - 1]['message_sender']);
-                $isReponse = $message_sender == 1; // 0 for teacher, 1 for student
+                $isReponse = $message_sender == 0; // 0 for teacher, 1 for student
                 $isLast = $i == $length - 1 ? True : ($message_sender != $chats[$convIndex][$i + 1]['message_sender']);
               ?>
 
                 <div class="message<?php if (!$isWithImage) echo ' text-only' ?>">
                   <?php if ($isWithImage && !$isReponse) { ?>
-                    <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
+                    <div class="photo" style="background-image: url('../../assets/assets/images/<?php echo $conversations[$convIndex]['photo'] ?>');">
                       <div class="online"></div>
                     </div>
                   <?php } ?>
@@ -233,7 +233,7 @@ if (isset($_SESSION['id'])) {
 
     <!-- right side -->
     <aside id="right_side">
-      <div id="hello_container">
+      <div id="hello_container" onClick="window.open('../../profile/profile.php', '_self')">
         <p>Bienvenue,<br><b><?php echo $prenom . ' ' . $nom ?></b></p>
         <img src="../../assets/assets/images/<?php echo $photo ?>" alt="user_icon">
       </div>
@@ -269,11 +269,12 @@ if (isset($_SESSION['id'])) {
         <p id="activity_title">Flux <b>d'activité</b></p>
         <div id="feeds_container">
           <?php
-          $requetteNotif = "SELECT * FROM notification WHERE id_target='$id_etudiant' LIMIT 2";
+          $requetteNotif = "SELECT * FROM notification n,enseignant e WHERE id_etudiant='$id_etudiant'
+          AND sender=0 AND n.id_enseignant=e.id_enseignant LIMIT 2";
           $resultatNotif = mysqli_query($link, $requetteNotif);
           while ($dataNotif = mysqli_fetch_assoc($resultatNotif)) {
             $contentNotif = $dataNotif['content'];
-            $iconNotif = $dataNotif['icon'];
+            $iconNotif = $dataNotif['photo'];
 
             // calculate difference between 2 dates
             $diff = abs(strtotime(date("Y-m-d")) - strtotime($dataNotif['date']));
@@ -294,7 +295,7 @@ if (isset($_SESSION['id'])) {
           <?php }
           ?>
         </div>
-        <a href="#" id="see_more">See more</a>
+        <a href="../activity/activity.php" id="see_more">See more</a>
       </div>
     </aside>
   </div>

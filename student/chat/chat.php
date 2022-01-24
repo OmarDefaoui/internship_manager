@@ -203,7 +203,7 @@ if (isset($_SESSION['id'])) {
 
                 <div class="message<?php if (!$isWithImage) echo ' text-only' ?>">
                   <?php if ($isWithImage && !$isReponse) { ?>
-                    <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
+                    <div class="photo" style="background-image: url('../../assets/assets/images/<?php echo $conversations[$convIndex]['photo'] ?>');">
                       <div class="online"></div>
                     </div>
                   <?php } ?>
