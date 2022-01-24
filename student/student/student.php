@@ -24,7 +24,7 @@ if (isset($_SESSION['id'])) {
     $requetteStages = "SELECT * FROM stage WHERE id_etudiant = $id_etudiant";
     $resultatStages = mysqli_query($link, $requetteStages);
 } else {
-    header("location:login.php");
+    header("location: ../../index.html");
 }
 ?>
 

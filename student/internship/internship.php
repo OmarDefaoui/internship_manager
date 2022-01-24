@@ -94,7 +94,7 @@ if (isset($_SESSION['id'])) {
         $tel_entreprise = NULL;
     }
 } else {
-    header("location:login.php");
+    header("location: ../../index.html");
 }
 ?>
 

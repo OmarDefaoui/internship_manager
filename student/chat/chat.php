@@ -41,7 +41,7 @@ if (isset($_SESSION['id'])) {
     $chats[] = $chat;
   }
 } else {
-  header("location:login.php");
+  header("location: ../../index.html");
 }
 ?>
 

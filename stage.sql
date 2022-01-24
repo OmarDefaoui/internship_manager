@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2022 at 12:56 PM
+-- Generation Time: Jan 24, 2022 at 06:31 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -52,19 +52,17 @@ INSERT INTO `administrateur` (`id_administrateur`, `prenom`, `nom`, `email`, `co
 CREATE TABLE `conversation` (
   `conversation_id` int(11) NOT NULL,
   `conversation_etudiant_id` int(20) NOT NULL,
-  `conversation_enseignant_id` int(20) NOT NULL,
-  `conversation_message` varchar(300) NOT NULL DEFAULT ' ',
-  `conversation_date` datetime NOT NULL
+  `conversation_enseignant_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `conversation`
 --
 
-INSERT INTO `conversation` (`conversation_id`, `conversation_etudiant_id`, `conversation_enseignant_id`, `conversation_message`, `conversation_date`) VALUES
-(1, 1, 1, ' 111', '2022-01-11 21:59:46'),
-(2, 1, 2, ' 222', '2022-01-03 21:59:46'),
-(3, 2, 1, ' 333', '2022-01-10 22:00:40');
+INSERT INTO `conversation` (`conversation_id`, `conversation_etudiant_id`, `conversation_enseignant_id`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -87,7 +85,7 @@ CREATE TABLE `enseignant` (
 
 INSERT INTO `enseignant` (`id_enseignant`, `prenom_enseignant`, `nom_enseignant`, `email`, `code`, `photo`) VALUES
 (1, 'Ilham', 'Oumaira', 'ilham.oumaira@uit.ac.ma', 'azerty', '1.jpg'),
-(2, 'Ayoub', 'Ait Lahcen', 'ayoub.aitlahcen@uit.ac.ma', 'azerty', '2.jpg');
+(2, 'Ayoub', 'Ait Lahcen', 'ayoub.aitlahcen@uit.ac.ma', '', '2.jpg');
 
 -- --------------------------------------------------------
 
@@ -199,7 +197,16 @@ INSERT INTO `message` (`message_id`, `message_content`, `message_date`, `message
 (50, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2022-01-23 06:01:09', 1, 1),
 (51, 'test', '2022-01-23 06:01:21', 1, 2),
 (52, 'salam', '2022-01-23 06:01:24', 1, 1),
-(53, 'yoo', '2022-01-24 12:01:08', 1, 1);
+(53, 'yoo', '2022-01-24 12:01:08', 1, 1),
+(54, 'dd', '2022-01-24 03:01:04', 0, 1),
+(55, 'fff', '2022-01-24 03:01:43', 0, 1),
+(56, 'bikhir', '2022-01-24 03:01:37', 0, 1),
+(57, 'ffff', '2022-01-24 03:01:49', 0, 2),
+(58, 'fen', '2022-01-24 04:01:29', 0, 1),
+(59, 'labas 3lik', '2022-01-24 04:01:12', 0, 1),
+(60, '7mdlh et tt', '2022-01-24 04:01:19', 1, 1),
+(61, 'bikhir', '2022-01-24 04:01:20', 0, 3),
+(62, 'ttt', '2022-01-24 06:01:34', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -372,7 +379,7 @@ ALTER TABLE `etudiant`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `message_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `message_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `notification`
