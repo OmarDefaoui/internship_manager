@@ -27,6 +27,7 @@ if (isset($_POST['login'])) {
     $_SESSION['prenom'] = $etudiant['prenom'];
     $_SESSION['photo'] = $etudiant['photo'];
     $_SESSION['email'] = $etudiant['email'];
+    $_SESSION['profile'] = 0;
     if ($pass == 'azerty') {
       header("location: ../profile/profile.php");
     } else {
@@ -39,6 +40,7 @@ if (isset($_POST['login'])) {
     $_SESSION['prenom'] = $enseignant['prenom_enseignant'];
     $_SESSION['photo'] = $enseignant['photo'];
     $_SESSION['email'] = $enseignant['email'];
+    $_SESSION['profile'] = 1;
     if ($pass == 'azerty') {
       header("location: ../profile/profile.php");
     } else {
@@ -50,6 +52,7 @@ if (isset($_POST['login'])) {
     $_SESSION['prenom'] = $admin['prenom'];
     $_SESSION['photo'] = $admin['photo'];
     $_SESSION['email'] = $admin['email'];
+    $_SESSION['profile'] = 2;
     if ($pass == 'azerty') {
       header("location: ../profile/profile.php");
     } else {
