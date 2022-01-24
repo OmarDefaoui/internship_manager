@@ -1,0 +1,265 @@
+/* style of the body */
+body {
+    background-color: var(--color-white);
+    overflow: hidden;
+}
+
+#content {
+    display: flex;
+}
+
+/*                   main content style                   */
+
+main {
+    width: var(--width-center-section);
+    height: calc(100vh - var(--height-top-nav));
+    background-color: var(--color-grey-light);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 1%;
+}
+
+.options{
+    padding: 7px;
+    background-color: #565a97;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+/*                       cards                  */
+
+.card {
+    width: calc(33.33% - 7%);
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    margin: 20px 10px 0 10px;
+    height: fit-content;
+    background-color: var(--color-white);
+    display: inline-block;
+}
+
+.card:last-child {
+    margin-bottom: 20px;
+}
+
+.card .card_header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .card_header .card_title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.card .card_header .card_subtitle {
+    font-size: 0.8em;
+    color: grey;
+    margin-bottom: 12px;
+}
+
+.card .card_header svg {
+    color: gray;
+    border-radius: 50%;
+    padding: 2px;
+    border: 1px solid gray;
+}
+
+/*                        card main                        */
+
+.card .card_main .short_descirption {
+    font-size: 0.9em;
+}
+
+.card .card_main .progress_container {
+    margin: 12px 0;
+}
+
+.card .card_main .progress_container .progress_header {
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+.card .card_main .progress_container .progress_bar {
+    width: 100%;
+    height: 4px;
+    border-radius: 6px;
+    background-color: var(--color-grey-light);
+    margin: 8px 0;
+}
+
+.card .card_main .progress_container .progress_bar .progress_indicator {
+    display: block;
+    height: 4px;
+    border-radius: 6px;
+}
+
+.card .card_main .progress_container .progress_percentage {
+    text-align: right;
+    font-size: 0.8em;
+    font-weight: 700;
+}
+
+/*                      card footer                       */
+
+.card .card_footer {
+    border-top: 1px solid var(--color-grey-medium);
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card .card_footer .participants {
+    display: flex;
+    align-items: center;
+}
+
+.card .card_footer .participants img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.card .card_footer .participants img:not(:first-child) {
+    margin-left: -8px;
+}
+
+.card .card_footer .participants .add_participant {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    margin-left: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .card_footer .internship_duration {
+    font-size: 0.7em;
+    border-radius: 25px;
+    padding: 6px 16px;
+    font-weight: 700;
+}
+
+/*                              scroll bar style                   */
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--color-grey-medium);
+    margin-top: 25px;
+    border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--color-grey-dark);
+    border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: gray;
+}
+
+
+
+
+.input-selector::placeholder {
+    color: white;
+    text-align: center;
+    
+  }
+  .input-selector{
+      border: none;
+      background: none;
+  }
+input{
+    outline: none;
+    border: none;
+    
+    
+}
+
+.large{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+}
+.multi-selector{
+    width: max-content;
+    position: relative;
+    left:  435px;
+    margin-top: 15px;
+    
+    
+}
+.select-field{
+    border: 3px solid #565a97;
+    border-radius: 15px;
+    
+
+}
+.select-field,.task,.list{
+    width: 100%;
+    background-color: #565a97; ;
+    padding: 0.3rem;
+    
+}
+#test1{
+    background: none;
+}
+.list{
+    box-shadow: 0 30px 60px rgb(0,0,0,0.2);
+    display: none;
+    border-radius: 15px;
+    margin-left: 2px;
+    background:  var(--color-grey-light);
+}
+.down-arrow{
+    font-size: 1.2rem;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+.task{
+    display: block;
+    padding-left: 0;
+    background-color:  var(--color-grey-light);
+}
+.task span{
+    float: right;
+    font-size: 0.6rem;
+    padding-top: 6px;
+}
+.task:hover{
+    background-color: none
+}
+.show{
+    display: block;
+}
+.rotate180{
+    transform: rotate(-60deg);
+}
+.button{
+    margin-left: 42%;
+    
+}

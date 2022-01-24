@@ -1,0 +1,95 @@
+/*                   right section style                  */
+
+#right_side {
+    width: var(--width-right-section);
+    height: calc(100vh - var(--height-top-nav));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*                     hello container */
+
+#hello_container {
+    width: var(--width-right-nav-top);
+    border-radius: 25px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 2px var(--color-grey-medium);
+}
+
+#hello_container img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    box-shadow: 0 0 1px var(--color-black);
+}
+
+/*                    overview_container                */
+
+#overview_container {
+    width: var(--width-right-nav-bottom);
+    border-radius: 25px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#overview_container .overview {
+    padding: 10px;
+    border-radius: 15px;
+    margin-top: 16px;
+    width: 40%;
+    box-shadow: 0 0 2px var(--color-grey-medium);
+}
+
+#overview_container .overview .overview_name {
+    color: var(--color-grey-dark);
+    margin-bottom: 10px;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+#overview_container .overview .overview_data {
+    padding: 0px 8px;
+    border-left: 3px solid var(--color-purple);
+}
+
+/*                  activity_container                   */
+
+#activity_container {
+    width: var(--width-right-nav-bottom);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#activity_container #activity_title {
+    margin-bottom: 20px;
+}
+
+#activity_container #see_more {
+    text-decoration: none;
+    color: var(--color-purple);
+}
+
+#activity_container #feeds_container .feed {
+    display: flex;
+}
+
+#activity_container #feeds_container .feed img {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+#activity_container #feeds_container .feed .text_container .time {
+    margin: 5px 0 14px 0;
+    font-size: 0.7em;
+    color: gray;
+}
