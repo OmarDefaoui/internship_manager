@@ -1,0 +1,60 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
+* {
+  box-sizing: border-box;
+}
+body {
+    
+    background-color: var(--app-container);
+  
+  }
+
+  .menu{
+    
+   
+    height: 70px;
+  
+  }
+  ul{
+    display: flex;
+    
+    justify-content:center ;
+    align-items: center;
+  }
+  ul li{
+    list-style: none;
+    margin-left: 62px;
+    margin-top: 27px;
+    font-size: 14px;
+    
+    
+  }
+  ul li a{
+    text-decoration: none;
+    color: #343842;
+    font-family: Arial;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 13px;
+    padding: 10px;
+    transition: 0.4s ease-in-out;
+  }
+  ul li a:hover{
+    color: #c3cff4;
+    border: 1px solid #ccc;
+    box-shadow: 5px 5px #ddd;
+    
+  }
+
+#aa{
+  margin-left: 300px;
+}
+
+#log:hover{
+
+  box-shadow: 5px 5px #847dff;
+}
+script{
+  color: red;
+}
+ 
