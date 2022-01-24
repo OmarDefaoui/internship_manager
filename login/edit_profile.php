@@ -2,6 +2,8 @@
 
 <?php
 session_start();
+include("connexion.php");
+
 
 
 $name=$_SESSION['nom'];
@@ -12,7 +14,7 @@ $mailo = $_SESSION['email'];
 
 if (isset($_POST['modifier'])) {
     $code = $_POST['code'];
-    $email=$_POST['email'];
+    $email=$mailo;
 
     // upload de la photo
     if (isset($_FILES['fichier']) && $_FILES['fichier']['error'] == 0) {
@@ -32,15 +34,15 @@ if (isset($_POST['modifier'])) {
         if (!in_array($extension_upload, $extensions_autorisees)) {
             exit("Erreur, Veuillez inserer une image svp (extensions autorisées: png)");
         }
-        $nom_photo = $email . "." . $extension_upload;
+        $nom_photo = $name. $prename. "." . $extension_upload;
         if (!move_uploaded_file($temp_name, $dossier . $nom_photo)) {
             exit("Problem dans le telechargement de l'image, Ressayez");
         }
-        $photo = $nom_photo;
-    } else {
-        $photo = '5.png';
+        $photo1 = $nom_photo;
+    } 
+    else{
+      $photo1 = $photo;
     }
-    
 
     $requette1="SELECT * FROM etudiant where email='$email'";
     $resultat1 = mysqli_query($link, $requette1);
@@ -55,19 +57,19 @@ if (isset($_POST['modifier'])) {
     // enregistrement des donnees dans la BD
     
     if ($etudiant!=false) {
-        $requette9 = "UPDATE etudiant SET code='$code',photo='$photo'where email='$email' ";
+        $requette9 = "UPDATE etudiant SET code='$code',photo='$photo1'where email='$email' ";
         $resultat8 = mysqli_query($link, $requette9);
-        header('location: ../login/index.php');
+        header('location: ../student/student/student.php');
     }
     else if ($enseignant!=false) {
-        $requette10 = "UPDATE enseignant SET code='$code',photo='$photo'where email='$email' ";
+        $requette10 = "UPDATE enseignant SET code='$code',photo='$photo1'where email='$email' ";
         $resultat10 = mysqli_query($link, $requette10);
-        header('location: ../login/index.php');
+        header('location: ../enseignant/accueil_enseignant.php');
     }
     else if ($admin!=false) {
-      $requette11 = "UPDATE administrateur SET code='$code',photo='$photo'where email='$email' ";
+      $requette11 = "UPDATE administrateur SET code='$code',photo='$photo1'where email='$email' ";
       $resultat11 = mysqli_query($link, $requette11);
-      header('location: ../login/index.php');
+      header('location: ../admin/accueil_admin.php');
   }
 
    
@@ -121,9 +123,9 @@ if (isset($_POST['modifier'])) {
                   <div class="text-center text-sm-left mb-2 mb-sm-0">
                     <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"></h4>
                     <p class="mb-0"></p>
-                    <div class="text-muted"><small>verifié</small></div>
+                    <div class="text-muted"><strong><?php echo $name.' '.$prename ?></strong></div>
                     <div class="mt-2">
-                      <input type="file" name="fichier"/>
+                      <input type="file" placeholder="Choisir un fichier" name="fichier"/>  
                     </div>
                     
                   </div>
@@ -154,7 +156,7 @@ if (isset($_POST['modifier'])) {
                           <div class="col">
                             <div class="form-group">
                               <label for="email">Email institutionnelle</label>
-                              <input class="form-control"  disabled type="text" name="email" value="<?php echo $emailo ?>">
+                              <input class="form-control"  disabled type="text" name="email" value="<?php echo $mailo ?>">
                             </div>
                           </div>
                         </div>

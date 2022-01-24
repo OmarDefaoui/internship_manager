@@ -1,16 +1,11 @@
 <?php
-include('connexion.php');
 session_start();
+include('connexion.php');
+
 if (isset($_POST['login'])) {
   $email=$_POST['username'];
   $pass=$_POST['passe'];
-  if($pass=='azerty' || $pass=='root'){
-    session_start();
-    $_session['email']=$email;
-    header("location:edit_profile.php");
-    
-  }
-  else {
+ 
     $requette1="SELECT * FROM etudiant where email='$email' and code='$pass'";
     $resultat1 = mysqli_query($link, $requette1);
     $etudiant=mysqli_fetch_assoc($resultat1);
@@ -30,8 +25,8 @@ if (isset($_POST['login'])) {
       $_SESSION['prenom'] = $etudiant['prenom'];
       $_SESSION['photo'] = $etudiant['photo'];
       $_SESSION['email'] = $etudiant['email'];
-      if($pass=='azerty'){header("location:edit_profile.php"); }
-      header("location:../etudiant/student/student/student.php");
+      if($pass=='azerty'){header("location:edit_profile.php");}
+      else{header("location:../student/student/student.php");}
       
         
     }
@@ -42,20 +37,20 @@ if (isset($_POST['login'])) {
       $_SESSION['prenom'] = $enseignant['prenom_enseignant'];
       $_SESSION['photo'] = $enseignant['photo'];
       $_SESSION['email'] = $enseignant['email'];
-      if($pass=='azerty'){header("location:edit_profile.php"); }
-      header("location:../enseignant/accueil_enseignant.php");
+      if($pass=='azerty'){header("location:edit_profile.php");}
+      else{header("location:../enseignant/accueil_enseignant.php");}
     }
     elseif ($admin!=false) {
       $_SESSION['id'] = $admin['id_administrateur'];
       $_SESSION['nom'] = $admin['nom'];
       $_SESSION['prenom'] = $admin['prenom'];
       $_SESSION['photo'] = $admin['photo'];
-      $_SESSION['email'] = $enseignant['email'];
+      $_SESSION['email'] = $admin['email'];
       if($pass=='azerty'){header("location:edit_profile.php"); }
-      header("location:../admin/accueil_admin.php");
+      else{header("location:../admin/accueil_admin.php");}
     }
 
-  }  
+  
 }
 
 mysqli_close($link);
