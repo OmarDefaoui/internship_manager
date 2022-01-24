@@ -34,7 +34,7 @@ $profile = $_SESSION['profile'];
     <!-- top nav bar -->
     <nav>
         <div id="logo_container">
-            <img src="../assets/local_assets/images/logo.png" alt="Logo" id="logo" onClick="window.open('<?php echo (($profile != 2) ? '../student/student.php' : '#') ?>', '_self')">
+            <img src="../assets/local_assets/images/logo.png" alt="Logo" id="logo">
         </div>
 
         <div id="nav_center">
@@ -46,8 +46,8 @@ $profile = $_SESSION['profile'];
         </div>
 
         <div id="nav_right">
-            <img src="../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark" onClick="window.open('<?php echo (($profile != 2) ? '../chat/chat.php' : '#') ?>', '_self')">
-            <img src="../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark" onClick="window.open('<?php echo (($profile != 2) ? '../activity/activity.php' : '#') ?>', '_self')">
+            <img src="../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark">
+            <img src="../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark">
         </div>
     </nav>
 

@@ -84,6 +84,8 @@ if (isset($_POST['modifier'])) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
   <link rel="stylesheet" href="../main_style.css">
+  <link rel="stylesheet" href="css/profile.css">
+  
 </head>
 
 <body>
@@ -105,7 +107,9 @@ if (isset($_POST['modifier'])) {
               <p class="mb-0"></p>
               <div class="text-muted"><strong><?php echo $name . ' ' . $prenom ?></strong></div>
               <div class="mt-2">
-                <input type="file" placeholder="Choisir un fichier" name="fichier" />
+                <div class="input_upload_container" data-text="Choisissez une photo">
+                  <input name="fichier" type="file" class="input_upload">
+                </div>
               </div>
 
             </div>
