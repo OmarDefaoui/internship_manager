@@ -47,7 +47,7 @@ if(isset($_SESSION["id"])){
     $requettestudent= "SELECT *from etudiant where id_etudiant in(select id_etudiant from stage where id_stage=$id_stage) ";
     $resultatstudent = mysqli_query($link,$requettestudent);
     $datastudent = mysqli_fetch_assoc($resultatstudent);
-    $filiere =$datastudent['Filière'];
+    $filiere =$datastudent['filiere'];
     $nom_etudiant = $datastudent['nom'];
     $prenom_etudiant = $datastudent['prenom'];
     $id_student = $datastudent['id_etudiant'];
@@ -201,8 +201,8 @@ if(isset($_SESSION["id"])){
                  
                  <div class='infor'>
                      <p> <strong> Numero d'apogée</strong> : <?php echo $id_student ?></p>
-                     <p> <strong>Filière </strong>: G.informatique</p>
-                     <p> <strong> Stage</strong> : PFA</p>
+                     <p> <strong>filiere </strong>: <?php echo $filiere?></p>
+                     <p> <strong> Stage</strong> : <?php echo $type ?></p>
                      <?php 
                                  if($id_enseignant1== NULL){
 
