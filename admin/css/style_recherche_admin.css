@@ -1,0 +1,70 @@
+#recherche_etudiant{
+    
+    width: 95%;
+    margin: auto;
+    margin-top:20px;
+}
+
+#myInput {
+    background-image: url(img/searchicon.png); /* Add a search icon to input */
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 92%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 0px; /* Add some space below the input */
+  }
+
+
+#styled-table {
+    
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-top-left-radius: 10px;
+    
+}
+
+#styled-table thead tr {
+    background-color: #565A97;
+    color: #ffffff;
+    text-align: left;
+    border-top-left-radius: 10px;
+    
+}
+
+#styled-table th,
+#styled-table td {
+    
+    padding: 12px 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    
+    
+}
+
+#styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    
+}
+
+#styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #565A97;
+    
+}
+
+#styled-table tbody tr:hover {
+    font-weight: 600;
+    color: #565A97;
+    background-color: #f1f1f1;
+    
+}
