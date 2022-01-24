@@ -17,6 +17,9 @@ if (isset($_SESSION['id'])) {
     $code = $dataEtudiant['code'];
     $photo = $dataEtudiant['photo'];
 
+    $_SESSION['nom'] = $nom;
+    $_SESSION['prenom'] = $prenom;
+
     // trouver tous les stages
     $requetteStages = "SELECT * FROM stage WHERE id_etudiant = $id_etudiant";
     $resultatStages = mysqli_query($link, $requetteStages);
@@ -265,11 +268,12 @@ if (isset($_SESSION['id'])) {
                 <p id="activity_title">Flux <b>d'activité</b></p>
                 <div id="feeds_container">
                     <?php
-                    $requetteNotif = "SELECT * FROM notification WHERE id_target='$id_etudiant' LIMIT 2";
+                    $requetteNotif = "SELECT * FROM notification n,enseignant e WHERE id_etudiant='$id_etudiant'
+                    AND sender=0 AND n.id_enseignant=e.id_enseignant LIMIT 2";
                     $resultatNotif = mysqli_query($link, $requetteNotif);
                     while ($dataNotif = mysqli_fetch_assoc($resultatNotif)) {
                         $contentNotif = $dataNotif['content'];
-                        $iconNotif = $dataNotif['icon'];
+                        $iconNotif = $dataNotif['photo'];
 
                         // calculate difference between 2 dates
                         $diff = abs(strtotime(date("Y-m-d")) - strtotime($dataNotif['date']));

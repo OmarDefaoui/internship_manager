@@ -5,9 +5,12 @@ $_SESSION['id'] = 1;
 if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
     include('../../connexion.php');
     $id_etudiant = $_SESSION['id'];
+    $nom_etudiant = $_SESSION['nom'];
+    $prenom_etudiant = $_SESSION['prenom'];
 
     $isNew = $_POST['isNew'];
     $id_stage = $_POST['id_stage'];
+    $id_enseignant = $_POST['id_enseignant'];
 
     $intitule_sujet = $_POST['intitule_sujet'];
     $description_sujet = $_POST['description_sujet'];
@@ -164,6 +167,17 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
         WHERE 
             id_stage = '$id_stage'";
         $resultatStage = mysqli_query($link, $requetteStage);
+
+        // notify techer that the student made a modification
+        if ($id_enseignant != -1) {
+            $notifDate = date("Y-m-d h:m:s");
+            $notifMessage = "<b>$nom_etudiant $prenom_etudiant</b> a fait une motification sur son stage";
+
+            // sender => 0: the sender is teacher; 1: the sender is student
+            $requette = "INSERT INTO notification (content,date,id_enseignant,id_etudiant,sender)
+                VALUES ('$notifMessage','$notifDate',$id_enseignant,$id_etudiant,1)";
+            $resultat = mysqli_query($link, $requette);
+        }
     }
 
     header('location: ../student/student.php');
