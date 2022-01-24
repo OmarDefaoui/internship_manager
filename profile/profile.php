@@ -1,265 +1,112 @@
-<!-- creer un compte, et redirection a la page authentification.php -->
-
 <?php
 session_start();
 include("../connexion.php");
 
-
-
 $id = $_SESSION['id'];
-$name = $_SESSION['nom'];
+$nom = $_SESSION['nom'];
 $prenom = $_SESSION['prenom'];
 $photo = $_SESSION['photo'];
-$mailo = $_SESSION['email'];
+$email = $_SESSION['email'];
+$profile = $_SESSION['profile'];
 
-
-if (isset($_POST['modifier'])) {
-  $code = $_POST['code'];
-  $email = $mailo;
-
-  // upload de la photo
-  if (isset($_FILES['fichier']) && $_FILES['fichier']['error'] == 0) {
-    $dossier = '../assets/assets/images/';
-    $temp_name = $_FILES['fichier']['tmp_name'];
-    if (!is_uploaded_file($temp_name)) {
-      exit("le fichier est introuvable");
-    }
-    if ($_FILES['fichier']['size'] >= 1000000) {
-      exit("Erreur, le fichier est volumineux");
-    }
-    $infosfichier = pathinfo($_FILES['fichier']['name']);
-    $extension_upload = $infosfichier['extension'];
-
-    $extension_upload = strtolower($extension_upload);
-    $extensions_autorisees = array('png', 'jpeg', 'jpg');
-    if (!in_array($extension_upload, $extensions_autorisees)) {
-      exit("Erreur, Veuillez inserer une image svp (extensions autorisées: png)");
-    }
-    $nom_photo = $name . $prenom . "." . $extension_upload;
-    if (!move_uploaded_file($temp_name, $dossier . $nom_photo)) {
-      exit("Problem dans le telechargement de l'image, Ressayez");
-    }
-    $photo1 = $nom_photo;
-  } else {
-    $photo1 = $photo;
-  }
-
-  $requette1 = "SELECT * FROM etudiant where email='$email'";
-  $resultat1 = mysqli_query($link, $requette1);
-  $etudiant = mysqli_fetch_assoc($resultat1);
-
-  $requette2 = "SELECT * FROM enseignant where email='$email'";
-  $resultat2 = mysqli_query($link, $requette2);
-  $enseignant = mysqli_fetch_assoc($resultat2);
-  
-  $requette3 = "SELECT * FROM administrateur where email='$email'";
-  $resultat3 = mysqli_query($link, $requette3);
-  $admin = mysqli_fetch_assoc($resultat3);
-
-  // enregistrement des donnees dans la BD
-
-  if ($etudiant != false) {
-    $requette9 = "UPDATE etudiant SET code='$code',photo='$photo1'where email='$email' ";
-    $resultat8 = mysqli_query($link, $requette9);
-    header('location: ../student/student/student.php');
-  } else if ($enseignant != false) {
-    $requette10 = "UPDATE enseignant SET code='$code',photo='$photo1'where email='$email' ";
-    $resultat10 = mysqli_query($link, $requette10);
-    header('location: ../enseignant/accueil_enseignant.php');
-  } else if ($admin != false) {
-    $requette11 = "UPDATE administrateur SET code='$code',photo='$photo1'where email='$email' ";
-    $resultat11 = mysqli_query($link, $requette11);
-    header('location: ../admin/accueil_admin.php');
-  }
-}
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-  <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
 
-  <title>odifier profile</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
+    <script src="../student/student/student.js"></script>
+
+    <link rel="stylesheet" href="../main_style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="../student/student/css/nav_bar_style.css">
+    <link rel="stylesheet" href="../student/student/css/right_section_style.css">
+
 </head>
 
 <body>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-  <div class="container">
-    <div class="row flex-lg-nowrap">
-      <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
-        <div class="card p-3">
-          <div class="e-navlist e-navlist--active-bg">
-            <ul class="nav">
-              <li class="nav-item"><a class="nav-link px-2 active" href="../login/index.php"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Home</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="row">
-          <div class="col mb-3">
-            <div class="card">
-              <div class="card-body">
-                <div class="e-profile">
-                  <div class="row">
-                    <div class="col-12 col-sm-auto mb-3">
-                      <div class="mx-auto" style="width: 140px;">
-                        <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                          <img src="../assets/assets/images/<?php echo $photo ?>" alt="" height="140px" width="140px">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
-                      <div class="text-center text-sm-left mb-2 mb-sm-0">
-                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"></h4>
-                        <p class="mb-0"></p>
-                        <div class="text-muted"><strong><?php echo $name . ' ' . $prenom ?></strong></div>
-                        <div class="mt-2">
-                          <input type="file" placeholder="Choisir un fichier" name="fichier" />
-                        </div>
-
-                      </div>
-
-                    </div>
-                  </div>
-                  <ul class="nav nav-tabs">
-
-                  </ul>
-                  <div class="tab-content pt-3">
-                    <div class="tab-pane active">
-                      <form action="#" method="post" class="form" novalidate="">
-                        <div class="row">
-                          <div class="col">
-                            <div class="row">
-                              <div class="col">
-                                <div class="form-group">
-
-                                  <label>Nom complet</label>
-                                  <input class="form-control" type="text" name="name" disabledplaceholder="" disabled value="<?php echo $name . ' ' . $prenom ?>">
-                                </div>
-                              </div>
-                              <div class="col">
-
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col">
-                                <div class="form-group">
-                                  <label for="email">Email institutionnelle</label>
-                                  <input class="form-control" disabled type="text" name="email" value="<?php echo $mailo ?>">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col mb-3">
-                                <div class="form-group">
-                                  <label>A propos</label>
-                                  <textarea class="form-control" rows="5" placeholder="si vous avez une reclamation n'hesitez pas de la cité!!"></textarea>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-12 col-sm-6 mb-3">
-                            <div class="mb-2"><b>Changer mot de passe</b></div>
-                            <div class="row">
-                              <div class="col">
-
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col">
-                                <div class="form-group">
-                                  <label for="code">Nouveau mot de passe</label>
-                                  <input class="form-control" type="password" name="code" placeholder="••••••">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col">
-                                <div class="form-group">
-                                  <label for="code">Confirmer <span class="d-none d-xl-inline">Mot de passe</span></label>
-                                  <input class="form-control" type="password" name="code" placeholder="••••••">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-12 col-sm-5 offset-sm-1 mb-3">
-
-                            <div class="row">
-                              <div class="col">
-
-                                <div class="custom-controls-stacked px-2">
-                                  <div class="custom-control custom-checkbox">
-
-                                  </div>
-                                  <div class="custom-control custom-checkbox">
-
-                                  </div>
-                                  <div class="custom-control custom-checkbox">
-
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col d-flex justify-content-end">
-                            <button class="btn btn-primary" type="submit" name="modifier">Modifier</button>
-                          </div>
-                        </div>
-                      </form>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-3 mb-3">
-            <div class="card mb-3">
-              <div class="card-body">
-                <div class="px-xl-3">
-                  <button class="btn btn-block btn-secondary">
-                    <i class="fa fa-sign-out"></i>
-                    <span>Logout</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h6 class="card-title font-weight-bold">Remember</h6>
-                <p class="card-text">Vous pouvez nous contactez si vous avez des problemes au cours de la modification.</p>
-                <button type="button" class="btn btn-primary">Contact Us</button>
-              </div>
-            </div>
-          </div>
+    <!-- top nav bar -->
+    <nav>
+        <div id="logo_container">
+            <img src="../assets/local_assets/images/logo.png" alt="Logo" id="logo" onClick="window.open('<?php echo (($profile != 2) ? '../student/student.php' : '#') ?>', '_self')">
         </div>
 
-      </div>
+        <div id="nav_center">
+            <h2>Stages</h2>
+            <div id="search_bar">
+                <input type="text" name="search" placeholder="Rechercher">
+                <img src="../assets/local_assets/images/search.png" alt="search" class="rounded_icon_light">
+            </div>
+        </div>
+
+        <div id="nav_right">
+            <img src="../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark" onClick="window.open('<?php echo (($profile != 2) ? '../chat/chat.php' : '#') ?>', '_self')">
+            <img src="../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark" onClick="window.open('<?php echo (($profile != 2) ? '../activity/activity.php' : '#') ?>', '_self')">
+        </div>
+    </nav>
+
+    <div id="content">
+        <!-- left nav bar -->
+        <aside id="left_side">
+            <div id="left_navition">
+                <li><a href="#" class="nav_active">
+                        <div></div><img src="../assets/local_assets/svg/home.svg" alt="">
+                    </a></li>
+                <li><a href="#">
+                        <div></div><img src="../assets/local_assets/svg/more.svg" alt="">
+                    </a></li>
+                <li><a href="#">
+                        <div></div><img src="../assets/local_assets/svg/share.svg" alt="">
+                    </a></li>
+                <li><a href="../../index.html">
+                        <div></div><img src="../assets/local_assets/svg/about.svg" alt="">
+                    </a></li>
+                <li><a href="../../profile/profile.php">
+                        <div></div><img src="../assets/local_assets/svg/settings.svg" alt="">
+                    </a></li>
+            </div>
+            <div id="modes">
+                <p>Modes</p>
+                <div id="mode_toggle">
+                    <label>
+                        <input class='toggle-checkbox' type='checkbox'></input>
+                        <div class='toggle-slot'>
+                            <div class='sun-icon-wrapper'>
+                                <div class="iconify sun-icon" data-icon="feather-sun" data-inline="false"></div>
+                            </div>
+                            <div class='toggle-button'></div>
+                            <div class='moon-icon-wrapper'>
+                                <div class="iconify moon-icon" data-icon="feather-moon" data-inline="false"></div>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
+
+            </div>
+        </aside>
+
+        <!-- main content -->
+        <main>
+            <div class="profile_container" style="width: 100%; height: 100%;">
+                <iframe src="content.php" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </main>
+
+        <!-- right side -->
+        <aside id="right_side">
+            <div id="hello_container">
+                <p>Bienvenue,<br><b><?php echo $prenom . ' ' . $nom ?></b></p>
+                <img src="../assets/assets/images/<?php echo $photo ?>" alt="user_icon">
+            </div>
+        </aside>
     </div>
-  </div>
-
-  <style type="text/css">
-    body {
-      margin-top: 20px;
-      background: #f8f8f8
-    }
-  </style>
-
-  <script type="text/javascript">
-
-  </script>
 </body>
 
 </html>
