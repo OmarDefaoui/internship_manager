@@ -120,7 +120,7 @@ if (isset($_SESSION['id'])) {
     <!-- top nav bar -->
     <nav>
         <div id="logo_container">
-            <img src="../../assets/local_assets/images/logo.png" alt="Logo" id="logo">
+            <img src="../../assets/local_assets/images/logo.png" alt="Logo" id="logo" onClick="window.open('../student/student.php', '_self')">
         </div>
 
         <div id="nav_center">
@@ -129,15 +129,15 @@ if (isset($_SESSION['id'])) {
                 <input type="text" name="search" placeholder="Rechercher">
                 <img src="../../assets/local_assets/images/search.png" alt="search" class="rounded_icon_light">
             </div>
-            <div id="add_button">
+            <div id="add_button" onClick="window.open('../internship/internship.php', '_self')">
                 <img src="../../assets/local_assets/images/add.png" alt="add" class="rounded_icon_dark">
                 <p>Ajouter un stage</p>
             </div>
         </div>
 
         <div id="nav_right">
-            <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark">
-            <img src="../../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark">
+            <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark" onClick="window.open('../chat/chat.php', '_self')">
+            <img src="../../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark" onClick="window.open('../activity/activity.php', '_self')">
         </div>
     </nav>
 
@@ -154,10 +154,10 @@ if (isset($_SESSION['id'])) {
                 <li><a href="#">
                         <div></div><img src="../../assets/local_assets/svg/share.svg" alt="">
                     </a></li>
-                <li><a href="#">
+                <li><a href="../../index.html">
                         <div></div><img src="../../assets/local_assets/svg/about.svg" alt="">
                     </a></li>
-                <li><a href="#">
+                <li><a href="../../profile/profile.php">
                         <div></div><img src="../../assets/local_assets/svg/settings.svg" alt="">
                     </a></li>
             </div>
@@ -219,7 +219,7 @@ if (isset($_SESSION['id'])) {
 
         <!-- right side -->
         <aside id="right_side">
-            <div id="hello_container">
+            <div id="hello_container" onClick="window.open('../../profile/profile.php', '_self')">
                 <p>Bienvenue,<br><b><?php echo $prenom . ' ' . $nom ?></b></p>
                 <img src="../../assets/assets/images/<?php echo $photo ?>" alt="user_icon">
             </div>
@@ -281,7 +281,7 @@ if (isset($_SESSION['id'])) {
                     <?php }
                     ?>
                 </div>
-                <a href="#" id="see_more">See more</a>
+                <a href="../activity/activity.php" id="see_more">See more</a>
             </div>
         </aside>
     </div>
