@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['send_message'])) {
     $message = $_POST['message'];
-    $date = date('Y-m-d h:m:sa');
+    $date = date('Y-m-d h:m:s');
     $sender = 1;
     $conversation_id = $_POST['conversation_id'];
     $convIndex = $_POST['conv_index'];
