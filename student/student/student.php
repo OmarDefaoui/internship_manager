@@ -174,10 +174,12 @@ if (isset($_SESSION['id'])) {
                             </div>
 
                             <!-- add button -->
-                            <?php if ($note_stage == NULL) { ?>
+                            <?php if ($note_stage == NULL && $est_valide != 1) { ?>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
                                     <path d="M12 5v14M5 12h14" />
                                 </svg>
+                            <?php } else if ($est_valide == 1 && $note_stage == NULL) { ?>
+                                <p class="internship_note" style="color: #ff942e; background-color: #ff932e1e;">Validé</p>
                             <?php } else { ?>
                                 <p class="internship_note" style="color: #ff942e; background-color: #ff932e1e;"><?php echo $note_stage ?> / 20</p>
                             <?php } ?>
