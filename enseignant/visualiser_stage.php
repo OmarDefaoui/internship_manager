@@ -126,7 +126,7 @@ if(isset($_SESSION["id"])){
 <body>
     <nav>
         <div id="logo_container">
-            <img src="../assets/local_assets/images/logo.png" alt="Logo" id="logo">
+            <img src="../assets/local_assets/images/logo.png" alt="Logo" id="logo"  onClick="window.open('accueil_enseignant.php', '_self')">
         </div>
         <div id="nav_center">
             <div id="titre">
@@ -140,7 +140,7 @@ if(isset($_SESSION["id"])){
         </div>
 
             <div id="nav_right">
-            <img src="../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark">
+            <img src="../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark"  onClick="window.open('chat/chat.php', '_self')">
             <img src="../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark">
         </div>
    
@@ -161,7 +161,7 @@ if(isset($_SESSION["id"])){
                         <div></div><img src="../assets/local_assets/svg/about.svg" alt="">
                     </a></li>
                 <li><a href="#">
-                        <div></div><img src="../assets/local_assets/svg/settings.svg" alt="">
+                        <div></div><img src="../assets/local_assets/svg/settings.svg" alt="" onClick="window.open('../profile/profile.php', '_self')">
                     </a></li>
             </div>
             <div id="modes">
@@ -214,6 +214,19 @@ if(isset($_SESSION["id"])){
                                     if(isset($_POST['encadrer'])){
                                         $inserer = "UPDATE stage set id_enseignant=$id_enseignant WHERE id_stage=$id_stage ";
                                         $inserer1 = mysqli_query($link,$inserer);
+                                        
+                                        $notifDate = date("Y-m-d h:m:s");
+                                        $notifMessage = "<b>Prof. $nom</b> a accepté de vous encadrer lors de votre stage";
+                                
+                                        // sender => 0: the sender is teacher; 1: the sender is student
+                                        $requette = "INSERT INTO notification (content,date,id_enseignant,id_etudiant,sender)
+                                                VALUES ('$notifMessage','$notifDate',$id_enseignant,$id_etudiant,0)";
+                                        $resultat = mysqli_query($link, $requette);
+
+                                        $requette = "INSERT INTO conversation (conversation_etudiant_id,conversation_enseignant_id)
+                                        VALUES ($id_etudiant,$id_enseignant)";
+                                        $resultat = mysqli_query($link, $requette);
+                                
                                     }
                                   
                                 }
@@ -227,6 +240,27 @@ if(isset($_SESSION["id"])){
                         $validation = $_POST['valider'];
                         $sql1 = "update stage set note=$note,est_valide=$validation where id_stage=$id_stage ";
                         $sql2 = mysqli_query($link,$sql1);
+                        if($note !=  NULL){
+                            $notifDate = date("Y-m-d h:m:s");
+                            $notifMessage = "<b>Prof. $nom</b> vous a attribuer la note $note/20 à votre stage";
+                    
+                            // sender => 0: the sender is teacher; 1: the sender is student
+                            $requette = "INSERT INTO notification (content,date,id_enseignant,id_etudiant,sender)
+                                    VALUES ('$notifMessage','$notifDate',$id_enseignant,$id_etudiant,0)";
+                            $resultat = mysqli_query($link, $requette);
+                        }
+                        if($validation == 1){
+                            $notifDate = date("Y-m-d h:m:s");
+                            $notifMessage = "<b>Prof. $nom</b> vous a validé le stage pour la soutenance ";
+                    
+                            // sender => 0: the sender is teacher; 1: the sender is student
+                            $requette = "INSERT INTO notification (content,date,id_enseignant,id_etudiant,sender)
+                                    VALUES ('$notifMessage','$notifDate',$id_enseignant,$id_etudiant,0)";
+                            $resultat = mysqli_query($link, $requette);
+                        }
+
+
+
                         echo"<form action='' method='POST'>
                     <label><strong>Note attribué :</strong></label>
                     <input type='text' name='note' id='note' value='$note'><br>
@@ -343,7 +377,7 @@ if(isset($_SESSION["id"])){
                                 $check_result = mysqli_query($link,$check);
                                 $check_values=mysqli_fetch_assoc($check_result);
                                     if($check_values && $check_values["premiere_version"]!=null) {
-                                        echo "<th class='conte'><button type='submit' name='first' class='button1'><a href='../assets/test/$premiere_version' download>Télécharger</button></th>";}
+                                        echo "<th class='conte'><button type='submit' name='first' class='button1'><a href='../assets/assets/versions_initials/$premiere_version' download>Télécharger</button></th>";}
                                     else echo"<th>En attente de dépot...</th>";
                                 
                                 ?>
@@ -358,7 +392,7 @@ if(isset($_SESSION["id"])){
                                 $check_result = mysqli_query($link,$check);
                                 $check_values=mysqli_fetch_assoc($check_result);
                                     if($check_values && $check_values["version_corrige"]!=null) {
-                                        echo "<th class='conte'> <button type='submit' name='second' class='button1'><a href='../assets/test/$version_corrige' download>Télécharger </button></th>";}
+                                        echo "<th class='conte'> <button type='submit' name='second' class='button1'><a href='../assets/assets/versions_corriges/$version_corrige' download>Télécharger </button></th>";}
                                     else echo"<th>En attente de dépot...</th>";
                                 
                                 ?>
@@ -372,7 +406,7 @@ if(isset($_SESSION["id"])){
                                 $check_result = mysqli_query($link,$check);
                                 $check_values=mysqli_fetch_assoc($check_result);
                                     if($check_values && $check_values["presentation"]!=null) {
-                                        echo "<th class='conte'> <button type='submit' name='third' class='button1'><a href='../assets/test/$presentation' download>Télécharger </button></th>";}
+                                        echo "<th class='conte'> <button type='submit' name='third' class='button1'><a href='../assets/assets/presentations/$presentation' download>Télécharger </button></th>";}
                                     else echo"<th>En attente de dépot...</th>";
                                 
                                 ?>
@@ -385,7 +419,7 @@ if(isset($_SESSION["id"])){
                                 $check_result = mysqli_query($link,$check);
                                 $check_values=mysqli_fetch_assoc($check_result);
                                     if($check_values && $check_values["attestation_stage"]!=null) {
-                                        echo "<th class='conte'> <button type='submit' name='fourth' class='button1'><a href='../assets/test/$attestation_stage' download>Télécharger </button></th>";}
+                                        echo "<th class='conte'> <button type='submit' name='fourth' class='button1'><a href='../assets/assets/attestations_stages/$attestation_stage' download>Télécharger </button></th>";}
                                     else echo"<th>En attente de dépot...</th>";
                                 
                                 ?>
@@ -398,7 +432,7 @@ if(isset($_SESSION["id"])){
                                 $check_result = mysqli_query($link,$check);
                                 $check_values=mysqli_fetch_assoc($check_result);
                                     if($check_values && $check_values["fiche_evalution"]!=null) {
-                                        echo "<th class='conte'> <button type='submit' name='fourth' class='button1'><a href='../assets/test/$fiche_evalution' download>Télécharger </button></th>";}
+                                        echo "<th class='conte'> <button type='submit' name='fourth' class='button1'><a href='../assets/assets/fiches_evaluations/$fiche_evalution' download>Télécharger </button></th>";}
                                     else echo"<th>En attente de dépot...</th>";
 
 
@@ -421,7 +455,7 @@ if(isset($_SESSION["id"])){
 
         </main>
         <aside id="right_side">
-            <div id="hello_container">
+            <div id="hello_container"  onClick="window.open('../profile/profile.php', '_self')">
                 <p>Bienvenue,Pr <br><b><?php echo  $nom ?></b></p>
                 <img src="../assets/local_assets/images/user_icon.png" alt="user_icon">
             </div>

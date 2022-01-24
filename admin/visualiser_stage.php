@@ -124,7 +124,7 @@ if(isset($_SESSION["id"])){
 <body>
     <nav>
         <div id="logo_container">
-            <img src="../assets/local_assets/images/logo.png" alt="Logo" id="logo">
+            <img src="../assets/local_assets/images/logo.png" alt="Logo" id="logo" onClick="window.open('accueil_enseignant.php', '_self')">
         </div>
         <div id="nav_center">
             <div id="titre">
@@ -147,7 +147,7 @@ if(isset($_SESSION["id"])){
         <aside id="left_side">
             <div id="left_navition">
                 <li><a href=accueil_admin.php" class="nav_active">
-                        <div></div><img src="../assets/local_assets/svg/home.svg" alt="">
+                        <div></div><img src="../assets/local_assets/svg/home.svg" alt="" onClick="window.open('accueil_enseignant.php', '_self')">
                     </a></li>
                 <li><a href="#">
                         <div></div><img src="../assets/local_assets/svg/more.svg" alt="">
@@ -159,7 +159,7 @@ if(isset($_SESSION["id"])){
                         <div></div><img src="../assets/local_assets/svg/about.svg" alt="">
                     </a></li>
                 <li><a href="#">
-                        <div></div><img src="../assets/local_assets/svg/settings.svg" alt="">
+                        <div></div><img src="../assets/local_assets/svg/settings.svg" alt="" onClick="window.open('../profile/profile.php', '_self')">
                     </a></li>
             </div>
             <div id="modes">
@@ -365,7 +365,7 @@ if(isset($_SESSION["id"])){
 
         </main>
         <aside id="right_side">
-            <div id="hello_container">
+            <div id="hello_container" onClick="window.open('../profile/profile.php', '_self')">
                 <p>Bienvenue</p>
                 <img src="../assets/local_assets/images/user_icon.png" alt="user_icon">
             </div>

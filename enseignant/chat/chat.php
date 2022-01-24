@@ -40,6 +40,18 @@ if (isset($_SESSION['id'])) {
       $chat[] = $dataChat;
     }
     $chats[] = $chat;
+     //compteur
+     $compteur = "select * from stage";
+     $compt1 = mysqli_query($link,$compteur);
+     $n1=mysqli_num_rows($compt1);
+     //
+     $compteur2 = "select * from stage where id_enseignant is null";
+     $compt2 = mysqli_query($link,$compteur2);
+     $n2=mysqli_num_rows($compt2);
+     //
+     $compteur3 = "select * from stage where id_enseignant =$id_enseignant";
+     $compt3 = mysqli_query($link,$compteur3);
+     $n3=mysqli_num_rows($compt3);
   }
 } else {
   header("location:login.php");
@@ -68,7 +80,7 @@ if (isset($_SESSION['id'])) {
   <!-- top nav bar -->
   <nav>
         <div id="logo_container">
-            <img src="../../assets/local_assets/images/logo.png" alt="Logo" id="logo">
+            <img src="../../assets/local_assets/images/logo.png" alt="Logo" id="logo" onClick="window.open('../accueil_enseignant.php', '_self')">
         </div>
 
         <div id="nav_center">
@@ -82,7 +94,7 @@ if (isset($_SESSION['id'])) {
         </div>
             
             <div id="nav_right">
-                <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark">
+                <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark" onClick="window.open('chat.php', '_self')">
                 <img src="../../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark">
             </div>
     </nav>
@@ -92,7 +104,7 @@ if (isset($_SESSION['id'])) {
     <aside id="left_side">
       <div id="left_navition">
         <li><a href="#" class="nav_active">
-            <div></div><img src="../../assets/local_assets/svg/home.svg" alt="">
+            <div></div><img src="../../assets/local_assets/svg/home.svg" alt="" onClick="window.open('../accueil_enseignant.php', '_self')">
           </a></li>
         <li><a href="#">
             <div></div><img src="../../assets/local_assets/svg/more.svg" alt="">
@@ -104,7 +116,7 @@ if (isset($_SESSION['id'])) {
             <div></div><img src="../../assets/local_assets/svg/about.svg" alt="">
           </a></li>
         <li><a href="../../profile/profile.php">
-            <div></div><img src="../../assets/local_assets/svg/settings.svg" alt="">
+            <div></div><img src="../../assets/local_assets/svg/settings.svg" alt="" onClick="window.open('../../profile/profile.php', '_self')">
           </a></li>
       </div>
       <div id="modes">
@@ -150,10 +162,19 @@ if (isset($_SESSION['id'])) {
             </div>
 
             <?php
-            for ($i = 0; $i < count($conversations); $i++) {
+             for ($i = 0; $i < count($conversations); $i++) {
+              // no messages in the conversation
+              if (count($chats[$i]) == 0) {
+                $lastMessage = array('message_date' => date("Y-m-d h:m:s"));
+                $convLastMessage = '';
+              } else {
+                $lastMessage = $chats[$i][count($chats[$i]) - 1];
+                $convLastMessage = $lastMessage['message_content'];
+              }
+
               $convSenderId = $conversations[$i]['conversation_etudiant_id'];
-              $lastMessage = $chats[$i][count($chats[$i]) - 1];
-              $convLastMessage = $lastMessage['message_content'];
+
+              // get sender icon and photo
 
               // get sender icon and photo
               $senderName = $conversations[$i]['nom'] . ' ' . $conversations[$i]['prenom'];
@@ -231,41 +252,37 @@ if (isset($_SESSION['id'])) {
 
     <!-- right side -->
     <aside id="right_side">
-      <div id="hello_container" onClick="window.open('../../profile/profile.php', '_self')">
-        <p>Bienvenue,Pr<br><b><?php echo  $nom ?></b></p>
-        <img src="../../assets/assets/images/<?php echo $photo ?>" alt="user_icon">
-      </div>
-
-      <?php
-      $stagesCount = $_SESSION['stagesCount'];
-      $stagesValideCount = $_SESSION['stagesValideCount'];
-      $stagesNotesCount = $_SESSION['stagesNotesCount'];
-      ?>
-      <div id="overview_container">
-        <div class="overview">
-          <p class="overview_name">Stages :</p>
-          <b class="overview_data"><?php echo $stagesCount ?></b>
+        <div id="hello_container" onClick="window.open('../../profile/profile.php', '_self')">
+            <p>Bienvenue,Pr <br><b><?php echo $nom ?> </b></p>
+            <img src="../../assets/local_assets/images/user_icon.png" alt="user_icon">
         </div>
 
-        <div class="overview">
-          <p class="overview_name">En cours :</p>
-          <b class="overview_data"><?php echo $stagesCount - $stagesNotesCount ?></b>
-        </div>
+        <div id="overview_container">
+                <div class="overview">
+                    <p class="overview_name">Nombre des stages :</p>
+                    <b class="overview_data"><?php echo $n1?></b>
+                </div>
+    
+                <div class="overview">
+                    <p class="overview_name">Total des encadrés :</p>
+                    <b class="overview_data"><?php echo ($n1-$n2)?></b>
+                </div>
+    
+                <div class="overview">
+                    <p class="overview_name">Total des non encadrés :</p>
+                    <b class="overview_data"><?php echo $n2?></b>
+                </div>
+    
+                <div class="overview">
+                    <p class="overview_name">Que vous encadrés</p>
+                    <b class="overview_data"><?php echo $n3?></b>
+                </div>
+            </div>
 
-        <div class="overview">
-          <p class="overview_name">Validés :</p>
-          <b class="overview_data"><?php echo $stagesValideCount ?></b>
-        </div>
-
-        <div class="overview">
-          <p class="overview_name">Notés :</p>
-          <b class="overview_data"><?php echo $stagesNotesCount ?></b>
-        </div>
-      </div>
-
-      <div id="activity_container">
-        <p id="activity_title">Flux <b>d'activité</b></p>
-        <div class="feed">
+        <div id="activity_container">
+        <p id="activity_title">Flux  <b>d'activité</b></p>
+                <div id="feeds_container">
+                <div class="feed">
                         <img src="../../assets/local_assets/images/face1.png" alt="user_icon">
                         <div class="text_container">
                             <p class="content"><b>Omar defaoui</b> a deposer la version corrigé du rapport</p>
@@ -278,9 +295,10 @@ if (isset($_SESSION['id'])) {
                             <p class="content"><b>Hassan ayoub benasser </b> a Déposer la présentation</p>
                             <p class="time">16 jours</p>
                         </div>
+                
+            </div>
+            <a href="#" id="see_more">See more</a>
         </div>
-        <a href="../activity/activity.php" id="see_more">See more</a>
-      </div>
     </aside>
   </div>
 

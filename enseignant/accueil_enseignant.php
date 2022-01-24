@@ -51,7 +51,7 @@ if(isset($_SESSION["id"])){
         or filiere like '%$search%'
         or technologies like '%$search%'
         or nom_encadrant like '%$search%'
-        or prenom_encadrant like '%$search%'
+        or prenom_encardrant like '%$search%'
         
               )";
         $stage_resultat = mysqli_query($link,$stage_requette);
@@ -154,7 +154,7 @@ switch($page){
     <!--navigation bar-->
     <nav>
         <div id="logo_container">
-            <img src="../assets/local_assets/images/logo.png" alt="Logo" id="logo">
+            <img src="../assets/local_assets/images/logo.png" alt="Logo" id="logo" onClick="window.open('accueil_enseignant.php', '_self')">
         </div>
 
         <div id="nav_center">
@@ -168,7 +168,7 @@ switch($page){
         </div>
             
             <div id="nav_right">
-                <img src="../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark">
+                <img src="../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark" onClick="window.open('chat/chat.php', '_self')">
                 <img src="../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark">
             </div>
     </nav>
@@ -188,7 +188,7 @@ switch($page){
                         <div></div><img src="../assets/local_assets/svg/about.svg" alt="">
                     </a></li>
                 <li><a href="#">
-                        <div></div><img src="../assets/local_assets/svg/settings.svg" alt="">
+                        <div></div><img src="../assets/local_assets/svg/settings.svg" alt="" onClick="window.open('../profile/profile.php', '_self')">
                     </a></li>
             </div>
             <div id="modes">
@@ -401,7 +401,7 @@ switch($page){
        </main>
        
        <aside id="right_side">
-        <div id="hello_container">
+        <div id="hello_container" onClick="window.open('../profile/profile.php', '_self')">
             <p>Bienvenue,Pr <br><b><?php echo $nom ?> </b></p>
             <img src="../assets/local_assets/images/user_icon.png" alt="user_icon">
         </div>
