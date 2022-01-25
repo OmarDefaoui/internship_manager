@@ -1125,7 +1125,7 @@ if ($uploadOk == 0) {
             $app = $row['0'];
             $nom = $row['1'];
             $prenom = $row['2'];
-            $email=$prenom.$nom."@uit.ac.ma";
+            $email=$prenom.".".$nom."@uit.ac.ma";
             $code="azerty";
             $fil=$row['3'];
             $req[$i]="INSERT INTO etudiant (id_etudiant,nom,prenom,email,code,filiere)
