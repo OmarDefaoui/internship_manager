@@ -9,6 +9,7 @@ $photo = $_SESSION['photo'];
 $email = $_SESSION['email'];
 $profile = $_SESSION['profile'];
 
+
 ?>
 
 <!DOCTYPE html>

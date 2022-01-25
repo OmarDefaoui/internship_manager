@@ -9,6 +9,8 @@ $name = $_SESSION['nom'];
 $prenom = $_SESSION['prenom'];
 $photo = $_SESSION['photo'];
 $email = $_SESSION['email'];
+$code = $_SESSION['code'];
+
 
 if ($photo == NULL)
   $photo = 'inconnu.jpg';
@@ -17,7 +19,8 @@ $isNotMatchPass = false;
 
 if (isset($_POST['modifier'])) {
   if (isset($_POST['confirmer_code']) && isset($_POST['confirmer_code'])) {
-    $code = $_POST['code'];
+    if($_POST['code']!='azerty'){
+    $code = $_POST['code'];}
     $confirmer_code = $_POST['confirmer_code'];
     if (strcmp($code, $confirmer_code) == 0) {
 
