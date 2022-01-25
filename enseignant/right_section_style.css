@@ -18,6 +18,7 @@
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 0 2px var(--color-grey-medium);
+    cursor: pointer;
 }
 
 #hello_container img {
@@ -86,6 +87,12 @@
     width: 35px;
     height: 35px;
     margin-right: 10px;
+    border-radius: 50%;
+    background-color: var(--color-grey-medium);
+}
+
+#activity_container #feeds_container .feed .text_container {
+    flex: 1;
 }
 
 #activity_container #feeds_container .feed .text_container .time {

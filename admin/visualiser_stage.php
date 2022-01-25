@@ -149,9 +149,7 @@ if(isset($_SESSION["id"])){
                 <li><a href=accueil_admin.php" class="nav_active">
                         <div></div><img src="../assets/local_assets/svg/home.svg" alt="" onClick="window.open('accueil_enseignant.php', '_self')">
                     </a></li>
-                <li><a href="#">
-                        <div></div><img src="../assets/local_assets/svg/more.svg" alt="">
-                    </a></li>
+               
                 <li><a href="#">
                         <div></div><img src="../assets/local_assets/svg/share.svg" alt="">
                     </a></li>
@@ -160,6 +158,9 @@ if(isset($_SESSION["id"])){
                     </a></li>
                 <li><a href="#">
                         <div></div><img src="../assets/local_assets/svg/settings.svg" alt="" onClick="window.open('../profile/profile.php', '_self')">
+                    </a></li>
+                    <li><a href="../deconnexion.php">
+                        <div></div><img src="../assets/local_assets/svg/signout.svg" alt="">
                     </a></li>
             </div>
             <div id="modes">
@@ -406,6 +407,13 @@ if(isset($_SESSION["id"])){
                         <p class="titre">Importer les notes :</p>
                         <a href="csv.php"><button class="bn632-hover bn22">EXCEL</button></a>
                     </div>
+                   <div class="exel">
+                <form action="#" method="post" enctype="multipart/form-data">
+            <p class="titre"> Importer liste d'étudiants :</p>
+            <input type="file" name="fileToUpload" id="fileToUpload" class="">
+            <input type="submit" value="importer" name="submit" class="bn632-hover bn22">
+        </form>
+                </div>
                 </div>
             </div>
 
