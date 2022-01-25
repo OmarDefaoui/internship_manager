@@ -385,14 +385,9 @@ switch($page){
                             </div>
             </div>
             <div class="card_footer">
-            <img src="<?php echo '../assets/assets/images/' . ($photo == NULL ? 'inconnu.jpg' : $photo) ?>" alt="participant">
-                                <?php if ($photo_binome != NULL) { ?><img src="<?php echo '../assets/assets/images/' . ($photo_binome == NULL ? 'inconnu.jpg' : $photo_binome) ?>" alt="participant"><?php } ?>
-                                <?php if ($photo_enseignant != NULL) { ?><img src="<?php echo '../assets/assets/images/' . ($photo_enseignant == NULL ? 'inconnu.jpg' : $photo_enseignant) ?>" alt="participant"><?php } ?>
-                                <button class="add_participant" style="color: #ff942e; background-color: #ff932e1e;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
-                                        <path d="M12 5v14M5 12h14" />
-                                    </svg>
-                                </button>
+            <img src="<?php echo '../assets/assets/images/' . ($photo == NULL ? 'inconnu.jpg' : $photo) ?>" alt="participant" width="20px" height='20px'>
+                                <?php if ($photo_binome != NULL) { ?><img src="<?php echo '../assets/assets/images/' . ($photo_binome == NULL ? 'inconnu.jpg' : $photo_binome) ?>"width="20px" height='20px' alt="participant"><?php } ?>
+                                
                 <p class="internship_duration" style="color: #ff942e; background-color: #ff932e1e;"><?php echo $duree ?> mois</p>
             </div>
         </div>
