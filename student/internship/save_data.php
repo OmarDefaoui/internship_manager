@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
     include('../../connexion.php');
-
+    
     $id_etudiant = $_SESSION['id'];
     $prenom = $_SESSION['prenom'];
     $nom = $_SESSION['nom'];

@@ -1,5 +1,5 @@
 <?php
-include('connexion.php');
+include('../connexion.php');
 
 $requette = "SELECT count(*) AS count FROM etudiant";
 $resultat = mysqli_query($link, $requette);

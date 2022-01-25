@@ -1,5 +1,5 @@
 <?php
-include("connexion.php");
+include("../connexion.php");
 if(isset($_POST['action'])){
     $stage_requette = "SELECT *FROM `stage`,etudiant,entreprise WHERE etudiant.id_etudiant=stage.id_etudiant and stage.id_entreprise=entreprise.id_entreprise and id_enseignant is not null  "; 
     if(isset($_POST['Ginfo'])){

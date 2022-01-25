@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_SESSION["id"])){
-    include("connexion.php");
+    include("../connexion.php");
     $id_administrateur = $_SESSION["id"];
      //passer données dans la session
 
