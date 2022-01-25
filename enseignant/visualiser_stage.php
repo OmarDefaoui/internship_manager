@@ -151,9 +151,7 @@ if(isset($_SESSION["id"])){
                 <li><a href="accueil_enseignant.php" class="nav_active">
                         <div></div><img src="../assets/local_assets/svg/home.svg" alt="">
                     </a></li>
-                <li><a href="#">
-                        <div></div><img src="../assets/local_assets/svg/more.svg" alt="">
-                    </a></li>
+                
                 <li><a href="#">
                         <div></div><img src="../assets/local_assets/svg/share.svg" alt="">
                     </a></li>
@@ -162,6 +160,9 @@ if(isset($_SESSION["id"])){
                     </a></li>
                 <li><a href="#">
                         <div></div><img src="../assets/local_assets/svg/settings.svg" alt="" onClick="window.open('../profile/profile.php', '_self')">
+                    </a></li>
+                    <li><a href="../deconnexion.php">
+                        <div></div><img src="../assets/local_assets/svg/signout.svg" alt="">
                     </a></li>
             </div>
             <div id="modes">
@@ -457,7 +458,7 @@ if(isset($_SESSION["id"])){
         <aside id="right_side">
             <div id="hello_container"  onClick="window.open('../profile/profile.php', '_self')">
                 <p>Bienvenue,Pr <br><b><?php echo  $nom ?></b></p>
-                <img src="../assets/local_assets/images/user_icon.png" alt="user_icon">
+                <img src="../assets/assets/images/<?php echo $photo?>" alt="user_icon">
             </div>
     
             <div id="overview_container">
