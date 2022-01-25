@@ -1,24 +1,12 @@
 <?php
 session_start();
-// temp
-
 if (isset($_SESSION['id'])) {
     include('../../connexion.php');
+
     $id_etudiant = $_SESSION['id'];
-
-    // temp [to be passed in session]
-    $requetteEtudiant = "SELECT * FROM etudiant WHERE id_etudiant = $id_etudiant";
-    $resultatEtudiant = mysqli_query($link, $requetteEtudiant);
-    $dataEtudiant = mysqli_fetch_assoc($resultatEtudiant);
-    $id_etudiant = $dataEtudiant['id_etudiant'];
-    $prenom = $dataEtudiant['prenom'];
-    $nom = $dataEtudiant['nom'];
-    $email = $dataEtudiant['email'];
-    $code = $dataEtudiant['code'];
-    $photo = $dataEtudiant['photo'];
-
-    $_SESSION['nom'] = $nom;
-    $_SESSION['prenom'] = $prenom;
+    $prenom = $_SESSION['prenom'];
+    $nom = $_SESSION['nom'];
+    $photo = $_SESSION['photo'];
 
     // trouver tous les stages
     $requetteStages = "SELECT * FROM stage WHERE id_etudiant = $id_etudiant";

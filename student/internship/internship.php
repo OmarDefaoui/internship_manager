@@ -3,18 +3,11 @@ session_start();
 
 if (isset($_SESSION['id'])) {
     include('../../connexion.php');
-    $id_etudiant = $_SESSION['id'];
 
-    // temp [to be passed in session]
-    $requetteEtudiant = "SELECT * FROM etudiant WHERE id_etudiant = $id_etudiant";
-    $resultatEtudiant = mysqli_query($link, $requetteEtudiant);
-    $dataEtudiant = mysqli_fetch_assoc($resultatEtudiant);
-    $id_etudiant = $dataEtudiant['id_etudiant'];
-    $prenom = $dataEtudiant['prenom'];
-    $nom = $dataEtudiant['nom'];
-    $email = $dataEtudiant['email'];
-    $code = $dataEtudiant['code'];
-    $photo = $dataEtudiant['photo'];
+    $id_etudiant = $_SESSION['id'];
+    $prenom = $_SESSION['prenom'];
+    $nom = $_SESSION['nom'];
+    $photo = $_SESSION['photo'];
 
     if (isset($_GET['id_stage'])) {
         $isNew = False;

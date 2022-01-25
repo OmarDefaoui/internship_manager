@@ -1,21 +1,13 @@
 <?php
 session_start();
-// temp
 
 if (isset($_SESSION['id'])) {
   include('../../connexion.php');
-  $id_etudiant = $_SESSION['id'];
 
-  // temp [to be passed in session]
-  $requetteEtudiant = "SELECT * FROM etudiant WHERE id_etudiant = $id_etudiant";
-  $resultatEtudiant = mysqli_query($link, $requetteEtudiant);
-  $dataEtudiant = mysqli_fetch_assoc($resultatEtudiant);
-  $id_etudiant = $dataEtudiant['id_etudiant'];
-  $prenom = $dataEtudiant['prenom'];
-  $nom = $dataEtudiant['nom'];
-  $email = $dataEtudiant['email'];
-  $code = $dataEtudiant['code'];
-  $photo = $dataEtudiant['photo'];
+  $id_etudiant = $_SESSION['id'];
+  $prenom = $_SESSION['prenom'];
+  $nom = $_SESSION['nom'];
+  $photo = $_SESSION['photo'];
 
   // save chat message in db if is message sended
   // and get active conversation index
@@ -83,7 +75,7 @@ if (isset($_SESSION['id'])) {
     </div>
 
     <div id="nav_right">
-      <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark" >
+      <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark">
       <img src="../../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark" onClick="window.open('../activity/activity.php', '_self')">
     </div>
   </nav>

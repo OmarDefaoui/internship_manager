@@ -1,12 +1,13 @@
 <?php
 session_start();
-// temp
-$_SESSION['id'] = 1;
+
 if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
     include('../../connexion.php');
+    
     $id_etudiant = $_SESSION['id'];
-    $nom_etudiant = $_SESSION['nom'];
-    $prenom_etudiant = $_SESSION['prenom'];
+    $prenom = $_SESSION['prenom'];
+    $nom = $_SESSION['nom'];
+    $photo = $_SESSION['photo'];
 
     $isNew = $_POST['isNew'];
     $id_stage = $_POST['id_stage'];
