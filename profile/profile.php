@@ -56,7 +56,9 @@ $profile = $_SESSION['profile'];
         <!-- left nav bar -->
         <aside id="left_side">
             <div id="left_navition">
+                
                 <li><a href="#">
+                    
                         <div></div><img src="../assets/local_assets/svg/home.svg" alt="">
                     </a></li>
                 <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.com/" target="_blank">
