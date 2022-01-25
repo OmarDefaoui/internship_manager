@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
     include('../../connexion.php');
-    
+
     $id_etudiant = $_SESSION['id'];
     $prenom = $_SESSION['prenom'];
     $nom = $_SESSION['nom'];
@@ -98,7 +98,8 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
                 and adresse='$adresse_entreprise' and tel='$tel_entreprise' 
                 and ville='$ville_entreprise'";
             $resultat = mysqli_query($link, $requette);
-            $id_entreprise = mysqli_fetch_assoc($resultat)['id_entreprise'];
+            $data = mysqli_fetch_assoc($resultat);
+            $id_entreprise = $data['id_entreprise'];
         }
     }
 
