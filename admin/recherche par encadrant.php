@@ -72,7 +72,7 @@ else{
     <!--navigation bar-->
     <nav>
         <div id="logo_container">
-            <img src="../assets/local_assets/images/logo.png" alt="Logo" id="logo" onClick="window.open('accueil_enseignant.php', '_self')">
+            <img src="../assets/local_assets/images/logo.png" alt="Logo" id="logo" onClick="window.open('accueil_admin.php', '_self')">
         </div>
 
         <div id="nav_center">
@@ -211,7 +211,7 @@ else{
                     <p class="titre">Rechercher les etudiant  :</p>
                     <a href="recherche par encadrant.php"><button class="bn632-hover bn23" class='b_rechercher'>Par encadrant</button></a>
                     <a href="recherche_etudiant_sans_encadrant.php"><button class="bn632-hover bn23" class='b_rechercher'>Sans encadrant</button></a>
-                    <a href="recherche_rapport_non_deposer.php"><button class="bn632-hover bn23" class='b_rechercher'>Sapport non deposer</button></a>
+                    <a href="recherche_rapport_non_deposer.php"><button class="bn632-hover bn23" class='b_rechercher'>Rapport non deposer</button></a>
                 </div>
 
 

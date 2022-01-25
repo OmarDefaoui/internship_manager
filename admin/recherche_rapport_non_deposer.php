@@ -73,7 +73,7 @@ else{
     <!--navigation bar-->
     <nav>
         <div id="logo_container">
-            <img src="../assets/local_assets/images/logo.png" alt="Logo" id="logo" onClick="window.open('accueil_enseignant.php', '_self')">
+            <img src="../assets/local_assets/images/logo.png" alt="Logo" id="logo" onClick="window.open('accueil_admin.php', '_self')">
         </div>
 
         <div id="nav_center">
