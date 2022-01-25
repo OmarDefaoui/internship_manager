@@ -141,3 +141,21 @@
     padding: 6px 16px;
     font-weight: 700;
 }
+
+@media all and (max-width: 700px) {
+    .card {
+        width: calc(50% - 60px);
+        padding: 20px;
+
+        margin: 20px 10px 0 10px;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .card {
+        width: calc(100% - 60px);
+        padding: 20px;
+
+        margin: 20px 10px 0 10px;
+    }
+}

@@ -92,3 +92,62 @@ main {
     --width-right-nav-top: 16vw;
     --width-right-nav-bottom: 18vw;
 }
+
+@media all and (max-width: 1200px) {
+    :root {
+        --width-right-section: 2vw;
+        --width-center-section: 92vw;
+    }
+
+    #right_side {
+        visibility: hidden;
+    }
+
+    #nav_right {
+        visibility: hidden;
+    }
+}
+
+@media all and (max-width: 900px) {
+    :root {
+        --height-top-nav: 8vw;
+    }
+}
+
+@media all and (max-width: 800px) {
+    :root {
+        --height-top-nav: 8vw;
+        --width-left-section: 2vw;
+        --width-center-section: 96vw;
+    }
+
+    #left_side {
+        visibility: hidden;
+    }
+
+    #search_bar {
+        visibility: hidden;
+    }
+
+    #logo_container {
+        margin-left: 4vw;
+    }
+}
+
+@media all and (max-width: 650px) {
+    :root {
+        --height-top-nav: 12vw;
+    }
+
+    #logo_container {
+        margin-left: 6vw;
+    }
+
+    #add_button {
+        width: 20px;
+    }
+
+    #add_button p {
+        display: none;
+    }
+}
