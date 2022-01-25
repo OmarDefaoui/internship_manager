@@ -53,6 +53,7 @@ main {
     border: none;
     font-family: 'Montserrat', sans-serif;
     outline: none;
+    background-color: var(--color-white);
 }
 
 /* discussion card */
@@ -179,6 +180,7 @@ main {
     max-width: 30vw;
     word-wrap: break-word;
     white-space:pre-wrap;
+    color: black;
 }
 
 .chat_container .text-only {
@@ -230,6 +232,7 @@ main {
     border-radius: 50px;
     flex: 1;
     background-color: var(--color-white);
+    color: var(--color-black);
 }
 
 .chat_container .footer-chat #send_message {
@@ -241,5 +244,5 @@ main {
     border-radius: 50px;
     background-color: var(--color-purple);
     cursor: pointer;
-    color: var(--color-white);
+    color: white;
 }

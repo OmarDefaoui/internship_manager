@@ -84,7 +84,7 @@ if (isset($_SESSION['id'])) {
     <!-- left nav bar -->
     <aside id="left_side">
       <div id="left_navition">
-        <li><a href="#" class="nav_active">
+        <li><a href="../student/student.php" class="nav_active">
             <div></div><img src="../../assets/local_assets/svg/home.svg" alt="">
           </a></li>
         <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.com/" target="_blank">
