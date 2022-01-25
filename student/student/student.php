@@ -23,7 +23,8 @@ if (isset($_SESSION['id'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship Manager</title>
+    <link rel="shortcut icon" href="../../assets/local_assets/images/logo.png" type="image/png">
+    <title>Gestion Stages</title>
 
     <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
     <script src="student.js"></script>

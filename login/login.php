@@ -87,6 +87,7 @@ mysqli_close($link);
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/monstyle.css">
 
+  <link rel="shortcut icon" href="../assets/local_assets/images/logo.png" type="image/png">
   <title>Gestion Stages</title>
 
 </head>
@@ -97,14 +98,13 @@ mysqli_close($link);
       <div class="menu">
         <ul>
           <li><a href="#">ACCEUIL</a></li>
-          <li><a href="#">A PROPOS</a></li>
-          <li><a href="#">SERVICES</a></li>
-          <li id="aa"><a href="#">NOUS CONTACTEZ</a></li>
-          <li><a href="#">UTILISATION</a></li>
+          <li><a href="../index.php">A PROPOS</a></li>
+          <li><a href="../index.php">SERVICES</a></li>
+          <li id="aa"><a href="mailto: omar.defaoui@uit.ac.ma">NOUS CONTACTEZ</a></li>
+          <li><a href="../index.php">UTILISATION</a></li>
         </ul>
       </div>
     </div>
-
   </div>
 
   <div class="content">
@@ -146,15 +146,6 @@ mysqli_close($link);
                 </div>
 
                 <input id="log" type="submit" name="login" value="Se connecter" class="btn btn-block btn-primary">
-
-                <span class="d-block text-left my-4 text-muted">&mdash; Ou se connecter avec &mdash;</span>
-
-                <div class="social-login">
-                  
-                  <a href="#" class="google">
-                    <span class="icon-google mr-3"></span>
-                  </a>
-                </div>
               </form>
             </div>
           </div>
