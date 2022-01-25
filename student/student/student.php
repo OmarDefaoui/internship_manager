@@ -148,7 +148,7 @@ if (isset($_SESSION['id'])) {
                     // calculate progress stats
                     $stagesCount++;
                     $stagesNotesCount += $note_stage != NULL ? 1 : 0;
-                    $stagesValideCount += $est_valide != NULL ? 1 : 0;
+                    $stagesValideCount += $est_valide == 1 ? 1 : 0;
                     $progressValue = ($id_entreprise != NULL ? 10 : 0) + ($intitule_sujet != NULL ? 5 : 0) +
                         ($premiere_version != NULL ? 10 : 0) + ($version_corrige != NULL ? 10 : 0) +
                         ($presentation != NULL ? 10 : 0) + ($attestation_stage != NULL ? 5 : 0) +
