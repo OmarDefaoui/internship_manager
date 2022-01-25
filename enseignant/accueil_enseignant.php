@@ -21,11 +21,11 @@ if(isset($_SESSION["id"])){
      if(isset($_POST['search']) && !empty($_POST['filtre'])){
         $stage_requette = "SELECT *FROM `stage`,etudiant,entreprise WHERE etudiant.id_etudiant=stage.id_etudiant and stage.id_entreprise=entreprise.id_entreprise and id_enseignant is  null  "; 
         if(in_array("G.info",$_POST['filtre'])&& !in_array("G.indus",$_POST['filtre'])){
-            $stage_requette .="AND filiere='Informatique'";
+            $stage_requette .="AND filiere='GI'";
         }
     
         if(in_array("G.indus",$_POST['filtre'])&& !in_array("G.info",$_POST['filtre'])){
-            $stage_requette .="AND filiere='Industrielle'";
+            $stage_requette .="AND filiere='Gindus'";
         }
         if(in_array("PFA",$_POST['filtre'])){
             $stage_requette .="AND type='PFA'";
@@ -250,13 +250,13 @@ switch($page){
          ?>
     
        <label for="task1" class="task">
-            <input type="checkbox" name="filtre[]" value="G.info">
-            G.info
+            <input type="checkbox" name="filtre[]" value="GI">
+            GI
             
      </label>
        <label for="task2" class="task">
-            <input type="checkbox" name="filtre[]" value='G.indus'>
-            G.indus
+            <input type="checkbox" name="filtre[]" value='Gindus'>
+            Gindus
             
      </label>
        <label for="task3" class="task">
@@ -385,14 +385,14 @@ switch($page){
                             </div>
             </div>
             <div class="card_footer">
-                <div class="participants">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
-                        alt="participant">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
-                        alt="participant">
-                    <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTB8fG1hbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                        alt="participant">
-                </div>
+            <img src="<?php echo '../assets/assets/images/' . ($photo == NULL ? 'inconnu.jpg' : $photo) ?>" alt="participant">
+                                <?php if ($photo_binome != NULL) { ?><img src="<?php echo '../assets/assets/images/' . ($photo_binome == NULL ? 'inconnu.jpg' : $photo_binome) ?>" alt="participant"><?php } ?>
+                                <?php if ($photo_enseignant != NULL) { ?><img src="<?php echo '../assets/assets/images/' . ($photo_enseignant == NULL ? 'inconnu.jpg' : $photo_enseignant) ?>" alt="participant"><?php } ?>
+                                <button class="add_participant" style="color: #ff942e; background-color: #ff932e1e;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                        <path d="M12 5v14M5 12h14" />
+                                    </svg>
+                                </button>
                 <p class="internship_duration" style="color: #ff942e; background-color: #ff932e1e;"><?php echo $duree ?> mois</p>
             </div>
         </div>

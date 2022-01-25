@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION["id"]=1;
+
 if(isset($_SESSION["id"])){
     include("connexion.php");
     $id_administrateur = $_SESSION["id"];
@@ -153,9 +153,9 @@ else{
             </thead>
             <tbody>
                 <?php 
-                  $sql="SELECT et.id_etudiant as appo,et.nom as nom,et.prenom as prenom, s.id_stage as stage
+                  $sql="SELECT distinct et.id_etudiant as appo,et.nom as nom,et.prenom as prenom, s.id_stage as stage
                     FROM etudiant as et,enseignant as en,stage as s 
-                    where (et.id_etudiant=s.id_etudiant) and (s.id_enseignant IS NULL);";
+                    where (et.id_etudiant=s.id_etudiant) and (s.id_enseignant IS NULL) and (s.id_etudiant is not null);";
                     
                     $result = mysqli_query($link,$sql);
                     while($data=mysqli_fetch_assoc($result)){

@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION["id"]=1;
+
 if(isset($_SESSION["id"])){
     include("connexion.php");
     $id_administrateur = $_SESSION["id"];

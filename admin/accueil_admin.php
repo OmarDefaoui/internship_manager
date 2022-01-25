@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION["id"]=1;
+
 if(isset($_SESSION["id"])){
     include("connexion.php");
     $id_administrateur = $_SESSION["id"];
@@ -53,7 +53,7 @@ $valider="SELECT count(*) as nb
 
 $deposer="SELECT count(*) as nb
     FROM stage as s 
-    where version_corrige is not NULL and s.est_valide!='1' ;";
+    where version_corrige is  NULL  ;";
     
     $resultdeposer = mysqli_query($link,$deposer);
     $datadeposer=mysqli_fetch_assoc($resultdeposer);
@@ -61,7 +61,7 @@ $deposer="SELECT count(*) as nb
 
 $nondeposer="SELECT count(*) as nb
     FROM stage as s 
-    where version_corrige is NULL  ;";
+    where version_corrige is not NULL  ;";
     
     $resultnondeposer = mysqli_query($link,$nondeposer);
     $datanondeposer=mysqli_fetch_assoc($resultnondeposer);

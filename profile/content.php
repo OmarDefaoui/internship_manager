@@ -86,7 +86,7 @@ if (isset($_POST['modifier'])) {
         $requette11 = "UPDATE administrateur SET code='$code',photo='$photo1'where email='$email' ";
         $resultat11 = mysqli_query($link, $requette11);
         echo "<script type='text/javascript'>
-    window.top.location = '../admin/accueil_admin.php/student.php';
+    window.top.location = '../admin/accueil_admin.php';
   </script>";
       }
     } else {
