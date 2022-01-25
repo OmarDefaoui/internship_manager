@@ -150,12 +150,7 @@ mysqli_close($link);
                 <span class="d-block text-left my-4 text-muted">&mdash; Ou se connecter avec &mdash;</span>
 
                 <div class="social-login">
-                  <a href="#" class="facebook">
-                    <span class="icon-facebook mr-3"></span>
-                  </a>
-                  <a href="#" class="twitter">
-                    <span class="icon-twitter mr-3"></span>
-                  </a>
+                  
                   <a href="#" class="google">
                     <span class="icon-google mr-3"></span>
                   </a>
