@@ -180,7 +180,7 @@ switch($page){
                         <div></div><img src="../assets/local_assets/svg/home.svg" alt="">
                     </a></li>
                 
-                <li><a href="#">
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.gestionstage.rf.gd/" target="_blank">
                         <div></div><img src="../assets/local_assets/svg/share.svg" alt="">
                     </a></li>
                 <li><a href="#">

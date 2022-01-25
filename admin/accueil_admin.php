@@ -167,7 +167,7 @@ else{
                         <div></div><img src="../assets/local_assets/svg/home.svg" alt="" onClick="window.open('accueil_admin.php', '_self')">
                     </a></li>
                
-                <li><a href="#">
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.gestionstage.rf.gd/" target="_blank">
                         <div></div><img src="../assets/local_assets/svg/share.svg" alt="">
                     </a></li>
                 <li><a href="#">
