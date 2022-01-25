@@ -57,8 +57,7 @@ $profile = $_SESSION['profile'];
         <aside id="left_side">
             <div id="left_navition">
 
-                <li><a href="#">
-
+                <li><a href="profile_to_home.php">
                         <div></div><img src="../assets/local_assets/svg/home.svg" alt="">
                     </a></li>
                 <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.gestionstage.rf.gd/" target="_blank">

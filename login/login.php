@@ -141,10 +141,6 @@ mysqli_close($link);
                     <div class="control__indicator"></div>
                   </label>
                   <span class="ml-auto"><a href="#" class="forgot-pass">Mot de passe oublié</a></span>
-                  <div> <?php
-
-
-                        ?></div>
                 </div>
 
                 <input id="log" type="submit" name="login" value="Se connecter" class="btn btn-block btn-primary">
