@@ -12,7 +12,7 @@ if (isset($_SESSION['id'])) {
     $requetteStages = "SELECT * FROM stage WHERE id_etudiant = $id_etudiant";
     $resultatStages = mysqli_query($link, $requetteStages);
 } else {
-    header("location: ../../index.html");
+    header("location: ../../index.php");
 }
 ?>
 
@@ -66,17 +66,17 @@ if (isset($_SESSION['id'])) {
                 <li><a href="#" class="nav_active">
                         <div></div><img src="../../assets/local_assets/svg/home.svg" alt="">
                     </a></li>
-                <li><a href="#">
-                        <div></div><img src="../../assets/local_assets/svg/more.svg" alt="">
-                    </a></li>
-                <li><a href="#">
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.com/" target="_blank">
                         <div></div><img src="../../assets/local_assets/svg/share.svg" alt="">
                     </a></li>
-                <li><a href="../../index.html">
+                <li><a href="../../index.php">
                         <div></div><img src="../../assets/local_assets/svg/about.svg" alt="">
                     </a></li>
                 <li><a href="../../profile/profile.php">
                         <div></div><img src="../../assets/local_assets/svg/settings.svg" alt="">
+                    </a></li>
+                <li><a href="../../deconnexion.php">
+                        <div></div><img src="../../assets/local_assets/svg/signout.svg" alt="">
                     </a></li>
             </div>
             <div id="modes">

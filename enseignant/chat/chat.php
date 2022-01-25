@@ -113,7 +113,7 @@ if (isset($_SESSION['id'])) {
         <li><a href="#">
             <div></div><img src="../../assets/local_assets/svg/share.svg" alt="">
           </a></li>
-        <li><a href="../../index.html">
+        <li><a href="../../index.php">
             <div></div><img src="../../assets/local_assets/svg/about.svg" alt="">
           </a></li>
         <li><a href="../../profile/profile.php">

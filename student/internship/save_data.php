@@ -183,7 +183,7 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
 
     header('location: ../student/student.php');
 } else {
-    header("location: ../../index.html");
+    header("location: ../../index.php");
 }
 
 // upload file
