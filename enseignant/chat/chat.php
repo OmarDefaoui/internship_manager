@@ -40,19 +40,20 @@ if (isset($_SESSION['id'])) {
       $chat[] = $dataChat;
     }
     $chats[] = $chat;
-     //compteur
-     $compteur = "select * from stage";
-     $compt1 = mysqli_query($link,$compteur);
-     $n1=mysqli_num_rows($compt1);
-     //
-     $compteur2 = "select * from stage where id_enseignant is null";
-     $compt2 = mysqli_query($link,$compteur2);
-     $n2=mysqli_num_rows($compt2);
-     //
-     $compteur3 = "select * from stage where id_enseignant =$id_enseignant";
-     $compt3 = mysqli_query($link,$compteur3);
-     $n3=mysqli_num_rows($compt3);
+     
   }
+  //compteur
+  $compteur = "select * from stage";
+  $compt1 = mysqli_query($link,$compteur);
+  $n1=mysqli_num_rows($compt1);
+  //
+  $compteur2 = "select * from stage where id_enseignant is null";
+  $compt2 = mysqli_query($link,$compteur2);
+  $n2=mysqli_num_rows($compt2);
+  //
+  $compteur3 = "select * from stage where id_enseignant =$id_enseignant";
+  $compt3 = mysqli_query($link,$compteur3);
+  $n3=mysqli_num_rows($compt3);
 } else {
   header("location:login.php");
 }

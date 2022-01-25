@@ -250,7 +250,7 @@ else{
             <div id="activity_container">
 
                 <div class="links">
-                    <p class="titre">Rechercher les etudiant  :</p>
+                    <p class="titre">Rechercher des etudiants  :</p>
                     <a href="recherche par encadrant.php"><button class="bn632-hover bn23" class='b_rechercher'>Par encadrant</button></a>
                     <a href="recherche_etudiant_sans_encadrant.php"><button class="bn632-hover bn23" class='b_rechercher'>sans encadrant</button></a>
                     <a href="recherche_rapport_non_deposer.php"><button class="bn632-hover bn23" class='b_rechercher'>rapport non deposer</button></a>
@@ -258,8 +258,15 @@ else{
 
 
                 <div class="exel">
-                    <p class="titre">Importer les notes :</p>
+                    <p class="titre">Exporter les notes :</p>
                     <a href="csv.php"><button class="bn632-hover bn22">EXCEL</button></a>
+                </div>
+                <div class="exel">
+                <form action="#" method="post" enctype="multipart/form-data">
+            <p class="titre"> Importer liste d'étudiants :</p>
+            <input type="file" name="fileToUpload" id="fileToUpload" class="">
+            <input type="submit" value="importer" name="submit" class="bn632-hover bn22">
+        </form>
                 </div>
             </div>
         

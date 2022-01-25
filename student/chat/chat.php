@@ -1,7 +1,7 @@
 <?php
 session_start();
 // temp
-$_SESSION['id'] = 1;
+
 if (isset($_SESSION['id'])) {
   include('../../connexion.php');
   $id_etudiant = $_SESSION['id'];
@@ -83,7 +83,7 @@ if (isset($_SESSION['id'])) {
     </div>
 
     <div id="nav_right">
-      <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark" onClick="window.open('../chat/chat.php', '_self')">
+      <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark" >
       <img src="../../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark" onClick="window.open('../activity/activity.php', '_self')">
     </div>
   </nav>

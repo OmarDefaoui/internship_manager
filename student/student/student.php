@@ -1,7 +1,7 @@
 <?php
 session_start();
 // temp
-$_SESSION['id'] = 1;
+
 if (isset($_SESSION['id'])) {
     include('../../connexion.php');
     $id_etudiant = $_SESSION['id'];
