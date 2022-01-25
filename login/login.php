@@ -58,6 +58,8 @@ if (isset($_POST['login'])) {
     $_SESSION['profile'] = 2;
     if ($pass == 'azerty') {
       header("location: ../profile/profile.php");
+    }else {
+      header("location:../admin/accueil_admin.php");
     }
   } else {
     $wrongAccout = true;

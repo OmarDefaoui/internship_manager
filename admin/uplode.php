@@ -1102,7 +1102,7 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        $file=basename( $_FILES["fileToUpload"]["name"]);
+        $file=$target_dir.basename( $_FILES["fileToUpload"]["name"]);
     } else {
         echo "Sorry, there was an error uploading your file.";// this error arising in my program
     }
@@ -1128,7 +1128,7 @@ if ($uploadOk == 0) {
             $email=$prenom.$nom."@uit.ac.ma";
             $code="azerty";
             $fil=$row['3'];
-            $req[$i]="INSERT INTO etudiant (id_etudiant,nom,prenom,email,code,Filière)
+            $req[$i]="INSERT INTO etudiant (id_etudiant,nom,prenom,email,code,filiere)
                     Values ('$app','$nom','$prenom','$email','$code','$fil')";
             $res[$i] = mysqli_query($link,$req[$i]);
            
