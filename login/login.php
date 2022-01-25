@@ -2,6 +2,8 @@
 session_start();
 include('../connexion.php');
 
+$wrongAccout = false;
+
 if (isset($_POST['login'])) {
   $email = $_POST['username'];
   $pass = $_POST['passe'];
@@ -18,8 +20,6 @@ if (isset($_POST['login'])) {
   $resultat3 = mysqli_query($link, $requette3);
   $admin = mysqli_fetch_assoc($resultat3);
 
-
-
   if ($etudiant != false) {
 
     $_SESSION['id'] = $etudiant['id_etudiant'];
@@ -34,7 +34,7 @@ if (isset($_POST['login'])) {
     } else {
       header("location: ../student/student/student.php");
     }
-  } else if ($enseignant != false) {
+  } elseif ($enseignant != false) {
 
     $_SESSION['id'] = $enseignant['id_enseignant'];
     $_SESSION['nom'] = $enseignant['nom_enseignant'];
@@ -58,9 +58,9 @@ if (isset($_POST['login'])) {
     $_SESSION['profile'] = 2;
     if ($pass == 'azerty') {
       header("location: ../profile/profile.php");
-    } else {
-      header("location:../admin/accueil_admin.php");
     }
+  } else {
+    $wrongAccout = true;
   }
 }
 
@@ -132,6 +132,8 @@ mysqli_close($link);
                   <input type="password" name="passe" class="form-control" id="password">
 
                 </div>
+
+                <p style="color: red; margin-top: 0px;"><?php if ($wrongAccout) echo '* Identifiant ou mot de passe incorrecte.' ?></p>
 
                 <div class="d-flex mb-5 align-items-center">
                   <label class="control control--checkbox mb-0"><span class="caption">Se rappeler de moi</span>
