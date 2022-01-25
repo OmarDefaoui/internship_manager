@@ -19,7 +19,7 @@ $isNotMatchPass = false;
 
 if (isset($_POST['modifier'])) {
   if (isset($_POST['confirmer_code']) && isset($_POST['confirmer_code'])) {
-    if($_POST['code']!='azerty'){
+    if($_POST['code']!=null){
     $code = $_POST['code'];}
     $confirmer_code = $_POST['confirmer_code'];
     if (strcmp($code, $confirmer_code) == 0) {
