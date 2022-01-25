@@ -35,7 +35,7 @@ main {
 
 
 
-.input_upload_container input {
+#fileToUpload  {
     opacity: 0;
     position: absolute;
     top: 0;
@@ -50,6 +50,9 @@ main {
     cursor: pointer;
     width: 100%;
 }
+.bn632-hover::-webkit-file-upload-button {
+    visibility: hidden;
+  }
 
 /*                              scroll bar style                   */
 
