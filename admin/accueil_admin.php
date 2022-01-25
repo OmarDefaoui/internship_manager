@@ -45,7 +45,7 @@ for($i=1;$i<=12;$i++) {
 
 $valider="SELECT count(*) as nb
     FROM stage as s 
-    where s.est_valide='1'  ;";
+    where s.est_valide=''  ;";
     
     $resultvalider = mysqli_query($link,$valider);
     $datavalider=mysqli_fetch_assoc($resultvalider);
@@ -53,7 +53,7 @@ $valider="SELECT count(*) as nb
 
 $deposer="SELECT count(*) as nb
     FROM stage as s 
-    where version_corrige is  NULL  ;";
+    where version_corrige is not NULL  ;";
     
     $resultdeposer = mysqli_query($link,$deposer);
     $datadeposer=mysqli_fetch_assoc($resultdeposer);
@@ -61,7 +61,7 @@ $deposer="SELECT count(*) as nb
 
 $nondeposer="SELECT count(*) as nb
     FROM stage as s 
-    where version_corrige is not NULL  ;";
+    where version_corrige is null ;";
     
     $resultnondeposer = mysqli_query($link,$nondeposer);
     $datanondeposer=mysqli_fetch_assoc($resultnondeposer);
