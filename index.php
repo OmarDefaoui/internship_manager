@@ -104,7 +104,7 @@ $adminsCount = $data['count'];
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="header-hero-image text-center wow fadeIn" data-wow-duration="1.3s" data-wow-delay="1.4s">
-                            <img src="landing_page/images/header-hero.png" alt="hero">
+                            <img src="assets/local_assets/images/header-hero.png" alt="hero">
                         </div> <!-- header hero image -->
                     </div>
                 </div> <!-- row -->
@@ -203,7 +203,7 @@ $adminsCount = $data['count'];
                 </div>
                 <div class="col-lg-6">
                     <div class="about-image text-center mt-50 wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <img src="landing_page/images/about1.svg" alt="about">
+                        <img src="assets/local_assets/images/capture_etudiant.png" alt="about">
                     </div> <!-- about image -->
                 </div>
             </div> <!-- row -->
@@ -238,7 +238,7 @@ $adminsCount = $data['count'];
                 </div>
                 <div class="col-lg-6 order-lg-first">
                     <div class="about-image text-center mt-50 wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <img src="landing_page/images/about2.svg" alt="about">
+                        <img src="assets/local_assets/images/capture_enseignant.png" alt="about">
                     </div> <!-- about image -->
                 </div>
             </div> <!-- row -->
@@ -267,7 +267,7 @@ $adminsCount = $data['count'];
                 </div>
                 <div class="col-lg-6">
                     <div class="about-image text-center mt-50 wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <img src="landing_page/images/about3.svg" alt="about">
+                        <img src="assets/local_assets/images/capture_admin.png" alt="about">
                     </div> <!-- about image -->
                 </div>
             </div> <!-- row -->
@@ -292,7 +292,7 @@ $adminsCount = $data['count'];
                         <img class="dots" src="landing_page/images/dots.svg" alt="dots">
                         <div class="video-wrapper">
                             <div class="video-image">
-                                <img src="landing_page/images/video.png" alt="video">
+                                <img src="assets/local_assets/images/miniature.png" alt="video">
                             </div>
                             <div class="video-icon">
                                 <a href="https://www.youtube.com/watch?v=r44RKWyfcFw" class="video-popup"><i class="lni-play"></i></a>
@@ -362,13 +362,13 @@ $adminsCount = $data['count'];
                 <div class="col-lg-3 col-md-7 col-sm-8">
                     <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
                         <div class="team-image">
-                            <img src="landing_page/images/team-1.png" alt="Team">
+                            <img src="assets/local_assets/images/team-1.jpg" alt="Team">
                             <div class="social">
                                 <ul>
-                                    <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
+                                    <li><a href="https://www.facebook.com/OmarDefaoui"><i class="lni-facebook-filled"></i></a></li>
                                     <li><a href="#"><i class="lni-twitter-filled"></i></a></li>
-                                    <li><a href="#"><i class="lni-instagram-filled"></i></a></li>
-                                    <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
+                                    <li><a href="https://www.instagram.com/omardefaoui/"><i class="lni-instagram-filled"></i></a></li>
+                                    <li><a href="https://www.linkedin.com/in/omardefaoui/"><i class="lni-linkedin-original"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -382,7 +382,7 @@ $adminsCount = $data['count'];
                 <div class="col-lg-3 col-md-7 col-sm-8">
                     <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
                         <div class="team-image">
-                            <img src="landing_page/images/team-2.png" alt="Team">
+                            <img src="assets/local_assets/images/team-2.jpeg" alt="Team">
                             <div class="social">
                                 <ul>
                                     <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
@@ -402,13 +402,13 @@ $adminsCount = $data['count'];
                 <div class="col-lg-3 col-md-7 col-sm-8">
                     <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
                         <div class="team-image">
-                            <img src="landing_page/images/team-3.png" alt="Team">
+                            <img src="assets/local_assets/images/team-3.jpeg" alt="Team">
                             <div class="social">
                                 <ul>
-                                    <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
+                                    <li><a href="https://www.facebook.com/hassan.ayoub.5076798/"><i class="lni-facebook-filled"></i></a></li>
                                     <li><a href="#"><i class="lni-twitter-filled"></i></a></li>
-                                    <li><a href="#"><i class="lni-instagram-filled"></i></a></li>
-                                    <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
+                                    <li><a href="https://www.instagram.com/hassan_ayoub_benasser/"><i class="lni-instagram-filled"></i></a></li>
+                                    <li><a href="https://www.linkedin.com/in/hassan-ayoub-benasser-1545a1212/"><i class="lni-linkedin-original"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -421,12 +421,12 @@ $adminsCount = $data['count'];
                 <div class="col-lg-3 col-md-7 col-sm-8">
                     <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
                         <div class="team-image">
-                            <img src="landing_page/images/team-3.png" alt="Team">
+                            <img src="assets/local_assets/images/team-4.jpg" alt="Team">
                             <div class="social">
                                 <ul>
-                                    <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
+                                    <li><a href="https://web.facebook.com/saadoussama2016/"><i class="lni-facebook-filled"></i></a></li>
                                     <li><a href="#"><i class="lni-twitter-filled"></i></a></li>
-                                    <li><a href="#"><i class="lni-instagram-filled"></i></a></li>
+                                    <li><a href="https://www.instagram.com/saadoussama1/"><i class="lni-instagram-filled"></i></a></li>
                                     <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
                                 </ul>
                             </div>
