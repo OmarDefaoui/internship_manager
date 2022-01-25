@@ -216,11 +216,11 @@ else{
 
 
                 <div class="exel">
-                    <p class="titre">Importer les notes :</p>
+                    <p class="titre">Exporter les notes :</p>
                     <a href="csv.php"><button class="bn632-hover bn22">EXCEL</button></a>
                 </div>
                 <div class="exel">
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="uplode.php" method="post" enctype="multipart/form-data">
             <p class="titre"> Importer liste d'étudiants :</p>
             <input type="file" name="fileToUpload" id="fileToUpload" class="">
             <input type="submit" value="Importer" name="submit" class="bn632-hover bn22">

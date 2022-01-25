@@ -14,7 +14,8 @@ if(isset($_SESSION["id"])){
      $email =$admin['email'];
      $photo=$admin['photo'];
 
-     $stage_requette = "SELECT *FROM `stage`,etudiant,entreprise WHERE etudiant.id_etudiant=stage.id_etudiant and stage.id_entreprise=entreprise.id_entreprise and id_enseignant is  null  ";
+     $stage_requette = "SELECT *FROM `stage`,etudiant,entreprise 
+     WHERE etudiant.id_etudiant=stage.id_etudiant and stage.id_entreprise=entreprise.id_entreprise and id_enseignant is  null  ";
      $stage_resultat = mysqli_query($link,$stage_requette);
 
 
@@ -209,16 +210,16 @@ else{
                     <p class="titre">Rechercher les etudiant  :</p>
                     <a href="recherche par encadrant.php"><button class="bn632-hover bn23" class='b_rechercher'>Par encadrant</button></a>
                     <a href="recherche_etudiant_sans_encadrant.php"><button class="bn632-hover bn23" class='b_rechercher'>Sans encadrant</button></a>
-                    <a href="rechrche_rapport_non_deposer"><button class="bn632-hover bn23" class='b_rechercher'>Rapport non deposer</button></a>
+                    <a href="rechrche_rapport_non_deposer.php"><button class="bn632-hover bn23" class='b_rechercher'>Rapport non deposer</button></a>
                 </div>
 
 
                 <div class="exel">
-                    <p class="titre">Importer les notes :</p>
+                    <p class="titre">Exporter les notes :</p>
                     <a href="csv.php"><button class="bn632-hover bn22">EXCEL</button></a>
                 </div>
                 <div class="exel">
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="uplode.php" method="post" enctype="multipart/form-data">
             <p class="titre"> Importer liste d'étudiants :</p>
             <input type="file" name="fileToUpload" id="fileToUpload" class="">
             <input type="submit" value="Importer" name="submit" class="bn632-hover bn22">

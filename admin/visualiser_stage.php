@@ -404,7 +404,7 @@ if(isset($_SESSION["id"])){
 
 
                     <div class="exel">
-                        <p class="titre">Importer les notes :</p>
+                        <p class="titre">Exporter les notes :</p>
                         <a href="csv.php"><button class="bn632-hover bn22">EXCEL</button></a>
                     </div>
                    <div class="exel">
