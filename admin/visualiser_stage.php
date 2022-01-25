@@ -138,7 +138,7 @@ if(isset($_SESSION["id"])){
         </div>
 
             <div id="nav_right">
-            <img src="../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark">
+            <img src="../assets/local_assets/images/conv.png" alt="chat" class="rounded_icon_dark">
             <img src="../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark">
         </div>
    

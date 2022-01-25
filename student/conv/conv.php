@@ -51,7 +51,7 @@ if (isset($_SESSION['id'])) {
   <script src="../student/student.js"></script>
 
   <link rel="stylesheet" href="../../main_style.css">
-  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/conv.css">
   <link rel="stylesheet" href="../student/css/nav_bar_style.css">
   <link rel="stylesheet" href="../student/css/right_section_style.css">
 </head>
@@ -76,7 +76,7 @@ if (isset($_SESSION['id'])) {
     </div>
 
     <div id="nav_right">
-      <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark">
+      <img src="../../assets/local_assets/images/conv.png" alt="chat" class="rounded_icon_dark">
       <img src="../../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark" onClick="window.open('../activity/activity.php', '_self')">
     </div>
   </nav>

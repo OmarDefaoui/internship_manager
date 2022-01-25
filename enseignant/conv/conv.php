@@ -72,7 +72,7 @@ if (isset($_SESSION['id'])) {
   <script src="../../student/student/student.js"></script>
 
   <link rel="stylesheet" href="../../main_style.css">
-  <link rel="stylesheet" href="../../student/chat/css/chat.css">
+  <link rel="stylesheet" href="../../student/conv/css/conv.css">
   <link rel="stylesheet" href="../style_accueil_nav.css ">
   <link rel="stylesheet" href="../right_section_style.css">
 </head>
@@ -95,7 +95,7 @@ if (isset($_SESSION['id'])) {
         </div>
             
             <div id="nav_right">
-                <img src="../../assets/local_assets/images/chat.png" alt="chat" class="rounded_icon_dark" onClick="window.open('chat.php', '_self')">
+                <img src="../../assets/local_assets/images/conv.png" alt="chat" class="rounded_icon_dark" onClick="window.open('conv.php', '_self')">
                 <img src="../../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark">
             </div>
     </nav>
