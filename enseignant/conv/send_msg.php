@@ -7,7 +7,7 @@ if (isset($_POST['send_message'])) {
     $convIndex = $_POST['conv_index'];
 
     $requetteMessage = "INSERT INTO message (message_content,message_date,message_sender,
-            message_conversation_id) VALUES ('$message','$date','$sender','$conversation_id')";
+            message_conversation_id) VALUES (\"$message\",'$date','$sender','$conversation_id')";
     $resultatMessage = mysqli_query($link, $requetteMessage);
 } else
     $convIndex = getActiveConvIndex();
