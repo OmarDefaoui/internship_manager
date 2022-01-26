@@ -266,7 +266,7 @@ if (isset($_SESSION['id'])) {
                                     </div>
 
                                     <input class="text_input" type="text" name="nom_encadrant" placeholder="Nom de l'encadrant" value="<?php echo $nom_encadrant ?>">
-                                    <input class="text_input" type="text" name="prenom_encadrant" placeholder="Prenom de l'encadrant" value="<?php echo $prenom_encardrant ?>">
+                                    <input class="text_input" type="text" name="prenom_encadrant" placeholder="Prénom de l'encadrant" value="<?php echo $prenom_encardrant ?>">
                                 </div>
                                 <input type="button" name="next" class="next action-button" value="Suivant" />
                                 <input type="button" name="previous" class="previous action-button-previous" value="Précédant" />
@@ -280,10 +280,10 @@ if (isset($_SESSION['id'])) {
                                         <p>Veuillez entrer les informations nécessaires pour compléter cette étape.</p>
                                     </div>
 
-                                    <input class="text_input" type="text" name="intitule_sujet" placeholder="Intitule du sujet" value="<?php echo $intitule_sujet ?>">
+                                    <input class="text_input" type="text" name="intitule_sujet" placeholder="Intitulé du sujet" value="<?php echo $intitule_sujet ?>">
                                     <input class="text_input" type="text" name="description_sujet" placeholder="Description du sujet" value="<?php echo $description_sujet ?>">
-                                    <input class="text_input" type="number" name="duree" placeholder="Duree du stage" value="<?php echo $duree ?>">
-                                    <textarea class="text_input" name="techno_utilisees" cols="30" rows="1" placeholder="Technologies utilisees"><?php echo $technologies ?></textarea>
+                                    <input class="text_input" type="number" name="duree" placeholder="Durée du stage" value="<?php echo $duree ?>">
+                                    <textarea class="text_input" name="techno_utilisees" cols="30" rows="1" placeholder="Technologies utilisées (séparés par des virgules)"><?php echo $technologies ?></textarea>
 
                                     <div class="type_stage_radio">
                                         <input type="radio" name="type_stage" id="type_stage_1" value="PFE" checked="checked">
@@ -310,9 +310,9 @@ if (isset($_SESSION['id'])) {
                                         <p>Veuillez entrer les informations nécessaires pour compléter cette étape.</p>
                                     </div>
 
-                                    <input class="text_input" type="text" name="nom_binome" placeholder="Nom du binome" value="<?php echo $nom_binome ?>">
-                                    <input class="text_input" type="text" name="prenom_binome" placeholder="Prenom du binome" value="<?php echo $prenom_binome ?>">
-                                    <div class="input_upload_container" data-text="<?php echo ($photo_binome != NULL ? $photo_binome : "Photo du binome"); ?>">
+                                    <input class="text_input" type="text" name="nom_binome" placeholder="Nom du binôme" value="<?php echo $nom_binome ?>">
+                                    <input class="text_input" type="text" name="prenom_binome" placeholder="Prenom du binôme" value="<?php echo $prenom_binome ?>">
+                                    <div class="input_upload_container" data-text="<?php echo ($photo_binome != NULL ? $photo_binome : "Photo du binôme"); ?>">
                                         <input name="photo_binome" type="file" class="input_upload">
                                     </div>
                                 </div>
