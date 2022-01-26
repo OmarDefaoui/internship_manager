@@ -459,7 +459,7 @@ switch($page){
                         </div>
                 
             </div>
-            <a href="#" id="see_more">See more</a>
+            <a href="#" id="see_more">Voir plus</a>
         </div>
     </aside>
     </div>

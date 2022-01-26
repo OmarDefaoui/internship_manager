@@ -197,7 +197,7 @@ if (isset($_SESSION['id'])) {
                     <?php }
                     ?>
                 </div>
-                <a href="../activity/activity.php" id="see_more">See more</a>
+                <a href="../activity/activity.php" id="see_more">Voir plus</a>
             </div>
         </aside>
     </div>
