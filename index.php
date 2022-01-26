@@ -295,7 +295,7 @@ $adminsCount = $data['count'];
                                 <img src="assets/local_assets/images/miniature.png" alt="video">
                             </div>
                             <div class="video-icon">
-                                <a href="https://www.youtube.com/watch?v=mRkzo2eCYdg" class="video-popup"><i class="lni-play"></i></a>
+                                <a href="https://www.youtube.com/watch?v=PzKGNtaTe5M" class="video-popup"><i class="lni-play"></i></a>
                             </div>
                         </div> <!-- video wrapper -->
                     </div> <!-- video content -->
