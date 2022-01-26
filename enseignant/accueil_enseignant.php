@@ -147,7 +147,14 @@ switch($page){
     <link rel="stylesheet" href="style_accueil_centre.css">
     <link rel="stylesheet" href="right_section.css">
     <link rel="stylesheet" href="../main_style1.css">
-
+        <style>
+            #hello_container img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    box-shadow: 0 0 1px var(--color-black);
+}
+        </style>
     <link rel="shortcut icon" href="../assets/local_assets/images/logo.png" type="image/png">
     <title>Gestion Stages</title>
 </head>
@@ -409,7 +416,7 @@ switch($page){
        <aside id="right_side">
         <div id="hello_container" onClick="window.open('../profile/profile.php', '_self')">
             <p>Bienvenue,Pr <br><b><?php echo $nom ?> </b></p>
-            <img src="../assets/assets/images/<?php echo $photo?>" alt="user_icon">
+            <img src="../assets/assets/images/<?php echo $photo?>" alt="user_icon" width="" height="">
         </div>
 
         <div id="overview_container">

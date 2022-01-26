@@ -122,6 +122,14 @@ if(isset($_SESSION["id"])){
     <link rel="stylesheet" href="right_section.css">
     <link rel="stylesheet" href="../main_style.css">
     <link rel="shortcut icon" href="../assets/local_assets/images/logo.png" type="image/png">
+    <style>
+            #hello_container img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    box-shadow: 0 0 1px var(--color-black);
+}
+        </style>
     <title>Gestion Stages</title>
 </head>
 <body>

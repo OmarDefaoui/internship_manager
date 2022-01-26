@@ -9,9 +9,20 @@ if (isset($_SESSION['id'])) {
   $nom = $_SESSION['nom'];
   $photo = $_SESSION['photo'];
 
+
+  $requette1="SELECT *from enseignant where id_enseignant='$id_enseignant'";
+  $requette2 = mysqli_query($link,$requette1);
+  $requette3 = mysqli_fetch_assoc($requette2);
+  $prenom = $requette3['prenom_enseignant'];
+  $nom=$requette3['nom_enseignant'];
+  $email =$requette3['email'];
+  $code = $requette3['code'];
+  $photo1=$requette3['photo'];
+
   // save chat message in db if is message sended
   // and get active conversation index
   include('send_msg.php');
+
 
   // store chats and conversatons in arrays
   $requette = "SELECT * FROM conversation c,etudiant e WHERE 
@@ -244,7 +255,7 @@ if (isset($_SESSION['id'])) {
     <aside id="right_side">
       <div id="hello_container" onClick="window.open('../../profile/profile.php', '_self')">
         <p>Bienvenue,Pr <br><b><?php echo $nom ?> </b></p>
-        <img src="../../assets/local_assets/images/user_icon.png" alt="user_icon">
+        <img src="../../assets/assets/images/<?php echo $photo1 ?>" alt="user_icon">
       </div>
 
       <div id="overview_container">

@@ -151,6 +151,14 @@ switch($page){
 
     <link rel="shortcut icon" href="../assets/local_assets/images/logo.png" type="image/png">
     <title>Gestion Stages</title>
+    <style>
+        #hello_container img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    box-shadow: 0 0 1px var(--color-black);
+}
+    </style>
 </head>
 <body>
     <!--navigation bar-->
