@@ -345,6 +345,12 @@ if (isset($_SESSION['id'])) {
                                     </div>
                                 </div>
 
+                                <input type="hidden" name="premiere_version" value="<?php echo $premiere_version; ?>">
+                                <input type="hidden" name="version_corrige" value="<?php echo $version_corrige; ?>">
+                                <input type="hidden" name="presentation" value="<?php echo $presentation; ?>">
+                                <input type="hidden" name="attestation_stage" value="<?php echo $attestation_stage; ?>">
+                                <input type="hidden" name="fiche_evalution" value="<?php echo $fiche_evalution; ?>">
+
                                 <input type="hidden" name="isNew" value="<?php echo $isNew ?>">
                                 <input type="hidden" name="id_stage" value="<?php echo ($id_stage != NULL ? $id_stage : 0) ?>">
                                 <input type="hidden" name="id_enseignant" value="<?php echo ($id_enseignant != NULL ? $id_enseignant : -1) ?>">
