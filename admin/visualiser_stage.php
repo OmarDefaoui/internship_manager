@@ -147,7 +147,7 @@ if(isset($_SESSION["id"])){
     <div id="content">
         <aside id="left_side">
             <div id="left_navition">
-                <li><a href=accueil_admin.php" class="nav_active">
+                <li><a href="accueil_admin.php" class="nav_active">
                         <div></div><img src="../assets/local_assets/svg/home.svg" alt="" onClick="window.open('accueil_enseignant.php', '_self')">
                     </a></li>
                
