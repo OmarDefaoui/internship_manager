@@ -145,10 +145,10 @@ else{
             <table id="styled-table" >
             <thead>
                 <tr>
-                    <th>N Appogee</th>
-                    <th>NOM</th>
-                    <th>Prenom</th>
-                    <th>stage</th>
+                    <th>N Apogee</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Stage</th>
                     
                 </tr>
             </thead>
@@ -210,7 +210,7 @@ else{
                     <p class="titre">Rechercher les etudiant  :</p>
                     <a href="recherche par encadrant.php"><button class="bn632-hover bn23" class='b_rechercher'>Par encadrant</button></a>
                     <a href="recherche_etudiant_sans_encadrant.php"><button class="bn632-hover bn23" class='b_rechercher'>Sans encadrant</button></a>
-                    <a href="recherche_rapport_non_deposer.php"><button class="bn632-hover bn23" class='b_rechercher'>Rapport non deposer</button></a>
+                    <a href="recherche_rapport_non_deposer.php"><button class="bn632-hover bn23" class='b_rechercher'>Rapport non déposé</button></a>
                 </div>
 
 

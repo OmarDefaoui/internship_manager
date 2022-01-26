@@ -182,7 +182,7 @@ if (isset($_SESSION['id'])) {
 
                             <!-- progress bar -->
                             <div class="progress_container">
-                                <p class="progress_header">Progress</p>
+                                <p class="progress_header">Progrès</p>
                                 <div class="progress_bar">
                                     <span class="progress_indicator" style="width: <?php echo $progressValue ?>%; background-color: #ff942e"></span>
                                 </div>

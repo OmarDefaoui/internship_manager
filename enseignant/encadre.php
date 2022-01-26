@@ -391,7 +391,7 @@ switch($page){
             <div class="card_header">
                 <div>
                     <p class="card_title"><?php echo $intitule_sujet ?></p>
-                    <p class="card_subtitle">Encadré par Pr.<?php echo $prenom_enseignant.' '. $nom_enseignant ?></p>
+                    <p class="card_subtitle">Encadré par Pr. <?php echo $prenom_enseignant.' '. $nom_enseignant ?></p>
                 </div>
             </div>
             <!--Létudiant en attente d'encadrement-->
@@ -400,10 +400,10 @@ switch($page){
                     <strong> Prénom     :</strong>  <?php echo $prenom_etudiant ?> <br>
                     <strong> Nom        :</strong>   <?php echo $nom_etudiant ?> <br>
                     <strong> Entreprise :</strong>  <?php echo $nom_entreprise ?> <br>
-                    <strong> filiere : </strong> <?php echo $filiere?>
+                    <strong> Filière : </strong> <?php echo $filiere?>
                 </p>
                 <div class="progress_container">
-                                <p class="progress_header">Progress</p>
+                                <p class="progress_header">Progrès</p>
                                 <div class="progress_bar">
                                     <span class="progress_indicator" style="width: <?php echo $progressValue ?>%; background-color: #ff942e"></span>
                                 </div>

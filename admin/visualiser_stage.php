@@ -46,7 +46,7 @@ if(isset($_SESSION["id"])){
     $requettestudent= "SELECT *from etudiant where id_etudiant in(select id_etudiant from stage where id_stage=$id_stage) ";
     $resultatstudent = mysqli_query($link,$requettestudent);
     $datastudent = mysqli_fetch_assoc($resultatstudent);
-    $filiere =$datastudent['Filière'];
+    $filiere =$datastudent['filiere'];
     $nom_etudiant = $datastudent['nom'];
     $prenom_etudiant = $datastudent['prenom'];
     $id_student = $datastudent['id_etudiant'];
@@ -400,7 +400,7 @@ if(isset($_SESSION["id"])){
                         <p class="titre">Rechercher les etudiant  :</p>
                         <a href="recherche par encadrant.php"><button class="bn632-hover bn23" class='b_rechercher'>Par encadrant</button></a>
                         <a href="recherche_etudiant_sans_encadrant.php"><button class="bn632-hover bn23" class='b_rechercher'>sans encadrant</button></a>
-                        <a href="recherche_rapport_non_deposer.php"><button class="bn632-hover bn23" class='b_rechercher'>rapport non deposer</button></a>
+                        <a href="recherche_rapport_non_deposer.php"><button class="bn632-hover bn23" class='b_rechercher'>rapport non déposé</button></a>
                     </div>
 
 
