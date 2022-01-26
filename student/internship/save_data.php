@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
     include('../../connexion.php');
-    
+
     $id_etudiant = $_SESSION['id'];
     $prenom = $_SESSION['prenom'];
     $nom = $_SESSION['nom'];
@@ -29,6 +29,12 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
     $tel_entreprise = $_POST['phone'];
     $ville_entreprise = $_POST['city'];
 
+    $premiere_version = $_POST['premiere_version'];
+    $version_corrige = $_POST['version_corrige'];
+    $presentation = $_POST['presentation'];
+    $attestation_stage = $_POST['attestation_stage'];
+    $fiche_evalution = $_POST['fiche_evalution'];
+
     // upload files
     $photo_binome = my_upload_file(
         'photo_binome',
@@ -42,35 +48,35 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
         'versions_initials',
         array('pdf'),
         $id_etudiant,
-        ''
+        $premiere_version
     );
     $version_corrige = my_upload_file(
         'version_corrige_rapport',
         'versions_corriges',
         array('pdf'),
         $id_etudiant,
-        ''
+        $version_corrige
     );
     $presentation = my_upload_file(
         'presentation',
         'presentations',
         array('pdf', 'pptx'),
         $id_etudiant,
-        ''
+        $presentation
     );
     $attestation_stage = my_upload_file(
         'attestation_stage',
         'attestations_stages',
         array('pdf'),
         $id_etudiant,
-        ''
+        $attestation_stage
     );
     $fiche_evalution = my_upload_file(
         'fiche_evaluation',
         'fiches_evaluations',
         array('pdf'),
         $id_etudiant,
-        ''
+        $fiche_evalution
     );
 
 
