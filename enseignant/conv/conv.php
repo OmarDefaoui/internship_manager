@@ -148,7 +148,7 @@ if (isset($_SESSION['id'])) {
         // no conversations, so show empty icon
       ?>
         <div class="empty_container">
-          <img src="../../assets/local_assets/svg/no_chat.svg" alt="empty" height="70%">
+          <img src="../../assets/local_assets/svg/no_conv.svg" alt="empty" height="70%">
         </div>
       <?php
       } else {

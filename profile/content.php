@@ -10,90 +10,127 @@ $prenom = $_SESSION['prenom'];
 $photo = $_SESSION['photo'];
 $email = $_SESSION['email'];
 $code = $_SESSION['code'];
-
+$profile = $_SESSION['profile'];
 
 if ($photo == NULL)
   $photo = 'inconnu.jpg';
 
 $isNotMatchPass = false;
+$isSomethingModified = false;
 
 if (isset($_POST['modifier'])) {
-  if (isset($_POST['confirmer_code']) && isset($_POST['confirmer_code'])) {
+  // update password
+  if (
+    isset($_POST['code']) && isset($_POST['confirmer_code'])
+    && $_POST['confirmer_code'] != '' && $_POST['confirmer_code'] != ''
+  ) {
     if ($_POST['code'] != null) {
       $code = $_POST['code'];
     }
     $confirmer_code = $_POST['confirmer_code'];
     if (strcmp($code, $confirmer_code) == 0) {
-
       $isNotMatchPass = false;
       $_SESSION['code'] = $code;
 
-      // upload de la photo
-      if (isset($_FILES['fichier']) && $_FILES['fichier']['error'] == 0) {
-        $dossier = '../assets/assets/images/';
-        $temp_name = $_FILES['fichier']['tmp_name'];
-        if (!is_uploaded_file($temp_name)) {
-          exit("le fichier est introuvable");
-        }
-        if ($_FILES['fichier']['size'] >= 1000000) {
-          exit("Erreur, le fichier est volumineux");
-        }
-        $infosfichier = pathinfo($_FILES['fichier']['name']);
-        $extension_upload = $infosfichier['extension'];
-
-        $extension_upload = strtolower($extension_upload);
-        $extensions_autorisees = array('png', 'jpeg', 'jpg');
-        if (!in_array($extension_upload, $extensions_autorisees)) {
-          exit("Erreur, Veuillez inserer une image svp (extensions autorisées: png)");
-        }
-        $nom_photo = $id . $name . $prenom . "." . $extension_upload;
-        if (!move_uploaded_file($temp_name, $dossier . $nom_photo)) {
-          exit("Problem dans le telechargement de l'image, Ressayez");
-        }
-        $photo1 = $nom_photo;
-
-        // update session with the new image
-        $_SESSION['photo'] = $photo1;
-      } else {
-        $photo1 = $photo;
-      }
-
-      $requette1 = "SELECT * FROM etudiant where email='$email'";
-      $resultat1 = mysqli_query($link, $requette1);
-      $etudiant = mysqli_fetch_assoc($resultat1);
-
-      $requette2 = "SELECT * FROM enseignant where email='$email'";
-      $resultat2 = mysqli_query($link, $requette2);
-      $enseignant = mysqli_fetch_assoc($resultat2);
-
-      $requette3 = "SELECT * FROM administrateur where email='$email'";
-      $resultat3 = mysqli_query($link, $requette3);
-      $admin = mysqli_fetch_assoc($resultat3);
-
       // enregistrement des donnees dans la BD
-
-      if ($etudiant != false) {
-        $requette9 = "UPDATE etudiant SET code='$code',photo='$photo1'where email='$email' ";
-        $resultat8 = mysqli_query($link, $requette9);
-        echo "<script type='text/javascript'>
-  window.top.location = '../student/student/student.php';
-</script>";
-      } else if ($enseignant != false) {
-        $requette10 = "UPDATE enseignant SET code='$code',photo='$photo1'where email='$email' ";
-        $resultat10 = mysqli_query($link, $requette10);
-        echo "<script type='text/javascript'>
-    window.top.location = '../enseignant/accueil_enseignant.php';
-  </script>";
-      } else if ($admin != false) {
-        $requette11 = "UPDATE administrateur SET code='$code',photo='$photo1'where email='$email' ";
-        $resultat11 = mysqli_query($link, $requette11);
-        echo "<script type='text/javascript'>
-    window.top.location = '../admin/accueil_admin.php';
-  </script>";
+      switch ($profile) {
+        case 0:
+          $requette = "UPDATE etudiant SET code=\"$code\" where email='$email' ";
+          $resultat = mysqli_query($link, $requette);
+          break;
+        case 1:
+          $requette = "UPDATE enseignant SET code=\"$code\" where email='$email' ";
+          $resultat = mysqli_query($link, $requette);
+          break;
+        case 2:
+          $requette = "UPDATE administrateur SET code=\"$code\" where email='$email' ";
+          $resultat = mysqli_query($link, $requette);
+          break;
       }
+
+      $isSomethingModified = true;
     } else {
       // code et sa confirmation sont differents
       $isNotMatchPass = true;
+    }
+  }
+
+  // update image
+  // upload de la photo
+  if (isset($_FILES['fichier']) && $_FILES['fichier']['error'] == 0 && !$isNotMatchPass) {
+    $dossier = '../assets/assets/images/';
+    $temp_name = $_FILES['fichier']['tmp_name'];
+    if (!is_uploaded_file($temp_name)) {
+      exit("le fichier est introuvable");
+    }
+    if ($_FILES['fichier']['size'] >= 1000000) {
+      exit("Erreur, le fichier est volumineux");
+    }
+    $infosfichier = pathinfo($_FILES['fichier']['name']);
+    $extension_upload = $infosfichier['extension'];
+
+    $extension_upload = strtolower($extension_upload);
+    $extensions_autorisees = array('png', 'jpeg', 'jpg');
+    if (!in_array($extension_upload, $extensions_autorisees)) {
+      exit("Erreur, Veuillez inserer une image svp (extensions autorisées: png)");
+    }
+    $nom_photo = $id . $name . $prenom . "." . $extension_upload;
+    if (!move_uploaded_file($temp_name, $dossier . $nom_photo)) {
+      exit("Problem dans le telechargement de l'image, Ressayez");
+    }
+    $photo1 = $nom_photo;
+
+    // update session with the new image
+    $_SESSION['photo'] = $photo1;
+
+    // make update to db
+    switch ($profile) {
+      case 0:
+        $requette = "UPDATE etudiant SET photo='$photo1' where email='$email' ";
+        $resultat = mysqli_query($link, $requette);
+        break;
+      case 1:
+        $requette = "UPDATE enseignant SET photo='$photo1' where email='$email' ";
+        $resultat = mysqli_query($link, $requette);
+        break;
+      case 2:
+        $requette = "UPDATE administrateur SET photo='$photo1' where email='$email' ";
+        $resultat = mysqli_query($link, $requette);
+        break;
+    }
+
+    $isSomethingModified = true;
+  }
+
+  // add reclamation
+  if (isset($_POST['reclamation']) && $_POST['reclamation'] != '' && !$isNotMatchPass) {
+    $reclamation = $_POST['reclamation'];
+    $requette = "INSERT INTO reclamation (message,sender,sender_id) 
+                        VALUES (\"$reclamation\", '$profile', '$id')";
+    $resultat = mysqli_query($link, $requette);
+
+    $isSomethingModified = true;
+  }
+
+  if ($isSomethingModified) {
+    switch ($profile) {
+      case 0:
+        echo "<script type='text/javascript'>
+                window.top.location = '../student/student/student.php';
+              </script>";
+        break;
+      case 1:
+        echo "<script type='text/javascript'>
+                window.top.location = '../enseignant/accueil_enseignant.php';
+              </script>";
+        break;
+      case 2:
+        echo "<script type='text/javascript'>
+                window.top.location = '../admin/accueil_admin.php';
+              </script>";
+        break;
+      default:
+        break;
     }
   }
 }

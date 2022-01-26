@@ -132,6 +132,15 @@ if (isset($_SESSION["id"])) {
 
     <link rel="shortcut icon" href="../assets/local_assets/images/logo.png" type="image/png">
     <title>Gestion Stages</title>
+
+    <style>
+        #hello_container img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            box-shadow: 0 0 1px var(--color-black);
+        }
+    </style>
 </head>
 
 <body>
@@ -221,7 +230,7 @@ if (isset($_SESSION["id"])) {
         <aside id="right_side">
             <div id="hello_container" onClick="window.open('../profile/profile.php', '_self')">
                 <p>Bienvenue<br></p>
-                <img src="../assets/local_assets/images/user_icon.png" alt="user_icon">
+                <img src="../assets/assets/images/<?php echo $photo ?>" alt="user_icon">
             </div>
 
             <div id="right_container">
