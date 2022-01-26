@@ -77,7 +77,7 @@ if(isset($_SESSION["id"])){
      
      
 else{
-    header("location:login.php");
+    header("location: ../index.php");
 }
 
 
@@ -127,7 +127,7 @@ switch($page){
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -149,7 +149,8 @@ switch($page){
     <link rel="stylesheet" href="right_section.css">
     <link rel="stylesheet" href="../main_style1.css">
 
-    <title>Accueil</title>
+    <link rel="shortcut icon" href="../assets/local_assets/images/logo.png" type="image/png">
+    <title>Gestion Stages</title>
 </head>
 <body>
     <!--navigation bar-->
@@ -322,6 +323,9 @@ switch($page){
             $note_stage = $dataStages['note'];
             $est_valide = $dataStages['est_valide'];
 
+            $photo_binome = $dataStages['photo_binome'];
+            $photo_enseignant = $dataStages['photo'];
+
             $stagesCount = 0;
                 $stagesValideCount = 0;
                 $stagesNotesCount = 0;
@@ -402,7 +406,6 @@ switch($page){
                 <div class="participants">
                 <img src="<?php echo '../assets/assets/images/' . ($photo == NULL ? 'inconnu.jpg' : $photo) ?>" alt="participant">
                                 <?php if ($photo_binome != NULL) { ?><img src="<?php echo '../assets/assets/images/' . ($photo_binome == NULL ? 'inconnu.jpg' : $photo_binome) ?>" alt="participant"><?php } ?>
-                                <?php if ($photo_enseignant != NULL) { ?><img src="<?php echo '../assets/assets/images/' . ($photo_enseignant == NULL ? 'inconnu.jpg' : $photo_enseignant) ?>" alt="participant"><?php } ?>
                                 <button class="add_participant" style="color: #ff942e; background-color: #ff932e1e;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
                                         <path d="M12 5v14M5 12h14" />

@@ -95,7 +95,7 @@ for($i=12;$i<=20;$i++) {
      
      
 else{
-    header("location:login.php");
+    header("location: ../index.php");
 }
 
 
@@ -109,7 +109,7 @@ else{
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -136,7 +136,8 @@ else{
     <link rel='stylesheet' href='css/style_accueil_centre_home_admin.css'>
     <link rel='stylesheet' href='css/style_right_side_admin.css'>
 
-    <title>  Accueil</title>
+    <link rel="shortcut icon" href="../assets/local_assets/images/logo.png" type="image/png">
+    <title>Gestion Stages</title>
 </head>
 <body>
     <!--navigation bar-->

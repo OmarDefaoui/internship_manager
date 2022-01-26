@@ -32,14 +32,14 @@ if(isset($_SESSION["id"])){
      
      
 else{
-    header("location:login.php");
+    header("location: ../index.php");
 }
 
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,7 +66,8 @@ else{
     <link rel="stylesheet" href="css/style_right_side_admin.css">
     <link rel="stylesheet" href="css/style_recherche_admin.css">
 
-    <title>  Accueil</title>
+    <link rel="shortcut icon" href="../assets/local_assets/images/logo.png" type="image/png">
+    <title>Gestion Stages</title>
 </head>
 <body>
     <!--navigation bar-->

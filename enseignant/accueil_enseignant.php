@@ -78,7 +78,7 @@ if(isset($_SESSION["id"])){
      
      
 else{
-    header("location:login.php");
+    header("location: ../index.php");
 }
 
 
@@ -124,7 +124,7 @@ switch($page){
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -148,7 +148,8 @@ switch($page){
     <link rel="stylesheet" href="right_section.css">
     <link rel="stylesheet" href="../main_style1.css">
 
-    <title>  Accueil</title>
+    <link rel="shortcut icon" href="../assets/local_assets/images/logo.png" type="image/png">
+    <title>Gestion Stages</title>
 </head>
 <body>
     <!--navigation bar-->
@@ -313,6 +314,7 @@ switch($page){
             $nom_entreprise =$dataStages['nom_entreprise'];
             $note_stage = $dataStages['note'];
             $est_valide = $dataStages['est_valide'];
+            $photo_binome = $dataStages['photo_binome'];
 
             $stagesCount = 0;
                 $stagesValideCount = 0;
@@ -385,9 +387,10 @@ switch($page){
                             </div>
             </div>
             <div class="card_footer">
-            <img src="<?php echo '../assets/assets/images/' . ($photo == NULL ? 'inconnu.jpg' : $photo) ?>" alt="participant" width="20px" height='20px'>
-                                <?php if ($photo_binome != NULL) { ?><img src="<?php echo '../assets/assets/images/' . ($photo_binome == NULL ? 'inconnu.jpg' : $photo_binome) ?>"width="20px" height='20px' alt="participant"><?php } ?>
-                                
+                <div class="participants">
+                    <img src="<?php echo '../assets/assets/images/' . ($photo == NULL ? 'inconnu.jpg' : $photo) ?>" alt="participant" width="20px" height='20px'>
+                    <?php if ($photo_binome != NULL) { ?><img src="<?php echo '../assets/assets/images/' . ($photo_binome == NULL ? 'inconnu.jpg' : $photo_binome) ?>"width="20px" height='20px' alt="participant"><?php } ?>
+                </div>
                 <p class="internship_duration" style="color: #ff942e; background-color: #ff932e1e;"><?php echo $duree ?> mois</p>
             </div>
         </div>
