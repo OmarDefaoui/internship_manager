@@ -8,15 +8,15 @@ if (isset($_POST['login'])) {
   $email = $_POST['username'];
   $pass = $_POST['passe'];
 
-  $requette1 = "SELECT * FROM etudiant where email='$email' and code='$pass'";
+  $requette1 = "SELECT * FROM etudiant where email='$email' and code=\"$pass\"";
   $resultat1 = mysqli_query($link, $requette1);
   $etudiant = mysqli_fetch_assoc($resultat1);
 
-  $requette2 = "SELECT * FROM enseignant where email='$email' and code='$pass'";
+  $requette2 = "SELECT * FROM enseignant where email='$email' and code=\"$pass\"";
   $resultat2 = mysqli_query($link, $requette2);
   $enseignant = mysqli_fetch_assoc($resultat2);
 
-  $requette3 = "SELECT * FROM administrateur where email='$email' and code='$pass'";
+  $requette3 = "SELECT * FROM administrateur where email='$email' and code=\"$pass\"";
   $resultat3 = mysqli_query($link, $requette3);
   $admin = mysqli_fetch_assoc($resultat3);
 
@@ -58,7 +58,7 @@ if (isset($_POST['login'])) {
     $_SESSION['profile'] = 2;
     if ($pass == 'azerty') {
       header("location: ../profile/profile.php");
-    }else {
+    } else {
       header("location:../admin/accueil_admin.php");
     }
   } else {

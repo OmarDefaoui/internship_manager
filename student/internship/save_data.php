@@ -85,9 +85,9 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
         $nom_entreprise != NULL && $adresse_entreprise != NULL &&
         $tel_entreprise != NULL && $ville_entreprise != NULL
     ) {
-        $requette = "SELECT * FROM entreprise where nom_entreprise='$nom_entreprise'
-            and adresse='$adresse_entreprise' and tel='$tel_entreprise' 
-            and ville='$ville_entreprise'";
+        $requette = "SELECT * FROM entreprise where nom_entreprise=\"$nom_entreprise\"
+            and adresse=\"$adresse_entreprise\" and tel=\"$tel_entreprise\" 
+            and ville=\"$ville_entreprise\"";
         $resultat = mysqli_query($link, $requette);
         $data = mysqli_fetch_assoc($resultat);
 
@@ -97,12 +97,12 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
         } else {
             // insert new entreprise
             $requette = "INSERT INTO entreprise (nom_entreprise,adresse,ville,tel) VALUES 
-            ('$nom_entreprise','$adresse_entreprise','$ville_entreprise','$tel_entreprise')";
+            (\"$nom_entreprise\",\"$adresse_entreprise\",\"$ville_entreprise\",\"$tel_entreprise\")";
             $resultat = mysqli_query($link, $requette);
 
-            $requette = "SELECT * FROM entreprise where nom_entreprise='$nom_entreprise'
-                and adresse='$adresse_entreprise' and tel='$tel_entreprise' 
-                and ville='$ville_entreprise'";
+            $requette = "SELECT * FROM entreprise where nom_entreprise=\"$nom_entreprise\"
+                and adresse=\"$adresse_entreprise\" and tel=\"$tel_entreprise\" 
+                and ville=\"$ville_entreprise\"";
             $resultat = mysqli_query($link, $requette);
             $data = mysqli_fetch_assoc($resultat);
             $id_entreprise = $data['id_entreprise'];
@@ -134,44 +134,44 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
             id_entreprise,
             creation_date)
         VALUES 
-            ('$intitule_sujet',
-            '$description_sujet',
-            '$duree',
-            '$technologies',
-            '$premiere_version',
-            '$version_corrige',
-            '$presentation',
-            '$attestation_stage',
-            '$fiche_evalution',
-            '$nom_encadrant',
-            '$prenom_encardrant',
-            '$type',
-            '$id_etudiant',
-            '$prenom_binome',
-            '$nom_binome',
-            '$photo_binome',
-            '$id_entreprise',
-            '$creationDate')";
+            (\"$intitule_sujet\",
+            \"$description_sujet\",
+            \"$duree\",
+            \"$technologies\",
+            \"$premiere_version\",
+            \"$version_corrige\",
+            \"$presentation\",
+            \"$attestation_stage\",
+            \"$fiche_evalution\",
+            \"$nom_encadrant\",
+            \"$prenom_encardrant\",
+            \"$type\",
+            \"$id_etudiant\",
+            \"$prenom_binome\",
+            \"$nom_binome\",
+            \"$photo_binome\",
+            \"$id_entreprise\",
+            \"$creationDate\")";
         $resultatStage = mysqli_query($link, $requetteStage);
     } else {
         $requetteStage = "UPDATE stage SET  
-            intitule_sujet = '$intitule_sujet',
-            description_sujet = '$description_sujet',
-            duree = '$duree',
-            technologies = '$technologies',
-            premiere_version = '$premiere_version',
-            version_corrige = '$version_corrige',
-            presentation = '$presentation',
-            attestation_stage = '$attestation_stage',
-            fiche_evalution = '$fiche_evalution',
-            nom_encadrant = '$nom_encadrant',
-            prenom_encardrant = '$prenom_encardrant',
-            type = '$type',
-            id_etudiant = '$id_etudiant',
-            prenom_binome = '$prenom_binome',
-            nom_binome = '$nom_binome',
-            photo_binome = '$photo_binome',
-            id_entreprise = '$id_entreprise'
+            intitule_sujet = \"$intitule_sujet\",
+            description_sujet = \"$description_sujet\",
+            duree = \"$duree\",
+            technologies = \"$technologies\",
+            premiere_version = \"$premiere_version\",
+            version_corrige = \"$version_corrige\",
+            presentation = \"$presentation\",
+            attestation_stage = \"$attestation_stage\",
+            fiche_evalution = \"$fiche_evalution\",
+            nom_encadrant = \"$nom_encadrant\",
+            prenom_encardrant = \"$prenom_encardrant\",
+            type = \"$type\",
+            id_etudiant = \"$id_etudiant\",
+            prenom_binome = \"$prenom_binome\",
+            nom_binome = \"$nom_binome\",
+            photo_binome = \"$photo_binome\",
+            id_entreprise = \"$id_entreprise\"
         WHERE 
             id_stage = '$id_stage'";
         $resultatStage = mysqli_query($link, $requetteStage);
@@ -183,7 +183,7 @@ if (isset($_SESSION['id']) && isset($_POST['enregistrer'])) {
 
             // sender => 0: the sender is teacher; 1: the sender is student
             $requette = "INSERT INTO notification (content,date,id_enseignant,id_etudiant,sender)
-                VALUES ('$notifMessage','$notifDate',$id_enseignant,$id_etudiant,1)";
+                VALUES (\"$notifMessage\",\"$notifDate\",$id_enseignant,$id_etudiant,1)";
             $resultat = mysqli_query($link, $requette);
         }
     }
