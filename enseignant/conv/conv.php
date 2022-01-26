@@ -1,22 +1,13 @@
 <?php
 session_start();
-// temp
-
 
 if (isset($_SESSION['id'])) {
   include('../../connexion.php');
-  $id_enseignant = $_SESSION['id'];
 
-  // temp [to be passed in session]
-  $requetteEtudiant = "SELECT * FROM enseignant WHERE id_enseignant = $id_enseignant";
-  $resultatEtudiant = mysqli_query($link, $requetteEtudiant);
-  $dataEtudiant = mysqli_fetch_assoc($resultatEtudiant);
-  $id_enseignant = $dataEtudiant['id_enseignant'];
-  $prenom = $dataEtudiant['prenom_enseignant'];
-  $nom = $dataEtudiant['nom_enseignant'];
-  $email = $dataEtudiant['email'];
-  $code = $dataEtudiant['code'];
-  $photo = $dataEtudiant['photo'];
+  $id_enseignant = $_SESSION['id'];
+  $prenom = $_SESSION['prenom'];
+  $nom = $_SESSION['nom'];
+  $photo = $_SESSION['photo'];
 
   // save chat message in db if is message sended
   // and get active conversation index
@@ -40,22 +31,21 @@ if (isset($_SESSION['id'])) {
       $chat[] = $dataChat;
     }
     $chats[] = $chat;
-     
   }
   //compteur
   $compteur = "select * from stage";
-  $compt1 = mysqli_query($link,$compteur);
-  $n1=mysqli_num_rows($compt1);
+  $compt1 = mysqli_query($link, $compteur);
+  $n1 = mysqli_num_rows($compt1);
   //
   $compteur2 = "select * from stage where id_enseignant is null";
-  $compt2 = mysqli_query($link,$compteur2);
-  $n2=mysqli_num_rows($compt2);
+  $compt2 = mysqli_query($link, $compteur2);
+  $n2 = mysqli_num_rows($compt2);
   //
   $compteur3 = "select * from stage where id_enseignant =$id_enseignant";
-  $compt3 = mysqli_query($link,$compteur3);
-  $n3=mysqli_num_rows($compt3);
+  $compt3 = mysqli_query($link, $compteur3);
+  $n3 = mysqli_num_rows($compt3);
 } else {
-  header("location:login.php");
+  header("location: ../../index.php");
 }
 ?>
 
@@ -80,25 +70,23 @@ if (isset($_SESSION['id'])) {
 <body>
   <!-- top nav bar -->
   <nav>
-        <div id="logo_container">
-            <img src="../../assets/local_assets/images/logo.png" alt="Logo" id="logo" onClick="window.open('../accueil_enseignant.php', '_self')">
-        </div>
+    <div id="logo_container">
+      <img src="../../assets/local_assets/images/logo.png" alt="Logo" id="logo" onClick="window.open('../accueil_enseignant.php', '_self')">
+    </div>
 
-        <div id="nav_center">
-            <h2>Stages</h2>
-            <div id="search_bar">
-            <form action="" method="POST" id="test">
-                <input type="text" name="search1" placeholder="Rechercher" id="inputes">
-                <button type="submit" name="sent" id="test1"><img src="../../assets/local_assets/images/search.png" alt="search" class="rounded_icon_light"></button>
-            </form>
-            </div>
-        </div>
-            
-            <div id="nav_right">
-                <img src="../../assets/local_assets/images/conv.png" alt="chat" class="rounded_icon_dark" onClick="window.open('conv.php', '_self')">
-                <img src="../../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark">
-            </div>
-    </nav>
+    <div id="nav_center">
+      <h2>Stages</h2>
+      <div id="search_bar">
+        <input type="text" name="search1" placeholder="Rechercher" id="inputes">
+        <button type="submit" name="sent" id="test1"><img src="../../assets/local_assets/images/search.png" alt="search" class="rounded_icon_light"></button>
+      </div>
+    </div>
+
+    <div id="nav_right">
+      <img src="../../assets/local_assets/images/conv.png" alt="chat" class="rounded_icon_dark" onClick="window.open('conv.php', '_self')">
+      <img src="../../assets/local_assets/images/notification.png" alt="notifications" class="rounded_icon_dark">
+    </div>
+  </nav>
 
   <div id="content">
     <!-- left nav bar -->
@@ -163,7 +151,7 @@ if (isset($_SESSION['id'])) {
             </div>
 
             <?php
-             for ($i = 0; $i < count($conversations); $i++) {
+            for ($i = 0; $i < count($conversations); $i++) {
               // no messages in the conversation
               if (count($chats[$i]) == 0) {
                 $lastMessage = array('message_date' => date("Y-m-d h:m:s"));
@@ -253,52 +241,52 @@ if (isset($_SESSION['id'])) {
 
     <!-- right side -->
     <aside id="right_side">
-        <div id="hello_container" onClick="window.open('../../profile/profile.php', '_self')">
-            <p>Bienvenue,Pr <br><b><?php echo $nom ?> </b></p>
-            <img src="../../assets/local_assets/images/user_icon.png" alt="user_icon">
+      <div id="hello_container" onClick="window.open('../../profile/profile.php', '_self')">
+        <p>Bienvenue,Pr <br><b><?php echo $nom ?> </b></p>
+        <img src="../../assets/local_assets/images/user_icon.png" alt="user_icon">
+      </div>
+
+      <div id="overview_container">
+        <div class="overview">
+          <p class="overview_name">Nombre des stages :</p>
+          <b class="overview_data"><?php echo $n1 ?></b>
         </div>
 
-        <div id="overview_container">
-                <div class="overview">
-                    <p class="overview_name">Nombre des stages :</p>
-                    <b class="overview_data"><?php echo $n1?></b>
-                </div>
-    
-                <div class="overview">
-                    <p class="overview_name">Total des encadrés :</p>
-                    <b class="overview_data"><?php echo ($n1-$n2)?></b>
-                </div>
-    
-                <div class="overview">
-                    <p class="overview_name">Total des non encadrés :</p>
-                    <b class="overview_data"><?php echo $n2?></b>
-                </div>
-    
-                <div class="overview">
-                    <p class="overview_name">Que vous encadrés</p>
-                    <b class="overview_data"><?php echo $n3?></b>
-                </div>
+        <div class="overview">
+          <p class="overview_name">Total des encadrés :</p>
+          <b class="overview_data"><?php echo ($n1 - $n2) ?></b>
+        </div>
+
+        <div class="overview">
+          <p class="overview_name">Total des non encadrés :</p>
+          <b class="overview_data"><?php echo $n2 ?></b>
+        </div>
+
+        <div class="overview">
+          <p class="overview_name">Que vous encadrés</p>
+          <b class="overview_data"><?php echo $n3 ?></b>
+        </div>
+      </div>
+
+      <div id="activity_container">
+        <p id="activity_title">Flux <b>d'activité</b></p>
+        <div id="feeds_container">
+          <div class="feed">
+            <img src="../../assets/local_assets/images/face1.png" alt="user_icon">
+            <div class="text_container">
+              <p class="content"><b>Omar defaoui</b> a deposer la version corrigé du rapport</p>
+              <p class="time"> 4 jours </p>
+            </div>
+          </div>
+          <div class="feed">
+            <img src="../../assets/local_assets/images/face2.png" alt="user_icon">
+            <div class="text_container">
+              <p class="content"><b>Hassan ayoub benasser </b> a Déposer la présentation</p>
+              <p class="time">16 jours</p>
             </div>
 
-        <div id="activity_container">
-        <p id="activity_title">Flux  <b>d'activité</b></p>
-                <div id="feeds_container">
-                <div class="feed">
-                        <img src="../../assets/local_assets/images/face1.png" alt="user_icon">
-                        <div class="text_container">
-                            <p class="content"><b>Omar defaoui</b> a deposer la version corrigé du rapport</p>
-                            <p class="time"> 4 jours </p>
-                        </div>
-                    </div>
-                    <div class="feed">
-                        <img src="../../assets/local_assets/images/face2.png" alt="user_icon">
-                        <div class="text_container">
-                            <p class="content"><b>Hassan ayoub benasser </b> a Déposer la présentation</p>
-                            <p class="time">16 jours</p>
-                        </div>
-                
-            </div>
-            <a href="#" id="see_more">See more</a>
+          </div>
+          <a href="#" id="see_more">See more</a>
         </div>
     </aside>
   </div>
